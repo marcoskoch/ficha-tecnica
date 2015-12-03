@@ -51,11 +51,34 @@
   <ItemGroup>
     <Compile Include="BaseDeDados.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Migrations\201512031956074_FirstMigration.cs" />
+    <Compile Include="Migrations\201512031956074_FirstMigration.Designer.cs">
+      <DependentUpon>201512031956074_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512032012395_FixChaveCompostaLinkFork.cs" />
+    <Compile Include="Migrations\201512032012395_FixChaveCompostaLinkFork.Designer.cs">
+      <DependentUpon>201512032012395_FixChaveCompostaLinkFork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
+      <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
+      <Name>FichaTecnica.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512031956074_FirstMigration.resx">
+      <DependentUpon>201512031956074_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512032012395_FixChaveCompostaLinkFork.resx">
+      <DependentUpon>201512032012395_FixChaveCompostaLinkFork.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -43,6 +43,7 @@
     <Compile Include="Cargo.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Comentario.cs" />
+    <Compile Include="LinkFork.cs" />
     <Compile Include="Membro.cs" />
     <Compile Include="Permissao.cs" />
     <Compile Include="Projeto.cs" />

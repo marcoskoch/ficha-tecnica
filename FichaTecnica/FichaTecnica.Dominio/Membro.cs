@@ -7,13 +7,15 @@ namespace FichaTecnica.Dominio
     {
         public int Id { get; set; }
 
-        public int Nome { get; set; }
+        public string Nome { get; set; }
 
-        public int Email { get; set; }
+        public string Email { get; set; }
 
         public DateTime DataDeNascimento { get; set; }
 
-        public string Numero { get; set; }
+        public DateTime DataCriacao { get; set; }
+
+        public string Telefone { get; set; }
 
         public string Foto { get; set; }
 

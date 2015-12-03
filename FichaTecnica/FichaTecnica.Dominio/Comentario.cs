@@ -17,9 +17,9 @@ namespace FichaTecnica.Dominio
 
         public Tipo Tipo { get; set; }
 
-        public int DataCriacao { get; set; }
+        public DateTime DataCriacao { get; set; }
 
-        public Projeto projeto { get; set; }
+        public Projeto Projeto { get; set; }
 
         public int IdProjeto { get; set; }
 
@@ -30,5 +30,7 @@ namespace FichaTecnica.Dominio
 
     public enum Tipo
     {
+        POSITIVO = 0,
+        NEGATIVO = 1
     }
 }
