@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FichaTecnica.Dominioa")]
+[assembly: AssemblyTitle("FichaTecnica.Dominio")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("FichaTecnica.Dominioa")]
+[assembly: AssemblyProduct("FichaTecnica.Dominio")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e5f91cc2-7cd7-48c9-9d7b-411522df2ac7")]
+[assembly: Guid("0ea62c78-cf70-4762-b217-1421c281ece3")]
 
 // Version information for an assembly consists of the following four values:
 //
