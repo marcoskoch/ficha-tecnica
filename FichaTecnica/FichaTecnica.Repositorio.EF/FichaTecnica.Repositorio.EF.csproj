@@ -51,11 +51,18 @@
   <ItemGroup>
     <Compile Include="BaseDeDados.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ProjetoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
+      <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
+      <Name>FichaTecnica.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -127,10 +127,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TelaInicialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\TelaInicialModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +142,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\TelaInicial\TelaInicial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -150,6 +153,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Seguranca\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
+      <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
+      <Name>FichaTecnica.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
