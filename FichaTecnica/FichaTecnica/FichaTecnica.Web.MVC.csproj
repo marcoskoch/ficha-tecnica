@@ -130,8 +130,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguranca\ControleDeSessao.cs" />
+    <Compile Include="Seguranca\Filters\Autorizador.cs" />
+    <Compile Include="Seguranca\Models\UsuarioLogado.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -149,7 +153,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Seguranca\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
+      <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
+      <Name>FichaTecnica.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FichaTecnica.Infraestrutura.Servicos\FichaTecnica.Infraestrutura.Servicos.csproj">
+      <Project>{e124b1e3-cd72-4305-88ea-e91ab373422e}</Project>
+      <Name>FichaTecnica.Infraestrutura.Servicos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FichaTecnica.Repositorio.EF\FichaTecnica.Repositorio.EF.csproj">
+      <Project>{bc16c4c4-eb6d-4ed6-9d84-9ee656dbf8ea}</Project>
+      <Name>FichaTecnica.Repositorio.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

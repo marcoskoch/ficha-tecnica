@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FichaTecnica.Repositorio.EF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FichaTecnica.Dominio", "FichaTecnica.Dominio\FichaTecnica.Dominio.csproj", "{1B3799BB-AA6D-489D-AE65-FE7DB3E74624}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servicos", "Servicos", "{A34C53D0-DF28-456A-A708-C2AF49629FCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FichaTecnica.Infraestrutura.Servicos", "FichaTecnica.Infraestrutura.Servicos\FichaTecnica.Infraestrutura.Servicos.csproj", "{E124B1E3-CD72-4305-88EA-E91AB373422E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{1B3799BB-AA6D-489D-AE65-FE7DB3E74624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B3799BB-AA6D-489D-AE65-FE7DB3E74624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B3799BB-AA6D-489D-AE65-FE7DB3E74624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E124B1E3-CD72-4305-88EA-E91AB373422E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E124B1E3-CD72-4305-88EA-E91AB373422E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E124B1E3-CD72-4305-88EA-E91AB373422E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E124B1E3-CD72-4305-88EA-E91AB373422E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,5 +69,7 @@ Global
 		{0BBFCF55-9752-430F-A950-8EB011541F1B} = {3CFE6363-7D6C-4509-8E45-125A4FF18590}
 		{BC16C4C4-EB6D-4ED6-9D84-9EE656DBF8EA} = {0BBFCF55-9752-430F-A950-8EB011541F1B}
 		{1B3799BB-AA6D-489D-AE65-FE7DB3E74624} = {23D136EE-122C-4605-A95E-88DF27F50607}
+		{A34C53D0-DF28-456A-A708-C2AF49629FCA} = {3CFE6363-7D6C-4509-8E45-125A4FF18590}
+		{E124B1E3-CD72-4305-88EA-E91AB373422E} = {A34C53D0-DF28-456A-A708-C2AF49629FCA}
 	EndGlobalSection
 EndGlobal
