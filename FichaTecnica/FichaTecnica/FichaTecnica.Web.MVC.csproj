@@ -127,7 +127,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\MembroController.cs" />
     <Compile Include="Controllers\TelaInicialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,10 +156,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-<<<<<<< HEAD
-    <Folder Include="Seguranca\" />
-    <Folder Include="Views\Membro\" />
-=======
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
@@ -175,16 +170,11 @@
       <Project>{bc16c4c4-eb6d-4ed6-9d84-9ee656dbf8ea}</Project>
       <Name>FichaTecnica.Repositorio.EF</Name>
     </ProjectReference>
->>>>>>> 403be8778727891645797fad16b9909ec59eb8be
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
       <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
       <Name>FichaTecnica.Dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FichaTecnica.Repositorio.EF\FichaTecnica.Repositorio.EF.csproj">
-      <Project>{bc16c4c4-eb6d-4ed6-9d84-9ee656dbf8ea}</Project>
-      <Name>FichaTecnica.Repositorio.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

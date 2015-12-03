@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FichaTecnica.Dominio.Repositorio
 {
-    public interface IMembroRepositorio
+    class IMembroRepositorio
     {
     }
 }

@@ -8,7 +8,7 @@ using FichaTecnica.Dominio;
 
 namespace FichaTecnica.Repositorio.EF
 {
-   public class ProjetoRepositorio : IProjetoRepositorio
+    public class ProjetoRepositorio : IProjetoRepositorio
     {
         private readonly BaseDeDados dataBase = new BaseDeDados();
 

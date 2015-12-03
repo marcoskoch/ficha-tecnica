@@ -11,19 +11,9 @@ namespace FichaTecnica.Controllers
     public class TelaInicialController : Controller
     {
         // GET: TelaInicial
-        public ActionResult TelaInicial(string nomeMembroEquipe)
+        public ActionResult TelaInicial()
         {
-            if(nomeMembroEquipe == null)
-            {
-                return View();
-            }
-            else
-            {
-                return View();
-            }
-            
+            return View();
         }
-
-
     }
 }
