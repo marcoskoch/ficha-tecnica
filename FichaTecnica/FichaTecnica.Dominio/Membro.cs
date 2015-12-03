@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FichaTecnica.Dominio
 {
@@ -20,6 +21,6 @@ namespace FichaTecnica.Dominio
 
         public int IdCargo { get; set; }
 
-        public string Link { get; set; }
+        public ICollection<Projeto> Projetos { get; set; }
     }
 }

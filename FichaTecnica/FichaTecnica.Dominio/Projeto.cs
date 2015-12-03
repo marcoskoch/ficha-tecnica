@@ -19,7 +19,7 @@ namespace FichaTecnica.Dominio
 
         public int IdUsuario { get; set; }
 
-        public ICollection<Membro> Membros  { get; set; }
+        public ICollection<Membro> Membros { get; set; }
 
     }
 }
