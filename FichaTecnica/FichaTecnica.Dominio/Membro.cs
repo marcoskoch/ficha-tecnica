@@ -19,5 +19,7 @@ namespace FichaTecnica.Dominio
         public Cargo Cargo { get; set; }
 
         public int IdCargo { get; set; }
+
+        public string Link { get; set; }
     }
 }

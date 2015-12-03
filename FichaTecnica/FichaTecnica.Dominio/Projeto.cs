@@ -19,8 +19,6 @@ namespace FichaTecnica.Dominio
 
         public int IdUsuario { get; set; }
 
-        public string LinkGithubs { get; set; }
-
         public ICollection<Membro> Membros  { get; set; }
 
     }
