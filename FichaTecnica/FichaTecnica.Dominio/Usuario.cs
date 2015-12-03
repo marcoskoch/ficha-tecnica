@@ -17,7 +17,7 @@ namespace FichaTecnica.Dominio
 
         public string Nome { get; set; }
 
-        public Permissao permissao { get; set; }
+        public Permissao Permissao { get; set; }
 
         public int IdPermissao { get; set; }
 
