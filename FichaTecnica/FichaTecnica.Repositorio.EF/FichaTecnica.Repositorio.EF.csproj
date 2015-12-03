@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BaseDeDados.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="MembroRepositorio.cs" />
     <Compile Include="ProjetoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
