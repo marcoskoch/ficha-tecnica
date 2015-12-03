@@ -111,8 +111,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Fonts\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Seguranca\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
