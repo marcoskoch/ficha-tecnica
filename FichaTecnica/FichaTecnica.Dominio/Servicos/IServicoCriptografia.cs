@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FichaTecnica.Repositorio.EF
+namespace FichaTecnica.Dominio.Servicos
 {
-    public class Class1
+    public interface IServicoCriptografia
     {
+        string CriptografarSenha(string senha);
     }
 }

@@ -10,10 +10,11 @@ namespace FichaTecnica.Models
     {
         [Required]
         [StringLength(200)]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(200)]
+        [StringLength(12)]
         public string Senha { get; set; }
     }
 }
