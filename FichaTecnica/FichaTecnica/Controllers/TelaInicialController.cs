@@ -13,12 +13,24 @@ namespace FichaTecnica.Controllers
     public class TelaInicialController : Controller
     {
         private IProjetoRepositorio dataBase = new FichaTecnica.Repositorio.EF.ProjetoRepositorio();
+        private IMembroRepositorio dataBaseMember = new FichaTecnica.Repositorio.EF.MembroRepositorio();
 
         [Autorizador]
         public ActionResult TelaInicial(/*int idUsuario*/)
         {
             int IDUsuario = 1;
-            List<Projeto> projetos = dataBase.BuscarProjetosDoUsuario(IDUsuario);
+            //TODO: Otimizar
+            IList<Projeto> projetos = dataBase.BuscarProjetosDoUsuario(IDUsuario);        
+            IList<Membro> membros = null;
+            foreach (Projeto projeto in projetos)
+            {
+                membros = dataBaseMember.BuscarMembroPorProjeto(projeto);
+                foreach(Membro membro in membros)
+                {
+                    projeto.Membros = new List<Membro>();
+                    projeto.Membros.Add(membro);
+                }
+            }
 
             TelaInicialModel model = new TelaInicialModel();
             model.projetos = new List<Projeto>();
