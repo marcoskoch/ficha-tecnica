@@ -1,0 +1,44 @@
+﻿@model FichaTecnica.Models.GraficoAtividadesModel
+@{
+    ViewBag.Title = "GraficoDeAtividades";
+}
+
+<h2>GraficoDeAtividades</h2>
+
+<div class="jumbotron">
+
+    <h6>Commits: <a id="link-commits"> @Model.Links.First().URL </a></h6>
+
+    <table class="table table-bordered table-hover" id="lista">
+
+        <th>Imagem</th>
+        <th>Mensagem</th>
+        <th>Data</th>
+        <th>Email</th>
+
+    </table>
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        var link = $('#link-commits').html();
+        link = link.replace('https://github.com/', 'https://api.github.com/repos/')
+
+        $.get(link)
+          .done(function(response) {
+            response.forEach(function(i) {
+              $('#lista')
+                .append($('<tr>')
+                  .append($('<td style="width: 60px;">')
+                    .append($('<img style="width:53px;">').attr('src', i.committer.avatar_url))
+                  ).append($('<td>').text(i.commit.message))
+                    .append($('<td>').text(i.commit.committer.date.slice(0, 10)))
+                    .append($('<td>').text(i.commit.committer.email))
+                )
+              })
+            });
+
+    </script>
+}
