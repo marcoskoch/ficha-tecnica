@@ -23,8 +23,11 @@
 @section Scripts {
     <script type="text/javascript">
 
+        var model = @Html.Raw(Json.Encode(Model));
         var link = $('#link-commits').html();
+        var commitList = [];
 
+        /*
         $.get(link)
           .done(function(response) {
             response.forEach(function(i) {
@@ -37,7 +40,33 @@
                     .append($('<td>').text(i.commit.committer.email))
                 )
               })
-            });
+          });
+          */
+
+        model.Links.forEach(function(l) {
+            
+            $.get(model.URLBaseAPI + l.URL + 'commits')
+                .done(function (response) {
+                    response.forEach(function (i) {
+                        commitList.push({ sha: i.sha, date: new Date(i.commit.author.date).getTime(), message: i.commit.message })
+                    })
+                })
+        })
+        
+        //TODO: refactor meio alternativo sem setTimeout
+
+        setTimeout(function(){ 
+            commitList.sort(function (left, right) { return left.date > right.date })
+            commitList = commitList.slice(0, 3);
+
+            commitList.forEach(function(commit) { 
+                $('#lista')
+                    .append($('<tr>')
+                      .append($('<td style="width: 60px;">'))
+                        .append($('<td>').append($('<a>').html(commit.message).attr('href', model.URLBase + '/commit/' + commit.sha) ))
+                        .append($('<td>').text(new Date(commit.date)))
+                )
+            }) }, 1000);
 
     </script>
 }
