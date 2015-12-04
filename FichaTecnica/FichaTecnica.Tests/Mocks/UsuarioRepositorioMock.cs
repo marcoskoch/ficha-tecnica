@@ -28,5 +28,10 @@ namespace FichaTecnica.Tests.Mocks
             usuarios.Add(usuario1);
             return usuarios;
         }
+
+        public Usuario BuscarPorId(int Id)
+        {
+            return null;
+        }
     }
 }
