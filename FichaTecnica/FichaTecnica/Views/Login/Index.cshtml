@@ -3,28 +3,44 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Index</h2>
+<h2>Login</h2>
 
-
-@using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
+@if (TempData["MensagemErro"] != null)
 {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true);
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Email)
+    <div style="margin-top: 10px;" class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Falha!</strong> @TempData["MensagemErro"]
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Senha)
-        @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Senha)
-    </div>
-    <input type="submit" class="btn btn-primary" value="Login" />
-    <p>
-        <br />
-        @Html.ValidationMessage("INVALID_LOGIN")
-    </p>
+}
+
+@if (ViewBag.UsuarioLogado != null)
+{
+    <h4>Bem vindo @ViewBag.UsuarioLogado.Nome!</h4>
+}
+else
+{
+    using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form-horizontal top-buffer", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Senha)
+            @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Senha)
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </div>
+        </div>
+    }
 }
 
 
