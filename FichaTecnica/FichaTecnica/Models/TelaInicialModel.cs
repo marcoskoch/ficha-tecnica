@@ -8,8 +8,7 @@ namespace FichaTecnica.Models
 {
     public class TelaInicialModel
     {
-        public List<Projeto> projetos { get; set; }
-        public List<int> QuantidadeMembros { get; set; }
+        public IList<Projeto> projetos { get; set; }
 
         public TelaInicialModel()
         {
