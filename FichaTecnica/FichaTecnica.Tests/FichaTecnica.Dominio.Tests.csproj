@@ -50,9 +50,7 @@
   <ItemGroup>
     <Compile Include="Mocks\TelaInicialMock.cs" />
     <Compile Include="TelaInicialTeste.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Mocks\ServicoCriptografiaMock.cs" />
-    <Compile Include="Mocks\TelaInicialMock.cs" />
     <Compile Include="Mocks\UsuarioRepositorioMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicoAutenticacaoTest.cs" />
