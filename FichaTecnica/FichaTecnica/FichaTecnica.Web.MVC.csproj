@@ -134,6 +134,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FabricaDeModulos.cs" />
+    <Compile Include="Models\GraficoAtividadesModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\TelaInicialModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +151,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\TelaInicial\TelaInicial.cshtml" />
     <Content Include="Views\Membro\FichaMembro.cshtml" />
+    <Content Include="Views\Membro\GraficoDeAtividades.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\GraficoAtividades\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
@@ -212,7 +215,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

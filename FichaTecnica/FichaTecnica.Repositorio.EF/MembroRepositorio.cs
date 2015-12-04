@@ -45,5 +45,15 @@ namespace FichaTecnica.Repositorio.EF
                 return query.ToList();
             }
         }
+
+        public Membro BuscarPorId(int id)
+        {
+            return dataBase.Membro.Find(id);
+        }
+
+        public List<LinkFork> BuscarLinkPorIdMembro(int id)
+        {
+            return dataBase.LinkFork.Where(l => l.IdMembro.Equals(id)).ToList();
+        }
     }
 }

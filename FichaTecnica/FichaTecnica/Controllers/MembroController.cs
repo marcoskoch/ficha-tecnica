@@ -1,5 +1,6 @@
 ﻿using FichaTecnica.Dominio;
 using FichaTecnica.Dominio.Repositorio;
+using FichaTecnica.Models;
 using FichaTecnica.Repositorio.EF;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,13 @@ namespace FichaTecnica.Controllers
             var json = MembrosEncontrados.Select(x => new { label = x.Nome });
 
             return Json(json, JsonRequestBehavior.AllowGet); 
+        }
+
+        public ActionResult GraficoDeAtividades(int id)
+        {
+            List<LinkFork> links = dataBase.BuscarLinkPorIdMembro(id);
+
+            return View(new GraficoAtividadesModel(links));
         }
     }
 }
