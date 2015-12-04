@@ -25,9 +25,9 @@ namespace FichaTecnica.Controllers
             foreach (Projeto projeto in projetos)
             {
                 membros = dataBaseMember.BuscarMembroPorProjeto(projeto);
-                foreach(Membro membro in membros)
-                {
-                    projeto.Membros = new List<Membro>();
+                projeto.Membros = new List<Membro>();
+                foreach (Membro membro in membros)
+                {        
                     projeto.Membros.Add(membro);
                 }
             }
