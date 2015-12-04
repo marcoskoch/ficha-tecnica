@@ -8,6 +8,7 @@ namespace FichaTecnica.Dominio.Repositorio
 {
    public interface IProjetoRepositorio
     {
-        List<Projeto> BuscarProjetosDoUsuario(int IDUsuario);
+        IList<Projeto> BuscarProjetosDoUsuario(int IDUsuario);
+        //List<Projeto> BuscaTotalMembrosProjeto(List<Projeto> projetos);
     }
 }

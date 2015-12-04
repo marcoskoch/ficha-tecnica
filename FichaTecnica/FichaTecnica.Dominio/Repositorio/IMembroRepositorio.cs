@@ -8,5 +8,8 @@ namespace FichaTecnica.Dominio.Repositorio
 {
     public interface IMembroRepositorio
     {
+        IList<Membro> BuscarTodosMembros();
+        IList<Membro> BuscarPorNome(string nome);
+        IList<Membro> BuscarMembroPorProjeto(Projeto projeto);
     }
 }
