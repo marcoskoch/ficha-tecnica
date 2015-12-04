@@ -149,6 +149,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\TelaInicial\TelaInicial.cshtml" />
+    <Content Include="Views\Membro\FichaMembro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

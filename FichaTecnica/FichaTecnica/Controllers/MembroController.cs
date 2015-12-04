@@ -14,6 +14,11 @@ namespace FichaTecnica.Controllers
 
         private IMembroRepositorio dataBase = new MembroRepositorio();
 
+        public ActionResult FichaMembro()
+        {
+            return View();
+        }
+
         public JsonResult MembroAutoComplete(string term)
         {
             IList<Membro> MembrosEncontrados = null;
