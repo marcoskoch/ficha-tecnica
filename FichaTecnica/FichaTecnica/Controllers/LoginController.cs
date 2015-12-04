@@ -1,4 +1,5 @@
 ﻿using FichaTecnica.Dominio;
+using FichaTecnica.Dominio.Repositorio;
 using FichaTecnica.Dominio.Servicos;
 using FichaTecnica.Helpers;
 using FichaTecnica.Models;
@@ -13,6 +14,8 @@ namespace FichaTecnica.Controllers
 {
     public class LoginController : Controller
     {
+        private IUsuarioRepositorio dataBase = new FichaTecnica.Repositorio.EF.UsuarioRepositorio();
+
         // GET: Login
         public ActionResult Index()
         {
@@ -30,7 +33,7 @@ namespace FichaTecnica.Controllers
                 if (usuarioAutenticado != null)
                 {
                     ControleDeSessao.CriarSessaoDeUsuario(loginModel.Email);
-                    return RedirectToAction("TelaInicial", "TelaInicial");
+                    return RedirectToAction("TelaInicial", "TelaInicial", new { IDUsuario = usuarioAutenticado.Id });
                 }
             }
 
