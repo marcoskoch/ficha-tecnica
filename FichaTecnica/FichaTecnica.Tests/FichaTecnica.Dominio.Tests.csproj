@@ -48,16 +48,22 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mocks\TelaInicialMock.cs" />
     <Compile Include="TelaInicialTeste.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
+      <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
+      <Name>FichaTecnica.Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FichaTecnica\FichaTecnica.Web.MVC.csproj">
       <Project>{A4C80994-731B-46B5-8390-6F1058165535}</Project>
       <Name>FichaTecnica.Web.MVC</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
