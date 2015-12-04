@@ -16,11 +16,17 @@
     }
     else
     {
+        <p>Pesquisar membro da equipe</p>
+
+        <form class="navbar-brand" method="get" action="@Url.Action("Membro", "FichaMembro")">
+            <input type="text" id="NomeMembro" placeholder="Nome do Membro" name="Nome">
+            <input type="submit" id="btnProcurar" name="Membros" value="Procurar">
+        </form>
+
         <table class="table table-striped table-bordered table-hover">
             <thread>
                 <tr>
                     <th style="width: 25%">Nome Projeto</th>
-                    <th style="width: 25%">Quantidade de membros</th>
                     <th style="width: 25%">DataInicio</th>
                     <th style="width: 25%">Detalhes do projeto</th>
                 </tr>
@@ -29,12 +35,29 @@
             {
                 <tr>
                     <td>@projeto.Nome</td>
-                    <td>NumeroDeMembros</td>
                     <td>@projeto.DataInicio</td>
-                    <td>@projeto.Descricao</td>
+                    <td>
+                        @using (Html.BeginForm("ProjetoDetalhe", "TelaInicial", FormMethod.Post, null))
+                    {   <input type="hidden" name="id" value="@projeto.Id">
+                        <input type="submit" name="enviar" value="Detalhes" /> }
+                </td>
+
                 </tr>
             }
         </table>
+    }
+
+    @section Scripts {
+        <script>
+            $("document").ready(function() {
+                $("#NomeMembro").autocomplete({
+                    minLength: 3,
+                    source: '@Url.Action("MembroAutoComplete", "Membro")',
+                    select: function () { $("#btnProcurar").click(); }
+                });
+                $(".ui-helper-hidden-accessible").remove();
+            });
+        </script>
     }
 
 </body>
