@@ -36,7 +36,7 @@
             {
                 <tr>
                     <td>@projeto.Nome</td>
-                    @if (projeto.Membros != null)
+                    @if (projeto.Membros.Count != 0)
                     {
                         <td>@projeto.Membros.Count</td>
                     }
@@ -44,7 +44,7 @@
                     {
                         <td>Não há membros</td>
                     }
-                    <td>@projeto.DataInicio</td>
+                    <td>@projeto.DataInicio.ToString("dd/MM/yyyy")</td>
                     <td>
                         @using (Html.BeginForm("ProjetoDetalhe", "TelaInicial", FormMethod.Post, null))
                     {   <input type="hidden" name="id" value="@projeto.Id">

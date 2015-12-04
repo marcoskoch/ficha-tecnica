@@ -16,10 +16,8 @@ namespace FichaTecnica.Controllers
         private IMembroRepositorio dataBaseMember = new FichaTecnica.Repositorio.EF.MembroRepositorio();
 
         [Autorizador]
-        public ActionResult TelaInicial(/*int idUsuario*/)
+        public ActionResult TelaInicial(int IDUsuario)
         {
-            int IDUsuario = 1;
-            //TODO: Otimizar
             IList<Projeto> projetos = dataBase.BuscarProjetosDoUsuario(IDUsuario);        
             IList<Membro> membros = null;
             foreach (Projeto projeto in projetos)
