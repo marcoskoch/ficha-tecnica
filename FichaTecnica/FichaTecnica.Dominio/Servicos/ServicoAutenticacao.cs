@@ -25,7 +25,6 @@ namespace FichaTecnica.Dominio.Servicos
             if (usuario != null)
             {
                 string senhaCriptografada = servicoCriptografia.CriptografarSenha(senha);
-                senhaCriptografada = senha;
 
                 if (usuario.Senha != senhaCriptografada)
                 {

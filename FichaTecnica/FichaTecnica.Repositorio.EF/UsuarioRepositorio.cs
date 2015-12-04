@@ -12,15 +12,11 @@ namespace FichaTecnica.Repositorio.EF
     {
         public Usuario BuscarPorEmail(string email)
         {
-            //using (var db = new BancoDeDados())
-            //{
-            //    return db.Usuario.Include("Permissoes").FirstOrDefault(u => u.Email == email);
-            //}
+            using (var db = new BaseDeDados())
+            {
+                return db.Usuario.Include("Permissao").FirstOrDefault(u => u.Email == email);
+            }
 
-            Usuario usuario = new Usuario();
-            usuario.Email = "gerente@cwi.com.br";
-            usuario.Senha = "123";
-            return usuario;
         }
     }
 }

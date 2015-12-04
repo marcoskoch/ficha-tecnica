@@ -30,7 +30,7 @@ namespace FichaTecnica.Controllers
                 if (usuarioAutenticado != null)
                 {
                     ControleDeSessao.CriarSessaoDeUsuario(loginModel.Email);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("TelaInicial", "TelaInicial");
                 }
             }
 
