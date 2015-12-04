@@ -14,7 +14,17 @@ namespace FichaTecnica.Repositorio.EF
 
         public List<Projeto> BuscarProjetosDoUsuario(int IDUsuario)
         {
-            return null;
+            using (dataBase)
+            {
+                var projetos = from projeto in dataBase.Projeto
+                               where projeto.IdUsuario == IDUsuario
+                               select projeto;
+            
+                
+                return projetos.ToList();
+            }
         }
+        
+
     }
 }
