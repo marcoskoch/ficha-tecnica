@@ -20,11 +20,11 @@ namespace FichaTecnica.Controllers
 
             if (string.IsNullOrEmpty(term))
             {
-                //MembrosEncontrados = dataBase.buscarTodosMembros();
+                MembrosEncontrados = dataBase.BuscarTodosMembros();
             }
             else
             {
-               // MembrosEncontrados = dataBase.buscarMembroPorNome(term);
+                MembrosEncontrados = dataBase.BuscarPorNome(term);
             }
 
             var json = MembrosEncontrados.Select(x => new { label = x.Nome });
