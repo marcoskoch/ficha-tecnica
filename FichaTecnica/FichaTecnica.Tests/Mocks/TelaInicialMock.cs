@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FichaTecnica.Tests.Mocks
 {
-    class TelaInicialMock
+    public class TelaInicialMock
     {
     }
 }
