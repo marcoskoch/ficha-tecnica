@@ -27,6 +27,7 @@
             <thread>
                 <tr>
                     <th style="width: 25%">Nome Projeto</th>
+                    <th style="width: 25%">Quantidade Membros</th>
                     <th style="width: 25%">DataInicio</th>
                     <th style="width: 25%">Detalhes do projeto</th>
                 </tr>
@@ -35,6 +36,14 @@
             {
                 <tr>
                     <td>@projeto.Nome</td>
+                    @if (projeto.Membros != null)
+                    {
+                        <td>@projeto.Membros.Count</td>
+                    }
+                    else
+                    {
+                        <td>Não há membros</td>
+                    }
                     <td>@projeto.DataInicio</td>
                     <td>
                         @using (Html.BeginForm("ProjetoDetalhe", "TelaInicial", FormMethod.Post, null))
