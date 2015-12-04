@@ -1,5 +1,6 @@
 ﻿using FichaTecnica.Dominio;
 using FichaTecnica.Dominio.Repositorio;
+using FichaTecnica.Repositorio.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace FichaTecnica.Controllers
     public class MembroController : Controller
     {
 
-        private IMembroRepositorio dataBase = new FichaTecnica.Repositorio.EF.MembroRepositorio();
+        private IMembroRepositorio dataBase = new MembroRepositorio();
 
         public JsonResult MembroAutoComplete(string term)
         {

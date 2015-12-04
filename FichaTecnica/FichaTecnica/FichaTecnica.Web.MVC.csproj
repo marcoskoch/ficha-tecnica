@@ -127,6 +127,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MembroController.cs" />
     <Compile Include="Controllers\TelaInicialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,14 +163,6 @@
       <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
       <Name>FichaTecnica.Dominio</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
-      <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
-      <Name>FichaTecnica.Dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FichaTecnica.Helpers\FichaTecnica.Helpers.csproj">
-      <Project>{e5d2ceaf-9efc-425b-8727-b8cc813a63ab}</Project>
-      <Name>FichaTecnica.Helpers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FichaTecnica.Infraestrutura.Servicos\FichaTecnica.Infraestrutura.Servicos.csproj">
       <Project>{e124b1e3-cd72-4305-88ea-e91ab373422e}</Project>
       <Name>FichaTecnica.Infraestrutura.Servicos</Name>
@@ -177,6 +170,12 @@
     <ProjectReference Include="..\FichaTecnica.Repositorio.EF\FichaTecnica.Repositorio.EF.csproj">
       <Project>{bc16c4c4-eb6d-4ed6-9d84-9ee656dbf8ea}</Project>
       <Name>FichaTecnica.Repositorio.EF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FichaTecnica.Dominio\FichaTecnica.Dominio.csproj">
+      <Project>{1b3799bb-aa6d-489d-ae65-fe7db3e74624}</Project>
+      <Name>FichaTecnica.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
