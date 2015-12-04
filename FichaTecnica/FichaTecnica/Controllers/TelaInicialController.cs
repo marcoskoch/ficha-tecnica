@@ -18,8 +18,6 @@ namespace FichaTecnica.Controllers
         [Autorizador]
         public ActionResult TelaInicial(int IDUsuario)
         {
-            IDUsuario = 1;
-
             IList<Projeto> projetos = dataBase.BuscarProjetosDoUsuario(IDUsuario);        
             IList<Membro> membros = null;
             foreach (Projeto projeto in projetos)
