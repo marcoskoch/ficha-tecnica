@@ -15,12 +15,6 @@ ViewBag.Title = "FichaMembro";
 <div class="row top30" >
 	<div class="col-md-9 comentarios">
 		<div id="comentarios" class="row">
-			<div class="bloco-comentario">
-				<div class="tag-comentario positivo"></div>
-				<h4>Assunto do Comentário</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
-				<p>Goku - 15/12/2015</p>
-			</div>
 
 		</div>
 	</div>
@@ -85,17 +79,23 @@ ViewBag.Title = "FichaMembro";
         var comments = @Html.Raw(Json.Encode(Model.Comentarios));
         var gitInfo = @Html.Raw(Json.Encode(Model.LinksGithub));
         var converter = new showdown.Converter();
+        var localStorageCommits = localStorage.getItem('lastestCommits');
         var commitList = [];
         var projetos = [];
 
-        gitInfo.Links.forEach(function(l) {
-            $.get(gitInfo.URLBaseAPI + l.URL + 'commits')
-                .done(function (response) {
-                    response.forEach(function (i) {
-                        commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+        if(localStorageCommits == null) {
+            gitInfo.Links.forEach(function(l) {
+                $.get(gitInfo.URLBaseAPI + l.URL + 'commits')
+                    .done(function (response) {
+                        response.forEach(function (i) {
+                            commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+                        })
                     })
-                })
-        })
+            })
+        }
+        else {
+            commitList = JSON.parse(localStorageCommits);
+        }
 
         $.get('http://localhost:54173/Membro/ProjetoAutocomplete')
             .done(function(response) {
@@ -109,6 +109,8 @@ ViewBag.Title = "FichaMembro";
         setTimeout(function(){
             commitList.sort(function (left, right) { return left.date < right.date })
             commitList = commitList.slice(0, 3);
+            localStorage.setItem('lastestCommits', JSON.stringify(commitList));
+
 
             commitList.forEach(function(commit) {
                 $('#commits')
@@ -137,6 +139,10 @@ ViewBag.Title = "FichaMembro";
                     .append($(converter.makeHtml(comment.Texto)))
                     )
         })
+
+        setTimeout(function() { 
+            localStorage.clear(); 
+        }, 1000 * 60) // * 10
 
     </script>
 }
