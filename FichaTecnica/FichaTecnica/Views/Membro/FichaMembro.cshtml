@@ -76,10 +76,11 @@ ViewBag.Title = "FichaMembro";
 @section Scripts {
     <script type="text/javascript">
 
+        var id = @Html.Raw(Json.Encode(Model.Id)).ToString();
         var comments = @Html.Raw(Json.Encode(Model.Comentarios));
         var gitInfo = @Html.Raw(Json.Encode(Model.LinksGithub));
         var converter = new showdown.Converter();
-        var localStorageCommits = localStorage.getItem('lastestCommits');
+        var localStorageCommits = localStorage.getItem('latestCommits'.concat(id));
         var username = gitInfo.Links[0].URL.split('/')[1];
         var commitList = [];
         var projetos = [];
@@ -87,7 +88,7 @@ ViewBag.Title = "FichaMembro";
 
         gitInfo.Links.forEach(function(link) { repos.push(link.URL)})
 
-        if(localStorageCommits == '[]') {
+        if(localStorageCommits == null) {
            
             $.get('https://api.github.com/users/' + username + '/events?page=1')
                     .done(function (response) {
@@ -114,7 +115,7 @@ ViewBag.Title = "FichaMembro";
         setTimeout(function(){
             commitList.sort(function (left, right) { return left.date < right.date })
             commitList = commitList.slice(0, 3);
-            localStorage.setItem('lastestCommits', JSON.stringify(commitList));
+            localStorage.setItem('latestCommits'.concat(id), JSON.stringify(commitList));
 
 
             commitList.forEach(function(commit) {
