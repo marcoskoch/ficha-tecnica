@@ -10,12 +10,8 @@
     <h6>Commits: <a id="link-commits"> @string.Concat(Model.URLBaseAPI, Model.Links.First().URL, "commits?per_page=3")</a></h6>
 
     <table class="table table-bordered table-hover" id="lista">
-
-        <th>Imagem</th>
         <th>Mensagem</th>
         <th>Data</th>
-        <th>Email</th>
-
     </table>
 
 </div>
@@ -26,22 +22,6 @@
         var model = @Html.Raw(Json.Encode(Model));
         var link = $('#link-commits').html();
         var commitList = [];
-
-        /*
-        $.get(link)
-          .done(function(response) {
-            response.forEach(function(i) {
-              $('#lista')
-                .append($('<tr>')
-                  .append($('<td style="width: 60px;">')
-                    .append($('<img style="width:53px;">').attr('src', i.committer.avatar_url))
-                  ).append($('<td>').text(i.commit.message))
-                    .append($('<td>').text(i.commit.committer.date.slice(0, 10)))
-                    .append($('<td>').text(i.commit.committer.email))
-                )
-              })
-          });
-          */
 
         model.Links.forEach(function(l) {
             
@@ -62,7 +42,6 @@
             commitList.forEach(function(commit) { 
                 $('#lista')
                     .append($('<tr>')
-                      .append($('<td style="width: 60px;">'))
                         .append($('<td>').append($('<a>').html(commit.message).attr('href', model.URLBase + '/commit/' + commit.sha) ))
                         .append($('<td>').text(new Date(commit.date)))
                 )

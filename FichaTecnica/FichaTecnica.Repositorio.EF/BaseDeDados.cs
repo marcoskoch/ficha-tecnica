@@ -1,4 +1,4 @@
-﻿using FichaTecnica.Dominio;
+using FichaTecnica.Dominio;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,7 +19,7 @@ namespace FichaTecnica.Repositorio.EF
         public DbSet<Membro> Membro { get; set; }
         public DbSet<Cargo> Cargo { get; set; }
 
-        public BaseDeDados() : base("FICHA_TECNICA_FELIPE")
+        public BaseDeDados() : base("FICHA_TECNICA_RENAN")
         {
         }
 
