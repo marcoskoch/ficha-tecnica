@@ -4,3 +4,42 @@
 .NomeProjeto{
     font-size: 50px;
 }
+
+.Cartao{ 
+  float:left;
+    position: relative;
+    width: 30%;
+    padding-bottom: 30%;
+    margin:1.66%;
+    overflow:hidden;
+    background-color: #ff8533;
+}
+
+.content{
+    position:absolute;
+    height:80%;
+    width:90%; 
+    padding: 0% 0%;
+}
+
+.imagem{
+    position: absolute;
+}
+
+.campos{
+    position: relative;
+    padding-top: 40%;
+    padding-right: 0%;
+    padding-left: 0%;
+    padding-bottom: 0%;
+}
+
+.cargo{
+    position:absolute;
+    height:80%;
+    width:90%; 
+    padding-top: 0%;
+    padding-right: 0%;
+    padding-left: 65%;
+    padding-bottom: 0%;
+}
