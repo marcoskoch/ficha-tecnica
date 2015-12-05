@@ -20,6 +20,8 @@ namespace FichaTecnica.Models
 
         public int IdProjeto { get; set; }
 
+        public int IdMembro { get; set; }
+
         public ComentarioModel()
         {
         }

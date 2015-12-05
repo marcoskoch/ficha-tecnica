@@ -42,5 +42,15 @@ namespace FichaTecnica.Tests.Mocks
         {
             return null;
         }
+
+        public IList<Projeto> BuscarTodosProjetos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Projeto> BuscarPorNome(string term)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

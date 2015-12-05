@@ -14,34 +14,8 @@ ViewBag.Title = "FichaMembro";
 
 <div class="row top30" >
 	<div class="col-md-9 comentarios">
-		<div class="row">
-			<div class="bloco-comentario">
-				<div class="tag-comentario positivo"></div>
-				<h4>Assunto do Comentário</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
-				<p>Goku - 15/12/2015</p>
-			</div>
-			<div class="bloco-comentario">
-				<div class="tag-comentario negativo"></div>
-				<h4>Assunto do Comentário</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
-				<p>Goku - 15/12/2015</p>
-			</div>
-			<div class="bloco-comentario">
-				<div class="tag-comentario positivo"></div>
-				<h4>Assunto do Comentário</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
-				<p>Goku - 15/12/2015</p>
-			</div>
-			<div class="bloco-comentario">
-				<div class="tag-comentario positivo"></div>
-				<h4>Assunto do Comentário</h4>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
-				<p>Goku - 15/12/2015</p>
-			</div>
+		<div id="comentarios" class="row">
+
 		</div>
 	</div>
 	<div class="col-md-3 dados-membro">
@@ -63,38 +37,38 @@ ViewBag.Title = "FichaMembro";
 		<div class="form-comentario">
 			<h3>Adicionar Comentário</h3>
 
-			<form action="/Membro/AdicionarComentario" method="POST" accept-charset="utf-8">
+            <form action="/Membro/AdicionarComentario" method="POST" accept-charset="utf-8">
 
-				
-				<div class="form-group">
-					<label>Assunto:</label>
-					<input class="form-control" type="text" name="assunto" value="" placeholder="Assunto">
-				</div>
-				<div class="form-group">
-					<label>Comentário:</label>
-					<textarea class="form-control" name="texto"></textarea>
-				</div>
-				<div class="form-group">
-					<label>Tipo:</label>
-					<select class="form-control" name="">
-						<option value="0">Positivo</option>
-						<option value="2">Negativo</option>
-					</select>
-				</div>
+                <div class="form-group">
+                    <label>Assunto:</label>
+                    <input class="form-control" type="text" name="assunto" value="">
+                </div>
+                <div class="form-group">
+                    <label>Comentário:</label>
+                    <textarea class="form-control" name="texto"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Tipo:</label>
+                    <select class="form-control" name="tipo">
+                        <option value="0">Positivo</option>
+                        <option value="2">Negativo</option>
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <label>Projeto:</label>
-                    <select class="form-control" name="">
-                        <option value="1">Projeto Renner</option>  
-                        <option value="2">Projeto Renner</option>                  
+                    <select class="form-control" name="idProjeto" id="projetos">
                     </select>
                 </div>
-				<div class="form-group">
-					<div class="col-sm-12">
-						<button type="submit" class="btn btn-primary">Adicionar</button>
-					</div>
-				</div>
-			</form>
+
+                <input hidden="hidden" type="text" name="idMembro" value=@Model.Id>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </div>
+            </form>		
 		</div>
 	</div>
 </div>
@@ -102,23 +76,41 @@ ViewBag.Title = "FichaMembro";
 @section Scripts {
     <script type="text/javascript">
 
-        var model = @Html.Raw(Json.Encode(Model.LinksGithub));
+        var comments = @Html.Raw(Json.Encode(Model.Comentarios));
+        var gitInfo = @Html.Raw(Json.Encode(Model.LinksGithub));
+        var converter = new showdown.Converter();
+        var localStorageCommits = localStorage.getItem('lastestCommits');
         var commitList = [];
+        var projetos = [];
 
-        model.Links.forEach(function(l) {
-            $.get(model.URLBaseAPI + l.URL + 'commits')
-                .done(function (response) {
-                    response.forEach(function (i) {
-                        commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+        if(localStorageCommits == null) {
+            gitInfo.Links.forEach(function(l) {
+                $.get(gitInfo.URLBaseAPI + l.URL + 'commits')
+                    .done(function (response) {
+                        response.forEach(function (i) {
+                            commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+                        })
                     })
+            })
+        }
+        else {
+            commitList = JSON.parse(localStorageCommits);
+        }
+
+        $.get('http://localhost:54173/Membro/ProjetoAutocomplete')
+            .done(function(response) {
+                response.forEach(function(i) {
+                    projetos.push(i)
                 })
-        })
+            })
 
         //TODO: refactor meio alternativo sem setTimeout
 
         setTimeout(function(){
             commitList.sort(function (left, right) { return left.date < right.date })
             commitList = commitList.slice(0, 3);
+            localStorage.setItem('lastestCommits', JSON.stringify(commitList));
+
 
             commitList.forEach(function(commit) {
                 $('#commits')
@@ -127,7 +119,30 @@ ViewBag.Title = "FichaMembro";
                             .append($('<a>').html(commit.sha).attr('href', commit.link))
                             .append($('<p>').html(commit.message)))
                 )
-            }) }, 1000);
+            })
+
+            projetos.forEach(function(projeto) {
+                $('#projetos')
+                    .append($('<option>').html(projeto.label).attr('value', projeto.value))
+                    .attr('name', 'idProjeto')
+            })
+
+        }, 1000);
+
+        comments.forEach(function(comment) { 
+            var typeTag = comment.Tipo == 0 ? '<div class="tag-comentario positivo">' : '<div class="tag-comentario negativo">';
+
+            $('#comentarios')
+                  .append($('<div class="bloco-comentario">')
+                    .append($(typeTag))
+                    .append($('<h4>').text(comment.Assunto))
+                    .append($(converter.makeHtml(comment.Texto)))
+                    )
+        })
+
+        setTimeout(function() { 
+            localStorage.clear(); 
+        }, 1000 * 60) // * 10
 
     </script>
 }

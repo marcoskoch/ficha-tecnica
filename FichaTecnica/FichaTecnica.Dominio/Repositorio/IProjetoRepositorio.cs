@@ -10,5 +10,7 @@ namespace FichaTecnica.Dominio.Repositorio
     {
         IList<Projeto> BuscarProjetosDoUsuario(int IDUsuario);
         Projeto BuscarProjetoPorId(int IDProjeto);
+        IList<Projeto> BuscarTodosProjetos();
+        IList<Projeto> BuscarPorNome(string term);
     }
 }

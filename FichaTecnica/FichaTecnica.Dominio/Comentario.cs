@@ -26,6 +26,10 @@ namespace FichaTecnica.Dominio
         public Usuario Usuario{ get; set; }
 
         public int IdUsuario { get; set; }
+
+        public int IdMembro { get; set; }
+
+        public Membro Membro { get; set; }
     }
 
     public enum Tipo

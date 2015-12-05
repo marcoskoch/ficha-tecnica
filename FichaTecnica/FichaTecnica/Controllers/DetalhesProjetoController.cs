@@ -1,6 +1,7 @@
 ﻿using FichaTecnica.Dominio;
 using FichaTecnica.Dominio.Repositorio;
 using FichaTecnica.Models;
+using FichaTecnica.Repositorio.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace FichaTecnica.Controllers
 {
     public class DetalhesProjetoController : Controller
     {
-        private IProjetoRepositorio dataBase = new FichaTecnica.Repositorio.EF.ProjetoRepositorio();
-        private IMembroRepositorio dataBaseMembro = new FichaTecnica.Repositorio.EF.MembroRepositorio();
-        private IUsuarioRepositorio dataBaseUsuario = new FichaTecnica.Repositorio.EF.UsuarioRepositorio();
+        private IProjetoRepositorio dataBase = new ProjetoRepositorio();
+        private IMembroRepositorio dataBaseMembro = new MembroRepositorio();
+        private IUsuarioRepositorio dataBaseUsuario = new UsuarioRepositorio();
 
         public ActionResult TelaDetalhes(int Id)
         {

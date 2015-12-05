@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDeDados.cs" />
+    <Compile Include="ComentarioRepositorio.cs" />
     <Compile Include="MembroRepositorio.cs" />
     <Compile Include="Migrations\201512031956074_FirstMigration.cs" />
     <Compile Include="Migrations\201512031956074_FirstMigration.Designer.cs">
@@ -58,6 +59,10 @@
     <Compile Include="Migrations\201512032012395_FixChaveCompostaLinkFork.cs" />
     <Compile Include="Migrations\201512032012395_FixChaveCompostaLinkFork.Designer.cs">
       <DependentUpon>201512032012395_FixChaveCompostaLinkFork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512051225525_AddMembroNoComentario.cs" />
+    <Compile Include="Migrations\201512051225525_AddMembroNoComentario.Designer.cs">
+      <DependentUpon>201512051225525_AddMembroNoComentario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjetoRepositorio.cs" />
@@ -74,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512032012395_FixChaveCompostaLinkFork.resx">
       <DependentUpon>201512032012395_FixChaveCompostaLinkFork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512051225525_AddMembroNoComentario.resx">
+      <DependentUpon>201512051225525_AddMembroNoComentario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

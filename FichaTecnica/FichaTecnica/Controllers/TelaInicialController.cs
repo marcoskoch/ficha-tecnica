@@ -1,6 +1,7 @@
 ﻿using FichaTecnica.Dominio;
 using FichaTecnica.Dominio.Repositorio;
 using FichaTecnica.Models;
+using FichaTecnica.Repositorio.EF;
 using FichaTecnica.Seguranca.Filters;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,8 @@ namespace FichaTecnica.Controllers
 {
     public class TelaInicialController : Controller
     {
-        private IProjetoRepositorio dataBase = new FichaTecnica.Repositorio.EF.ProjetoRepositorio();
-        private IMembroRepositorio dataBaseMember = new FichaTecnica.Repositorio.EF.MembroRepositorio();
+        private IProjetoRepositorio dataBase = new ProjetoRepositorio();
+        private IMembroRepositorio dataBaseMember = new MembroRepositorio();
 
         [Autorizador]
         public ActionResult TelaInicial(int IDUsuario)
