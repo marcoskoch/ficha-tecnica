@@ -56,5 +56,20 @@ namespace FichaTecnica.Repositorio.EF
         {
             return dataBase.LinkFork.Where(l => l.IdMembro.Equals(id)).ToList();
         }
+
+        public string BuscarLiderTecnicoDoProjeto(IList<Membro> membros)
+        {
+            string Lider = "Não ha Lider";
+
+            foreach (Membro membro in membros)
+            {
+                if(membro.Cargo.Id == 2)
+                {
+
+                    Lider = membro.Nome;
+                }
+            }
+            return Lider;
+        }
     }
 }

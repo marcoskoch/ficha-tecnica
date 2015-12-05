@@ -18,5 +18,13 @@ namespace FichaTecnica.Repositorio.EF
             }
 
         }
+
+        public Usuario BuscarPorId(int Id)
+        {
+            using (var db = new BaseDeDados())
+            {
+                return db.Usuario.Find(Id);
+            }
+        }
     }
 }

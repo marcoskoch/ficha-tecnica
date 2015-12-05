@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DetalhesProjetoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MembroController.cs" />
     <Compile Include="Controllers\TelaInicialController.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Models\DetalheMembroModel.cs" />
     <Compile Include="Models\GraficoAtividadesModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\TelaDetalhesModel.cs" />
     <Compile Include="Models\TelaInicialModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguranca\ControleDeSessao.cs" />
@@ -154,6 +156,7 @@
     <Content Include="Views\TelaInicial\TelaInicial.cshtml" />
     <Content Include="Views\Membro\FichaMembro.cshtml" />
     <Content Include="Views\Membro\GraficoDeAtividades.cshtml" />
+    <Content Include="Views\DetalhesProjeto\TelaDetalhes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

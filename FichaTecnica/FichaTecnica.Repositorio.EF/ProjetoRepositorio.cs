@@ -23,6 +23,14 @@ namespace FichaTecnica.Repositorio.EF
                 return projetos.ToList();
             }
         }
+
+        public Projeto BuscarProjetoPorId(int IDProjeto)
+        {
+            using (dataBase)
+            {
+                return dataBase.Projeto.Find(IDProjeto);
+            }
+        }
         
 
     }

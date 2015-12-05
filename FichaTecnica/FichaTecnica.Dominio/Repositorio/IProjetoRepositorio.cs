@@ -9,5 +9,6 @@ namespace FichaTecnica.Dominio.Repositorio
    public interface IProjetoRepositorio
     {
         IList<Projeto> BuscarProjetosDoUsuario(int IDUsuario);
+        Projeto BuscarProjetoPorId(int IDProjeto);
     }
 }

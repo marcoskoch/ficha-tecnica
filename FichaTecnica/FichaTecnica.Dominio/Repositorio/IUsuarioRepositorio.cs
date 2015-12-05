@@ -9,5 +9,6 @@ namespace FichaTecnica.Dominio.Repositorio
     public interface IUsuarioRepositorio
     {
         Usuario BuscarPorEmail(string email);
+        Usuario BuscarPorId(int Id);
     }
 }

@@ -1,13 +1,13 @@
 ﻿@model FichaTecnica.Models.GraficoAtividadesModel
 @{
-    ViewBag.Title = "GraficoDeAtividades";
+    ViewBag.Title = "Grafico de atividades";
 }
 
-<h2>GraficoDeAtividades</h2>
+<h2>Gráfico de atividades</h2>
 
 <div class="jumbotron">
 
-    <h6>Commits: <a id="link-commits"> @Model.Links.First().URL </a></h6>
+    <h6>Commits: <a id="link-commits"> @string.Concat(Model.URLBaseAPI, Model.Links.First().URL, "commits?per_page=3")</a></h6>
 
     <table class="table table-bordered table-hover" id="lista">
 
@@ -23,9 +23,11 @@
 @section Scripts {
     <script type="text/javascript">
 
+        var model = @Html.Raw(Json.Encode(Model));
         var link = $('#link-commits').html();
-        link = link.replace('https://github.com/', 'https://api.github.com/repos/')
+        var commitList = [];
 
+        /*
         $.get(link)
           .done(function(response) {
             response.forEach(function(i) {
@@ -38,7 +40,33 @@
                     .append($('<td>').text(i.commit.committer.email))
                 )
               })
-            });
+          });
+          */
+
+        model.Links.forEach(function(l) {
+            
+            $.get(model.URLBaseAPI + l.URL + 'commits')
+                .done(function (response) {
+                    response.forEach(function (i) {
+                        commitList.push({ sha: i.sha, date: new Date(i.commit.author.date).getTime(), message: i.commit.message })
+                    })
+                })
+        })
+        
+        //TODO: refactor meio alternativo sem setTimeout
+
+        setTimeout(function(){ 
+            commitList.sort(function (left, right) { return left.date > right.date })
+            commitList = commitList.slice(0, 3);
+
+            commitList.forEach(function(commit) { 
+                $('#lista')
+                    .append($('<tr>')
+                      .append($('<td style="width: 60px;">'))
+                        .append($('<td>').append($('<a>').html(commit.message).attr('href', model.URLBase + '/commit/' + commit.sha) ))
+                        .append($('<td>').text(new Date(commit.date)))
+                )
+            }) }, 1000);
 
     </script>
 }

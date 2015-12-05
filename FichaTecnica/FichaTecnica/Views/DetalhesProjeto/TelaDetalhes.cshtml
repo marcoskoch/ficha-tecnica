@@ -1,0 +1,40 @@
+﻿@model FichaTecnica.Models.TelaDetalhesModel
+@{
+    ViewBag.Title = "TelaDetalhes";
+}
+<html>
+<head>
+
+</head>
+
+<body>
+    <h2>TelaDetalhes</h2>
+
+    <p>Nome Do projeto: </p>
+    @Model.Projeto.Nome;
+    
+    <p>Gerente: </p>
+    @Model.Usuario.Nome;
+
+    <p>Email Gerente:</p>
+    @Model.Usuario.Email;
+
+    <p>Data de inicio Do Projeto</p>
+    @Model.Projeto.DataInicio.ToString("dd/MM/yyyy");
+
+    <p>Nome Líder Técnico</p>
+    @Model.NomeLiderTecnico;
+
+    <p>Total de membros: <p>
+        @if (Model.Projeto.Membros.Count != 0)
+        {
+            @Model.Projeto.Membros.Count;
+        }
+        else
+        {
+            <p>Não há membros</p>
+        }
+</body>
+
+</html>
+

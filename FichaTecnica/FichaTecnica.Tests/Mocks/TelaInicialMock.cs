@@ -37,5 +37,10 @@ namespace FichaTecnica.Tests.Mocks
             projetos.Add(projeto1);
             return projetos;
         }
+
+        public Projeto BuscarProjetoPorId(int IDProjeto)
+        {
+            return null;
+        }
     }
 }
