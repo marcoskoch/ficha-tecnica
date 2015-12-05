@@ -140,6 +140,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FabricaDeModulos.cs" />
+    <Compile Include="Models\ComentarioModel.cs" />
     <Compile Include="Models\DetalheMembroModel.cs" />
     <Compile Include="Models\GraficoAtividadesModel.cs" />
     <Compile Include="Models\LoginModel.cs" />

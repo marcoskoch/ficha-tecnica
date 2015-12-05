@@ -15,6 +15,7 @@ namespace FichaTecnica.Controllers
 
         private IMembroRepositorio dataBase = new MembroRepositorio();
 
+
         public ActionResult FichaMembro(int id)
         {
             var membroModel = new DetalheMembroModel(dataBase.BuscarPorId(id));
@@ -45,6 +46,21 @@ namespace FichaTecnica.Controllers
             var json = MembrosEncontrados.Select(x => new { label = x.Nome });
 
             return Json(json, JsonRequestBehavior.AllowGet); 
+        }
+
+        public ActionResult AdicionarComentario(ComentarioModel model)
+        {
+            Comentario comentario = new Comentario();
+
+            comentario.Assunto = model.Assunto;
+            comentario.Texto = model.Texto;
+            comentario.Tipo = model.Tipo;
+            comentario.IdProjeto = model.IdProjeto;
+            comentario.IdUsuario = model.IdUsuario;
+            comentario.DataCriacao = model.DataCriacao;
+
+
+            return RedirectToAction("", "");
         }
 
         public ActionResult GraficoDeAtividades(int id)
