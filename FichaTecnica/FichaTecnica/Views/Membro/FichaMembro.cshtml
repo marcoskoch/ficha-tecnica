@@ -65,7 +65,7 @@ ViewBag.Title = "FichaMembro";
 
 			<form action="/Membro/AdicionarComentario" method="POST" accept-charset="utf-8">
 
-				<input type="hidden" name="membro" value="@Model.Id">
+				
 				<div class="form-group">
 					<label>Assunto:</label>
 					<input class="form-control" type="text" name="assunto" value="" placeholder="Assunto">
@@ -81,6 +81,14 @@ ViewBag.Title = "FichaMembro";
 						<option value="2">Negativo</option>
 					</select>
 				</div>
+
+                <div class="form-group">
+                    <label>Projeto:</label>
+                    <select class="form-control" name="">
+                        <option value="1">Projeto Renner</option>  
+                        <option value="2">Projeto Renner</option>                  
+                    </select>
+                </div>
 				<div class="form-group">
 					<div class="col-sm-12">
 						<button type="submit" class="btn btn-primary">Adicionar</button>
