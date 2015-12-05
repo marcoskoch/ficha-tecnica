@@ -18,7 +18,7 @@
     {
         <p>Pesquisar membro da equipe</p>
 
-        <form class="navbar-brand" method="get" action="@Url.Action("Membro", "FichaMembro")">
+        <form class="navbar-brand" method="POST" action="@Url.Action("MembroBusca", "Membro")">
             <input type="text" id="NomeMembro" placeholder="Nome do Membro" name="Nome">
             <input type="submit" id="btnProcurar" name="Membros" value="Procurar">
         </form>
