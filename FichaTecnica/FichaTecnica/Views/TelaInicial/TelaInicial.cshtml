@@ -1,4 +1,4 @@
-﻿@model FichaTecnica.Models.TelaInicialModel
+﻿    @model FichaTecnica.Models.TelaInicialModel
 @{
     ViewBag.Title = "TelaInicial";
 }
@@ -46,7 +46,7 @@
                     }
                     <td>@projeto.DataInicio.ToString("dd/MM/yyyy")</td>
                     <td>
-                        @using (Html.BeginForm("ProjetoDetalhe", "TelaInicial", FormMethod.Post, null))
+                        @using (Html.BeginForm("TelaDetalhes", "DetalhesProjeto", FormMethod.Post, null))
                     {   <input type="hidden" name="id" value="@projeto.Id">
                         <input type="submit" name="enviar" value="Detalhes" /> }
                 </td>
