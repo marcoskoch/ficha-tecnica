@@ -3,6 +3,7 @@ using FichaTecnica.Dominio.Repositorio;
 using FichaTecnica.Models;
 using FichaTecnica.Repositorio.EF;
 using FichaTecnica.Seguranca.Filters;
+using FichaTecnica.Seguranca.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,10 @@ namespace FichaTecnica.Controllers
         private IMembroRepositorio dataBaseMember = new MembroRepositorio();
 
         [Autorizador]
-        public ActionResult TelaInicial(int IDUsuario)
+        public ActionResult TelaInicial()
         {
-            IList<Projeto> projetos = dataBase.BuscarProjetosDoUsuario(IDUsuario);        
+            UsuarioLogado usuarioLogado = HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
+            IList<Projeto> projetos = dataBase.BuscarProjetosDoUsuario(usuarioLogado.Id);        
             IList<Membro> membros = null;
             foreach (Projeto projeto in projetos)
             {
