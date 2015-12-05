@@ -16,5 +16,6 @@ namespace FichaTecnica.Dominio.Repositorio
         Membro BuscarLiderTecnicoDoProjeto(IList<Membro> membros);
         IList<Membro> BuscarCargoMembros(IList<Membro> membros);
         List<LinkFork> BuscarLinkMembroDoProjeto(int idProjeto, int idMembro);
+        Membro BuscarUmMembroPorNome(string nome);
     }
 }

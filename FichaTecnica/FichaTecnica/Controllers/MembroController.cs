@@ -95,5 +95,11 @@ namespace FichaTecnica.Controllers
 
             return View(new GraficoAtividadesModel(links));
         }
+
+        public ActionResult MembroBusca(DetalheMembroModel membro)
+        {
+            var membroEncontrado = membroRepositorio.BuscarUmMembroPorNome(membro.Nome);
+            return RedirectToAction("FichaMembro", "Membro", new { id = membroEncontrado.Id });
+        }
     }
 }
