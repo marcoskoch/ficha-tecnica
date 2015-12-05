@@ -10,6 +10,7 @@ namespace FichaTecnica.Models
     {
         public Projeto Projeto { get; set;}
         public Usuario Usuario { get; set;}
-        public string NomeLiderTecnico { get; set; }
+        public Membro LiderTecnico { get; set; }
+        public IList<Membro> MembrosDoProjeto { get; set; }
     }
 }
