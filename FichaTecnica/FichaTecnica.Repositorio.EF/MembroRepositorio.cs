@@ -48,7 +48,8 @@ namespace FichaTecnica.Repositorio.EF
 
         public Membro BuscarPorId(int id)
         {
-            return dataBase.Membro.Find(id);
+            var membro = dataBase.Membro.Find(id);
+            return membro;
         }
 
         public List<LinkFork> BuscarLinkPorIdMembro(int id)

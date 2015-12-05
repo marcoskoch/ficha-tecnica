@@ -135,6 +135,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FabricaDeModulos.cs" />
+    <Compile Include="Models\DetalheMembroModel.cs" />
     <Compile Include="Models\GraficoAtividadesModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\TelaInicialModel.cs" />
@@ -162,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\img\" />
     <Folder Include="Views\GraficoAtividades\" />
   </ItemGroup>
   <ItemGroup>

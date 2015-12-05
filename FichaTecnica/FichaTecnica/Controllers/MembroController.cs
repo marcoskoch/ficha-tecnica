@@ -15,9 +15,10 @@ namespace FichaTecnica.Controllers
 
         private IMembroRepositorio dataBase = new MembroRepositorio();
 
-        public ActionResult FichaMembro()
+        public ActionResult FichaMembro(int id)
         {
-            return View();
+            var membroModel = new DetalheMembroModel(dataBase.BuscarPorId(id));
+            return View(membroModel);
         }
 
         public JsonResult MembroAutoComplete(string term)
