@@ -143,6 +143,7 @@
     <Compile Include="Models\DetalheMembroModel.cs" />
     <Compile Include="Models\GraficoAtividadesModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MembroDetalheProjetoModel.cs" />
     <Compile Include="Models\TelaDetalhesModel.cs" />
     <Compile Include="Models\TelaInicialModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
