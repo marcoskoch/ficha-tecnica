@@ -12,26 +12,64 @@
 	</div>
 </div>
 
-<div class="row top50" >
-	<div class="col-md-7 comentarios">
+<div class="row top30" >
+	<div class="col-md-9 comentarios">
 		<div class="bloco-comentario">
-			
+			<div class="tag-comentario positivo"></div>
+			<h4>Assunto do Comentário</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
+			<p>Goku - 15/12/2015</p>
 		</div>
 		<div class="bloco-comentario">
-			
+			<div class="tag-comentario negativo"></div>
+			<h4>Assunto do Comentário</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
+			<p>Goku - 15/12/2015</p>
 		</div>
 		<div class="bloco-comentario">
-			
+			<div class="tag-comentario positivo"></div>
+			<h4>Assunto do Comentário</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
+			<p>Goku - 15/12/2015</p>
+		</div>
+		<div class="bloco-comentario">
+			<div class="tag-comentario positivo"></div>
+			<h4>Assunto do Comentário</h4>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse in scelerisque neque. Nullam molestie nisl nec vulputate posuere. In eleifend consequat tortor in egestas. Phasellus sit amet sem nec mi ultrices ornare in quis elit. Suspendisse potenti. Proin a orci urna. </p>
+			<p>Goku - 15/12/2015</p>
 		</div>
 	</div>
-	<div class="col-md-5 dados-membro">
+	<div class="col-md-3 dados-membro">
 		<h2>@Model.Nome</h2>
 		<p>@Model.Email</p>
-		<p>@Model.Telefone</p>
-		<p>Desenvolvedor</p>
-		<p>@Model.DataDeNascimento - 28 anos</p>
+		<p>
+            Fone - @if (Model.Telefone != null) { @Model.Telefone; }
+        </p>
+		<p>@Model.Cargo</p>
+		<p>@Model.DataDeNascimento.Date.ToString("dd/MM/yyyy") - @Model.Idade anos</p>
 		<p>Projeto Renner</p>
-		<p>Criação @Model.DataCriacao</p>
-		<p></p>
+		<p>Criação @Model.DataCriacao.Date.ToString("dd/MM/yyyy")</p>
+		<div class="bloco-commit">
+			<p>
+				<a target="_black" href="https://github.com/CWISoftware/crescer-2015-2/commit/196bc442c1d9dea6c1835e05199b10a9db08b196" title="">fb82533</a> 
+				feat(Locadora): ajustando testes e colocando permissões de acesso par…
+			</p>
+		</div>
+		<div class="bloco-commit">
+			<p>
+				<a target="_black" href="https://github.com/CWISoftware/crescer-2015-2/commit/196bc442c1d9dea6c1835e05199b10a9db08b196" title="">fb82533</a> 
+				feat(Locadora): ajustando testes e colocando permissões de acesso par…
+			</p>
+		</div>
+		<div class="bloco-commit">
+			<p>
+				<a target="_black" href="https://github.com/CWISoftware/crescer-2015-2/commit/196bc442c1d9dea6c1835e05199b10a9db08b196" title="">fb82533</a> 
+				feat(Locadora): ajustando testes e colocando permissões de acesso par…
+			</p>
+		</div>
+		<h5>Média de 5 commits diários</h5>
 	</div>
 </div>

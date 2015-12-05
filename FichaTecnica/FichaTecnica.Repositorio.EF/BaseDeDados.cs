@@ -19,7 +19,7 @@ namespace FichaTecnica.Repositorio.EF
         public DbSet<Membro> Membro { get; set; }
         public DbSet<Cargo> Cargo { get; set; }
 
-        public BaseDeDados() : base("FICHA_TECNICA_RENAN")
+        public BaseDeDados() : base("FICHA_TECNICA")
         {
         }
 

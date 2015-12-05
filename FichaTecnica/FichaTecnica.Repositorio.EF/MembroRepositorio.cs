@@ -48,7 +48,7 @@ namespace FichaTecnica.Repositorio.EF
 
         public Membro BuscarPorId(int id)
         {
-            var membro = dataBase.Membro.Find(id);
+            var membro = dataBase.Membro.Include("Cargo").SingleOrDefault(m => m.Id == id);
             return membro;
         }
 

@@ -102,6 +102,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Default.css" />
+    <Content Include="Content\Image\negativo.png" />
+    <Content Include="Content\Image\positivo.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

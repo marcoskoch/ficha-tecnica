@@ -1,6 +1,7 @@
 ﻿using FichaTecnica.Dominio;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -14,8 +15,12 @@ namespace FichaTecnica.Models
 
         public string Email { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime DataDeNascimento { get; set; }
 
+        public int Idade { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime DataCriacao { get; set; }
 
         public string Telefone { get; set; }
@@ -32,6 +37,7 @@ namespace FichaTecnica.Models
             DataDeNascimento = membro.DataDeNascimento;
             DataCriacao = membro.DataCriacao;
             Telefone = membro.Telefone;
+            Cargo = membro.Cargo.Descricao;
             Foto = membro.Foto;
         }
 

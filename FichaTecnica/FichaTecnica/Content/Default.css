@@ -1,6 +1,6 @@
-﻿.top50
+﻿.top30
 {
-	margin-top: 50px;
+	margin-top: 30px;
 }
 
 .img-membro
@@ -17,6 +17,7 @@
 {
 	display: block;
 	margin-top: -10px;
+	padding: 15px;
 }
 
 .dados-membro
@@ -30,14 +31,43 @@
 
 }
 
-.bloco-comentario
+.bloco-comentario, .bloco-commit
 {
+	position: relative;
 	display: block;
 	margin: 0 auto;
 	width: 95%;
-	height: 150px;
 	border: 1px solid;
 	border-color: #C8C8C8;
 	margin-top: 10px;
 	border-radius: 10px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background: #dfdfdf;
+}
+
+.tag-comentario
+{
+	display: block;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	width: 32px;
+	height: 32px;
+}
+
+.positivo
+{
+	background: url('Image/positivo.png');
+}
+
+.negativo
+{
+	background: url('Image/negativo.png');
+}
+
+.bloco-commit
+{
+	width: 100%;
 }
