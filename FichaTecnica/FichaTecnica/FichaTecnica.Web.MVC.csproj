@@ -105,6 +105,7 @@
     <Content Include="Content\Image\negativo.png" />
     <Content Include="Content\Image\positivo.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\TelaDetalhes.css" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
