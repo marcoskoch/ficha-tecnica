@@ -39,29 +39,32 @@
             </tr>
     </table>
     <p>Membros do projeto</p>
-    @foreach(var membro in Model.MembrosDoProjeto)
+   
+    <div class="tudo">
+    @foreach (var membro in Model.MembrosDoProjeto)
     {
-        <table class="table table-striped table-bordered table-hover">
-            <thread>
-                <tr>
-                    <th style="width: 25%">Foto</th>
-                    <th style="width: 25%"> Nome</th>
-                    <th style="width: 15%"> Email</th>
-                    <th style="width: 15%"> Cargo</th>
-                    <th style="width: 10%"> Ultimo Commit</th>
-                    <th style="width: 10%">Comentarios</th>
-                </tr>
-            </thread>
-            <tr>
-                <td><img src=@membro.Foto width="100" height="50" /></td>
-                <td>@membro.Nome</td>
-                <td>@membro.Email</td>
-                <td>@membro.Cargo.Descricao</td>
-                <td>Teste</td>
-                <td>Positivos: 0 Negativos: 0</td>
-            </tr>
-        </table>
+        <div class="Cartao">
+            <div class="content">
+                <div class="imagem">
+                <img src=@membro.Foto width="200" height="120" />
+                </div>
+                <div class="cargo">
+                    <p>Cargo: @membro.Cargo.Descricao</p>
+                </div>
+                <div class="campos">
+                <p>Nome: @membro.Nome</p>
+                <br>
+                <p>Email: @membro.Email</p>
+                <br>
+                <p>committed 28 minutes ago<a target="_blank" href="https://github.com/marcoskoch/ficha-tecnica/commit/4baa70bfaf1b1c9daf9175eae3fa2bcddeb0690b">ago4baa70bf</a></p>
+                <p>Comentarios</p>
+                <p>Positivos: 0 Negativos: 0</p>
+                </div>
+            </div>
+        </div>
+
     }
+    </div>
 </body>
 
 </html>
