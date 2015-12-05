@@ -60,6 +60,14 @@ namespace FichaTecnica.Repositorio.EF
             }
         }
 
+        public List<LinkFork> BuscarLinkMembroDoProjeto(int idProjeto, int idMembro)
+        {
+            using (var dataBase = new BaseDeDados())
+            {
+                return dataBase.LinkFork.Where(l => l.IdProjeto.Equals(idProjeto) && l.IdMembro.Equals(idMembro)).ToList();
+            }
+        }
+
         public Membro BuscarLiderTecnicoDoProjeto(IList<Membro> membros)
         {
             Membro liderTecnico = new Membro()
