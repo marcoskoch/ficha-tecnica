@@ -125,6 +125,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\showdown.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +159,7 @@
     <Content Include="Views\Membro\FichaMembro.cshtml" />
     <Content Include="Views\Membro\GraficoDeAtividades.cshtml" />
     <Content Include="Views\DetalhesProjeto\TelaDetalhes.cshtml" />
+    <Content Include="Scripts\showdown.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
