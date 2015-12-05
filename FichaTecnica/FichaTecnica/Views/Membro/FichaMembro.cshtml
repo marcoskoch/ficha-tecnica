@@ -62,7 +62,9 @@ ViewBag.Title = "FichaMembro";
 		<h5>Média de 5 commits diários</h5>
 		<div class="form-comentario">
 			<h3>Adicionar Comentário</h3>
-			<form action="#" method="POST" accept-charset="utf-8">
+
+			<form action="/Membro/AdicionarComentario" method="POST" accept-charset="utf-8">
+
 				<input type="hidden" name="membro" value="@Model.Id">
 				<div class="form-group">
 					<label>Assunto:</label>
