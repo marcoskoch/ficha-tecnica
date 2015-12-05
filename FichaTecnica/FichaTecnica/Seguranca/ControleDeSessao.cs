@@ -19,9 +19,9 @@ namespace FichaTecnica.Seguranca
             }
         }
 
-        public static void CriarSessaoDeUsuario(string email)
+        public static void CriarSessaoDeUsuario(string email, int id)
         {
-            var usuarioLogado = new UsuarioLogado(email);
+            var usuarioLogado = new UsuarioLogado(email, id);
             FormsAuthentication.SetAuthCookie(usuarioLogado.Email, true);
             HttpContext.Current.Session[USUARIO_LOGADO] = usuarioLogado;
         }

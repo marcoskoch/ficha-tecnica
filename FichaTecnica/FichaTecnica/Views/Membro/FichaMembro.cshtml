@@ -63,38 +63,38 @@ ViewBag.Title = "FichaMembro";
 		<div class="form-comentario">
 			<h3>Adicionar Comentário</h3>
 
-			<form action="/Membro/AdicionarComentario" method="POST" accept-charset="utf-8">
+            <form action="/Membro/AdicionarComentario" method="POST" accept-charset="utf-8">
 
-				
-				<div class="form-group">
-					<label>Assunto:</label>
-					<input class="form-control" type="text" name="assunto" value="" placeholder="Assunto">
-				</div>
-				<div class="form-group">
-					<label>Comentário:</label>
-					<textarea class="form-control" name="texto"></textarea>
-				</div>
-				<div class="form-group">
-					<label>Tipo:</label>
-					<select class="form-control" name="">
-						<option value="0">Positivo</option>
-						<option value="2">Negativo</option>
-					</select>
-				</div>
+                <div class="form-group">
+                    <label>Assunto:</label>
+                    <input class="form-control" type="text" name="assunto" value="">
+                </div>
+                <div class="form-group">
+                    <label>Comentário:</label>
+                    <textarea class="form-control" name="texto"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Tipo:</label>
+                    <select class="form-control" name="tipo">
+                        <option value="0">Positivo</option>
+                        <option value="2">Negativo</option>
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <label>Projeto:</label>
-                    <select class="form-control" name="">
-                        <option value="1">Projeto Renner</option>  
-                        <option value="2">Projeto Renner</option>                  
+                    <select class="form-control" name="idProjeto" id="projetos">
                     </select>
                 </div>
-				<div class="form-group">
-					<div class="col-sm-12">
-						<button type="submit" class="btn btn-primary">Adicionar</button>
-					</div>
-				</div>
-			</form>
+
+                <input hidden="hidden" type="text" name="idMembro" value=@Model.Id>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </div>
+            </form>		
 		</div>
 	</div>
 </div>
@@ -104,6 +104,7 @@ ViewBag.Title = "FichaMembro";
 
         var model = @Html.Raw(Json.Encode(Model.LinksGithub));
         var commitList = [];
+        var projetos = [];
 
         model.Links.forEach(function(l) {
             $.get(model.URLBaseAPI + l.URL + 'commits')
@@ -113,6 +114,13 @@ ViewBag.Title = "FichaMembro";
                     })
                 })
         })
+
+        $.get('http://localhost:54173/Membro/ProjetoAutocomplete')
+            .done(function(response) { 
+                response.forEach(function(i) { 
+                    projetos.push(i)
+                }) 
+            })
 
         //TODO: refactor meio alternativo sem setTimeout
 
@@ -127,7 +135,17 @@ ViewBag.Title = "FichaMembro";
                             .append($('<a>').html(commit.sha).attr('href', commit.link))
                             .append($('<p>').html(commit.message)))
                 )
-            }) }, 1000);
+            }) 
+
+            projetos.forEach(function(projeto) {
+                $('#projetos')
+                    .append($('<option>').html(projeto.label).attr('value', projeto.value))
+                    .attr('name', 'idProjeto')
+            })
+
+        }, 1000);
+
+        
 
     </script>
 }

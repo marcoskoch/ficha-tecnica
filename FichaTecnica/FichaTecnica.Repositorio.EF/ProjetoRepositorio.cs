@@ -10,13 +10,13 @@ namespace FichaTecnica.Repositorio.EF
 {
     public class ProjetoRepositorio : IProjetoRepositorio
     {
-        private readonly BaseDeDados dataBase = new BaseDeDados();
+        private readonly BaseDeDados db = new BaseDeDados();
 
         public IList<Projeto> BuscarProjetosDoUsuario(int IDUsuario)
         {
-            using (dataBase)
+            using (db)
             {
-                var projetos = from projeto in dataBase.Projeto
+                var projetos = from projeto in db.Projeto
                                where projeto.IdUsuario == IDUsuario
                                select projeto;
                         
@@ -26,12 +26,20 @@ namespace FichaTecnica.Repositorio.EF
 
         public Projeto BuscarProjetoPorId(int IDProjeto)
         {
-            using (dataBase)
+            using (db)
             {
-                return dataBase.Projeto.Find(IDProjeto);
+                return db.Projeto.Find(IDProjeto);
             }
         }
-        
 
+        public IList<Projeto> BuscarTodosProjetos()
+        {
+            return db.Projeto.ToList();
+        }
+
+        public IList<Projeto> BuscarPorNome(string term)
+        {
+            return db.Projeto.Where(p => p.Nome.Contains(term)).ToList();
+        }
     }
 }

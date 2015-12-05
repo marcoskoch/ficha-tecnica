@@ -88,6 +88,7 @@ namespace FichaTecnica.Repositorio.EF
             Property(p => p.DataCriacao).IsRequired();
             HasRequired(p => p.Usuario).WithMany().HasForeignKey(x => x.IdUsuario);
             HasRequired(p => p.Projeto).WithMany().HasForeignKey(x => x.IdProjeto);
+            HasRequired(p => p.Membro).WithMany().HasForeignKey(x => x.IdMembro);
         }
     }
 

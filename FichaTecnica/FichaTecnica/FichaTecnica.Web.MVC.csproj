@@ -163,6 +163,7 @@
     <Content Include="Views\Membro\GraficoDeAtividades.cshtml" />
     <Content Include="Views\DetalhesProjeto\TelaDetalhes.cshtml" />
     <Content Include="Scripts\showdown.min.js.map" />
+    <Content Include="Views\Shared\_Comentario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

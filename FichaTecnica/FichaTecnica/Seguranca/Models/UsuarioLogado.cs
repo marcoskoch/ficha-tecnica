@@ -7,6 +7,8 @@ namespace FichaTecnica.Seguranca.Model
 {
     public class UsuarioLogado
     {
+        public int Id { get; set; }
+
         public string Email { get; set; }
 
         public string Perfil { get; set; }
@@ -15,6 +17,12 @@ namespace FichaTecnica.Seguranca.Model
         {
             this.Email = email;
             this.Perfil = "Gerente"; // ou Lider (buscar do banco)
+        }
+
+        public UsuarioLogado(string email, int id)
+        {
+            this.Id = id;
+            this.Email = email;
         }
 
         public bool TemPerfil(string nomePerfil)
