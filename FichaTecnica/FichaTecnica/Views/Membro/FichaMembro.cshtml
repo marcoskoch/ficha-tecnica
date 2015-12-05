@@ -56,12 +56,7 @@ ViewBag.Title = "FichaMembro";
 		<p>Criação @Model.DataCriacao.Date.ToString("dd/MM/yyyy")</p>
 
         <div id="commits">
-            <div class="bloco-commit">
-                <p>
-                    <a target="_black" href="https://github.com/CWISoftware/crescer-2015-2/commit/196bc442c1d9dea6c1835e05199b10a9db08b196" title="">fb82533</a>
-                    feat(Locadora): ajustando testes e colocando permissões de acesso par…
-                </p>
-            </div>
+            
         </div>
 		
 		<h5>Média de 5 commits diários</h5>
@@ -97,14 +92,14 @@ ViewBag.Title = "FichaMembro";
 @section Scripts {
     <script type="text/javascript">
 
-        var model = @Html.Raw(Json.Encode(Model));
+        var model = @Html.Raw(Json.Encode(Model.LinksGithub));
         var commitList = [];
 
-        model.LinksGithub.Links.forEach(function(l) {
-            $.get(model.LinksGithub.URLBaseAPI + l.URL + 'commits')
+        model.Links.forEach(function(l) {
+            $.get(model.URLBaseAPI + l.URL + 'commits')
                 .done(function (response) {
                     response.forEach(function (i) {
-                        commitList.push({ sha: i.sha, date: new Date(i.commit.author.date).getTime(), message: i.commit.message })
+                        commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
                     })
                 })
         })
@@ -112,14 +107,14 @@ ViewBag.Title = "FichaMembro";
         //TODO: refactor meio alternativo sem setTimeout
 
         setTimeout(function(){
-            commitList.sort(function (left, right) { return left.date > right.date })
+            commitList.sort(function (left, right) { return left.date < right.date })
             commitList = commitList.slice(0, 3);
 
             commitList.forEach(function(commit) {
                 $('#commits')
                     .append($('<div class="bloco-commit">')
                         .append($('<p>')
-                            .append($('<a>').html(commit.sha.slice(0, 7)).attr('href', model.URLBase + '/commit/' + commit.sha))
+                            .append($('<a>').html(commit.sha).attr('href', commit.link))
                             .append($('<p>').html(commit.message)))
                 )
             }) }, 1000);
