@@ -17,7 +17,6 @@ namespace FichaTecnica.Models
 
         public GraficoAtividadesModel(List<LinkFork> links)
         {
-
             URLBase = "https://github.com";
             URLBaseAPI = "https://api.github.com/repos";
             Links = links;
