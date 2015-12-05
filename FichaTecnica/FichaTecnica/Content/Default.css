@@ -1,6 +1,43 @@
-﻿.img-membro
+﻿.top50
+{
+	margin-top: 50px;
+}
+
+.img-membro
 {
 	display: block;
-	height: 140px;
-	color: red;
+}
+
+.img-membro img 
+{
+	max-width: 100%;
+}
+
+.comentarios
+{
+	display: block;
+	margin-top: -10px;
+}
+
+.dados-membro
+{
+	display: block;
+	text-align: right;
+}
+
+.dados-membro h2, .dados-membro p
+{
+
+}
+
+.bloco-comentario
+{
+	display: block;
+	margin: 0 auto;
+	width: 95%;
+	height: 150px;
+	border: 1px solid;
+	border-color: #C8C8C8;
+	margin-top: 10px;
+	border-radius: 10px;
 }

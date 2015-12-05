@@ -1,10 +1,37 @@
-﻿
+﻿@model FichaTecnica.Models.DetalheMembroModel
+
 @{
     ViewBag.Title = "FichaMembro";
 }
 
-<h2>FichaMembro</h2>
+<h2>Ficha Técnica do @Model.Nome</h2>
 
 <div class="row">
-	<div class="col-md-6 col-md-offset-3 img-membro"></div>
+	<div class="col-md-2 col-md-offset-5 img-membro">
+		<img src="~/Upload/img/@Model.Foto" alt="..." class="img-circle">
+	</div>
+</div>
+
+<div class="row top50" >
+	<div class="col-md-7 comentarios">
+		<div class="bloco-comentario">
+			
+		</div>
+		<div class="bloco-comentario">
+			
+		</div>
+		<div class="bloco-comentario">
+			
+		</div>
+	</div>
+	<div class="col-md-5 dados-membro">
+		<h2>@Model.Nome</h2>
+		<p>@Model.Email</p>
+		<p>@Model.Telefone</p>
+		<p>Desenvolvedor</p>
+		<p>@Model.DataDeNascimento - 28 anos</p>
+		<p>Projeto Renner</p>
+		<p>Criação @Model.DataCriacao</p>
+		<p></p>
+	</div>
 </div>
