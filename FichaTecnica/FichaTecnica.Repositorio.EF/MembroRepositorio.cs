@@ -54,7 +54,10 @@ namespace FichaTecnica.Repositorio.EF
 
         public List<LinkFork> BuscarLinkPorIdMembro(int id)
         {
-            return dataBase.LinkFork.Where(l => l.IdMembro.Equals(id)).ToList();
+            using (var dataBase = new BaseDeDados())
+            {
+                return dataBase.LinkFork.Where(l => l.IdMembro.Equals(id)).ToList();
+            }
         }
 
         public Membro BuscarLiderTecnicoDoProjeto(IList<Membro> membros)
