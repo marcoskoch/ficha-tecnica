@@ -23,12 +23,14 @@ namespace FichaTecnica.Controllers
         {
             var membroModel = new DetalheMembroModel(membroRepositorio.BuscarPorId(id));
             List<LinkFork> links = membroRepositorio.BuscarLinkPorIdMembro(id);
+            List<Comentario> comentarios = comentarioRepositorio.BuscarComentariosPorMembro(id);
 
             DateTime zeroTime = new DateTime(1, 1, 1);
             DateTime dataAtual = DateTime.Now;
             TimeSpan span = dataAtual - membroModel.DataDeNascimento;
             membroModel.Idade = (zeroTime + span).Year;
             membroModel.LinksGithub = new GraficoAtividadesModel(links);
+            membroModel.Comentarios = comentarios;
 
             return View(membroModel);
         }
