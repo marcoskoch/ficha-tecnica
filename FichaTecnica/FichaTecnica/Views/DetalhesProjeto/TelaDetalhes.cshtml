@@ -87,12 +87,12 @@
 
                 setTimeout(function(){
                     commitList.sort(function (left, right) { return left.date < right.date })
-                    commitList = commitList.slice(0, 3);
+                    commitList = commitList.slice(0, 1);
 
                     commitList.forEach(function(commit) {
                         var caminhoComiits = @Html.Raw(Json.Encode(membro.Nome));
                         $('#'+caminhoComiits)
-                            .append($('<div class="bloco-commit">')
+                            .append($('<div>')
                                 .append($('<p>')
                                     .append($('<a>').html(commit.sha).attr('href', commit.link))
                                     .append($('<p>').html(commit.message)))
