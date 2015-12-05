@@ -68,36 +68,37 @@
     @section Scripts {
         <script type="text/javascript">
 
-        @foreach (var membro in Model.MembrosDoProjeto)
+            @foreach (var membro in Model.MembrosDoProjeto)
         {
         <Text>
-            var model = @Html.Raw(Json.Encode(membro.LinksGithub));
-            var commitList = [];
 
-            model.Links.forEach(function(l) {
+                var model = @Html.Raw(Json.Encode(membro.LinksGithub));
+                var commitList = [];
+
+                model.Links.forEach(function(l) {
                     $.get(model.URLBaseAPI + l.URL + 'commits')
                         .done(function (response) {
-                    response.forEach(function (i) {
-                        commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+                            response.forEach(function (i) {
+                                commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
                             })
                         })
+                    .always(function() {
+                        commitList.sort(function (left, right) { return left.date < right.date })
+                        commitList = commitList.slice(0, 1);
+
+                        commitList.forEach(function(commit) {
+                            var caminhoComiits = @Html.Raw(Json.Encode(membro.Nome));
+                            $('#'+caminhoComiits)
+                                .append($('<div>')
+                                    .append($('<p>')
+                                        .append($('<a>').html(commit.sha).attr('href', commit.link))
+                                        .append($('<p>').html(commit.message)))
+                            )
+                        })
+                    });
                 })
-
-                //TODO: refactor meio alternativo sem setTimeout
-
-                setTimeout(function(){
-                    commitList.sort(function (left, right) { return left.date < right.date })
-                    commitList = commitList.slice(0, 1);
-
-                    commitList.forEach(function(commit) {
-                        var caminhoComiits = @Html.Raw(Json.Encode(membro.Nome));
-                        $('#'+caminhoComiits)
-                            .append($('<div>')
-                                .append($('<p>')
-                                    .append($('<a>').html(commit.sha).attr('href', commit.link))
-                                    .append($('<p>').html(commit.message)))
-                        )
-                    }) }, 1000);
+            
+               
 
             </Text>
         }
