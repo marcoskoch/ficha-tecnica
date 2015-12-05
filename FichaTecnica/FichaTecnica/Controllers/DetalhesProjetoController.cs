@@ -25,11 +25,20 @@ namespace FichaTecnica.Controllers
 
             Usuario usuario = dataBaseUsuario.BuscarPorId(projeto.IdUsuario);
 
+            List<MembroDetalheProjetoModel> detalhesMembros = new List<MembroDetalheProjetoModel>();
+            foreach (var membro in membrosDoProjeto)
+            {
+                MembroDetalheProjetoModel membroDetalheProjetoModel = new MembroDetalheProjetoModel(membro);
+                membroDetalheProjetoModel.LinksGithub = dataBaseMembro.BuscarLinkPorIdMembro(membro.Id);
+                detalhesMembros.Add(membroDetalheProjetoModel);
+            }
+            
+
             TelaDetalhesModel model = new TelaDetalhesModel();
             model.Projeto = projeto;
             model.Usuario = usuario;
             model.LiderTecnico = dataBaseMembro.BuscarLiderTecnicoDoProjeto(membrosDoProjeto);
-            model.MembrosDoProjeto = membrosDoProjeto;
+            model.MembrosDoProjeto = detalhesMembros;
 
             return View(model);
         }
