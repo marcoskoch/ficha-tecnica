@@ -15,14 +15,12 @@ namespace FichaTecnica.Controllers
         private IMembroRepositorio dataBaseMembro = new FichaTecnica.Repositorio.EF.MembroRepositorio();
         private IUsuarioRepositorio dataBaseUsuario = new FichaTecnica.Repositorio.EF.UsuarioRepositorio();
 
-        public ActionResult TelaDetalhes(/*int IDProjeto*/)
+        public ActionResult TelaDetalhes(int Id)
         {
-            int IDProjeto = 1;
-
-            Projeto projeto = dataBase.BuscarProjetoPorId(IDProjeto);
+            Projeto projeto = dataBase.BuscarProjetoPorId(Id);
 
             IList<Membro> membrosDoProjeto = dataBaseMembro.BuscarMembroPorProjeto(projeto);
-            
+            membrosDoProjeto = dataBaseMembro.BuscarCargoMembros(membrosDoProjeto);
             projeto.Membros = membrosDoProjeto;
 
             Usuario usuario = dataBaseUsuario.BuscarPorId(projeto.IdUsuario);
@@ -30,7 +28,9 @@ namespace FichaTecnica.Controllers
             TelaDetalhesModel model = new TelaDetalhesModel();
             model.Projeto = projeto;
             model.Usuario = usuario;
-            model.NomeLiderTecnico = dataBaseMembro.BuscarLiderTecnicoDoProjeto(membrosDoProjeto);
+            model.LiderTecnico = dataBaseMembro.BuscarLiderTecnicoDoProjeto(membrosDoProjeto);
+            model.MembrosDoProjeto = membrosDoProjeto;
+
             return View(model);
         }
     }
