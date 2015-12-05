@@ -13,7 +13,7 @@ namespace FichaTecnica.Models
         public string Nome { get; set; }
         public string Email { get; set; }
         public ICollection<Projeto> Projetos { get; set; }
-        public List<LinkFork> LinksGithub { get; set; }
+        public GraficoAtividadesModel LinksGithub { get; set; }
 
         public MembroDetalheProjetoModel(Membro entity)
         {
