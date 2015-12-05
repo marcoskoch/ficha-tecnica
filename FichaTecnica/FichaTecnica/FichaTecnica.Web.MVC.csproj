@@ -103,6 +103,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Default.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\TelaDetalhes.css" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
