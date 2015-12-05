@@ -18,11 +18,13 @@ namespace FichaTecnica.Controllers
         public ActionResult FichaMembro(int id)
         {
             var membroModel = new DetalheMembroModel(dataBase.BuscarPorId(id));
+            List<LinkFork> links = dataBase.BuscarLinkPorIdMembro(id);
 
             DateTime zeroTime = new DateTime(1, 1, 1);
             DateTime dataAtual = DateTime.Now;
             TimeSpan span = dataAtual - membroModel.DataDeNascimento;
             membroModel.Idade = (zeroTime + span).Year;
+            membroModel.LinksGithub = new GraficoAtividadesModel(links);
 
             return View(membroModel);
         }

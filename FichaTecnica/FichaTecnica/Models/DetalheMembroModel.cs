@@ -29,6 +29,8 @@ namespace FichaTecnica.Models
 
         public string Cargo { get; set; }
 
+        public GraficoAtividadesModel LinksGithub { get; set; }
+
         public DetalheMembroModel(Membro membro)
         {
             Id = membro.Id;

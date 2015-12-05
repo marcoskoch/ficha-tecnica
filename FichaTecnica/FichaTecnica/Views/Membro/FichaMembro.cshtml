@@ -52,24 +52,49 @@
 		<p>@Model.DataDeNascimento.Date.ToString("dd/MM/yyyy") - @Model.Idade anos</p>
 		<p>Projeto Renner</p>
 		<p>Criação @Model.DataCriacao.Date.ToString("dd/MM/yyyy")</p>
-		<div class="bloco-commit">
-			<p>
-				<a target="_black" href="https://github.com/CWISoftware/crescer-2015-2/commit/196bc442c1d9dea6c1835e05199b10a9db08b196" title="">fb82533</a> 
-				feat(Locadora): ajustando testes e colocando permissões de acesso par…
-			</p>
-		</div>
-		<div class="bloco-commit">
-			<p>
-				<a target="_black" href="https://github.com/CWISoftware/crescer-2015-2/commit/196bc442c1d9dea6c1835e05199b10a9db08b196" title="">fb82533</a> 
-				feat(Locadora): ajustando testes e colocando permissões de acesso par…
-			</p>
-		</div>
-		<div class="bloco-commit">
-			<p>
-				<a target="_black" href="https://github.com/CWISoftware/crescer-2015-2/commit/196bc442c1d9dea6c1835e05199b10a9db08b196" title="">fb82533</a> 
-				feat(Locadora): ajustando testes e colocando permissões de acesso par…
-			</p>
-		</div>
+
+        <div id="commits">
+            <div class="bloco-commit">
+                <p>
+                    <a target="_black" href="https://github.com/CWISoftware/crescer-2015-2/commit/196bc442c1d9dea6c1835e05199b10a9db08b196" title="">fb82533</a>
+                    feat(Locadora): ajustando testes e colocando permissões de acesso par…
+                </p>
+            </div>
+        </div>
+		
 		<h5>Média de 5 commits diários</h5>
 	</div>
 </div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        var model = @Html.Raw(Json.Encode(Model));
+        var commitList = [];
+
+        model.LinksGithub.Links.forEach(function(l) {
+            $.get(model.LinksGithub.URLBaseAPI + l.URL + 'commits')
+                .done(function (response) {
+                    response.forEach(function (i) {
+                        commitList.push({ sha: i.sha, date: new Date(i.commit.author.date).getTime(), message: i.commit.message })
+                    })
+                })
+        })
+
+        //TODO: refactor meio alternativo sem setTimeout
+
+        setTimeout(function(){
+            commitList.sort(function (left, right) { return left.date > right.date })
+            commitList = commitList.slice(0, 3);
+
+            commitList.forEach(function(commit) {
+                $('#commits')
+                    .append($('<div class="bloco-commit">')
+                        .append($('<p>')
+                            .append($('<a>').html(commit.sha.slice(0, 7)).attr('href', model.URLBase + '/commit/' + commit.sha))
+                            .append($('<p>').html(commit.message)))
+                )
+            }) }, 1000);
+
+    </script>
+}
