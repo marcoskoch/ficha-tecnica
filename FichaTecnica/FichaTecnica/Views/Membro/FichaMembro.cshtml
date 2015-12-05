@@ -128,8 +128,11 @@ ViewBag.Title = "FichaMembro";
         }, 1000);
 
         comments.forEach(function(comment) { 
+            var typeTag = comment.Tipo == 0 ? '<div class="tag-comentario positivo">' : '<div class="tag-comentario negativo">';
+
             $('#comentarios')
                   .append($('<div class="bloco-comentario">')
+                    .append($(typeTag))
                     .append($('<h4>').text(comment.Assunto))
                     .append($(converter.makeHtml(comment.Texto)))
                     )
