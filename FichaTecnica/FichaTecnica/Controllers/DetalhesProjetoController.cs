@@ -30,7 +30,8 @@ namespace FichaTecnica.Controllers
             foreach (var membro in membrosDoProjeto)
             {
                 MembroDetalheProjetoModel membroDetalheProjetoModel = new MembroDetalheProjetoModel(membro);
-                membroDetalheProjetoModel.LinksGithub = dataBaseMembro.BuscarLinkPorIdMembro(membro.Id);
+                List<LinkFork> link = dataBaseMembro.BuscarLinkMembroDoProjeto(projeto.Id,membro.Id);
+                membroDetalheProjetoModel.LinksGithub = new GraficoAtividadesModel(link);
                 detalhesMembros.Add(membroDetalheProjetoModel);
             }
             

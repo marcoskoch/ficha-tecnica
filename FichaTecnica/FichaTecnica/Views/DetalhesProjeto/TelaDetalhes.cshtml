@@ -2,9 +2,9 @@
 @{
     ViewBag.Title = "TelaDetalhes";
 }
+
 <html>
 <head>
-
 </head>
 
 <body>
@@ -38,38 +38,71 @@
                 }
             </tr>
     </table>
-    <p>Membros do projeto</p>
-   
-    <div class="tudo">
+    
     @foreach (var membro in Model.MembrosDoProjeto)
     {
-        <div class="Cartao">
-            <div class="content">
-                <div class="imagem">
-                <img src=@membro.Foto width="200" height="120" />
+        <div id="cartao" class="Cartao">
+            <div id="content" class="content">
+                <div id="imagem" class="imagem">
+                    <img src=@membro.Foto width="200" height="120" />
                 </div>
-                <div class="cargo">
-                    <p>Cargo: @membro.cargo.Descricao</p>
+                <div id="cargo" class="cargo">
+                    Cargo: @membro.cargo.Descricao
                 </div>
-                <div class="campos">
-                <p>Nome: @membro.Nome</p>
-                <br>
-                <p>Email: @membro.Email</p>
-                <br>
-                <p>
-                    <div id="commits">
+                <div id="campos" class="campos">
+                    <p>Nome: @membro.Nome</p>
+                    <br>
+                    <p>Email: @membro.Email</p>
+                    <br>
+                    <div id="@membro.Nome">
+                        commit
                     </div>
-                </p>
-                <p>Comentarios</p>
-                <p>Positivos: 0 Negativos: 0</p>
+                    <p>Comentarios</p>
+                    <p>Positivos: 0 Negativos: 0</p>
                 </div>
             </div>
         </div>
-
     }
-    </div>
 
-    
+
+    @section Scripts {
+        <script type="text/javascript">
+
+        @foreach (var membro in Model.MembrosDoProjeto)
+        {
+        <Text>
+            var model = @Html.Raw(Json.Encode(membro.LinksGithub));
+            var commitList = [];
+
+            model.Links.forEach(function(l) {
+                    $.get(model.URLBaseAPI + l.URL + 'commits')
+                        .done(function (response) {
+                    response.forEach(function (i) {
+                        commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+                            })
+                        })
+                })
+
+                //TODO: refactor meio alternativo sem setTimeout
+
+                setTimeout(function(){
+                    commitList.sort(function (left, right) { return left.date < right.date })
+                    commitList = commitList.slice(0, 1);
+
+                    commitList.forEach(function(commit) {
+                        var caminhoComiits = @Html.Raw(Json.Encode(membro.Nome));
+                        $('#'+caminhoComiits)
+                            .append($('<div>')
+                                .append($('<p>')
+                                    .append($('<a>').html(commit.sha).attr('href', commit.link))
+                                    .append($('<p>').html(commit.message)))
+                        )
+                    }) }, 1000);
+
+            </Text>
+        }
+        </script>
+    }
 </body>
 
 </html>
