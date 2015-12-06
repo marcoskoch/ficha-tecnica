@@ -44,21 +44,20 @@
         <div id="@("Cartao"+membro.Nome)" class="Cartao">
             <div id="content" class="content">
                 <div id="imagem" class="imagem">
-                    <img src="~/Upload/img/@membro.Foto" alt="..." class="img-circle">
+                        <img src="~/Upload/img/@membro.Foto" alt="..." class="img-circle">
                 </div>
                 <div id="cargo" class="cargo">
                     Cargo: @membro.cargo.Descricao
                 </div>
                 <div id="campos" class="campos">
                     <p>Nome: @membro.Nome</p>
-                    <br>
                     <p>Email: @membro.Email</p>
-                    <br>
                     <div id="@membro.Nome">
                         commit
                     </div>
                     <p>Comentarios</p>
                     <p>Positivos: 0 Negativos: 0</p>
+                    <a href="#">Visualizar ficha completa</a>
                 </div>
             </div>
         </div>
@@ -67,6 +66,7 @@
 
     @section Scripts {
         <script type="text/javascript">
+
 
             @foreach (var membro in Model.MembrosDoProjeto)
         {
