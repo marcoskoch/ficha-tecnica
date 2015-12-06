@@ -81,8 +81,22 @@ namespace FichaTecnica.Controllers
             comentario.Texto = model.Texto;
             comentario.Tipo = model.Tipo;
             comentario.IdProjeto = model.IdProjeto;
-            comentario.IdUsuario = usuario.Id;
             comentario.DataCriacao = DateTime.Now;
+
+            if (!ModelState.IsValid)
+            {
+                if (usuario == null)
+                {
+                    TempData["Mensagem"] = "Você precisa estar autenticado!";
+                }
+                else
+                {
+                    TempData["Mensagem"] = "Todos os campos são obrigatórios!";
+                }
+
+                return RedirectToAction("FichaMembro", "Membro", new { id = comentario.IdMembro });
+            }
+            comentario.IdUsuario = usuario.Id;
 
             comentarioRepositorio.Criar(comentario);
 

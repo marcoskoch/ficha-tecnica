@@ -17,6 +17,14 @@ ViewBag.Title = "FichaMembro";
 
 </style>
 
+@if (TempData["Mensagem"] != null)
+{
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Erro!</strong> @TempData["Mensagem"]
+    </div>
+}
+
 <h2>Ficha Técnica do @Model.Nome</h2>
 
 <div class="row">
@@ -71,6 +79,7 @@ ViewBag.Title = "FichaMembro";
                     <div class="form-group">
                         <label>Tipo:</label>
                         <select class="form-control" name="tipo">
+                            <option>Selecione</option>
                             <option value="0">Positivo</option>
                             <option value="2">Negativo</option>
                         </select>
@@ -78,7 +87,9 @@ ViewBag.Title = "FichaMembro";
 
                     <div class="form-group">
                         <label>Projeto:</label>
-                        <select class="form-control" name="idProjeto" id="projetos"></select>
+                        <select class="form-control" name="idProjeto" id="projetos">
+                            <option>Selecione</option>
+                        </select>
                     </div>
 
                     <input hidden="hidden" type="text" name="idMembro" value=@Model.Id>
@@ -191,7 +202,11 @@ ViewBag.Title = "FichaMembro";
                 return;
             }
             var typeTag;
-            var deleteOption = user.Id == comment.IdUsuario? '<a href="../ExcluirComentario/' + comment.Id + '" class="Excluir-comentario">&times;</a>' : '';
+            var deleteOption = '';
+
+            if(user != null) {
+                deleteOption = user.Id == comment.IdUsuario? '<a href="../ExcluirComentario/' + comment.Id + '" class="Excluir-comentario">&times;</a>' : '';
+            }
 
             if(comment.Tipo == 0) { 
                 typeTag = '<div class="tag-comentario positivo">';
