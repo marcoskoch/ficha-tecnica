@@ -33,7 +33,7 @@ ViewBag.Title = "FichaMembro";
             
         </div>
 		
-		<h5>Média de <span id="media-commits"></span> commit(s) diários</h5>
+		<h5>Média: <span id="media-commits"></span> commits / dia</h5>
 		<div class="form-comentario">
 			<h3>Adicionar Comentário</h3>
 
@@ -96,15 +96,18 @@ ViewBag.Title = "FichaMembro";
             $.get('https://api.github.com/users/' + username + '/events?page=1')
                     .done(function (response) {
                         response.forEach(function(r) {
-                            if(repos.includes('/' + r.repo.name + '/') && r.type == 'PushEvent') {
+
+                            if(r.type == 'PushEvent') {
 
                                 if(!days.includes(r.created_at.slice(0, 10))) {
                                     days.push(r.created_at.slice(0, 10));
                                 }
-
+                            
                                 totalCommits += r.payload.commits.length;
 
-                                r.payload.commits.forEach(function(commit) { commitList.push(commit)})                      
+                                if(repos.includes('/' + r.repo.name + '/')) {
+                                    r.payload.commits.forEach(function(commit) { commitList.push(commit)})                      
+                                }
                             }
                         })
                     }).always(function() {                  
