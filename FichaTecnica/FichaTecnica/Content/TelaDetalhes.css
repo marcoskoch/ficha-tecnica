@@ -15,6 +15,10 @@
     background-color: #ff8533;
 }
 
+.mudarCorFicha{
+    background-color: #F50F0F;
+}
+
 .content{
     position:absolute;
     height:80%;
