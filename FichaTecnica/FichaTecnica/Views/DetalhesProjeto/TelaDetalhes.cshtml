@@ -56,7 +56,14 @@
                         commit
                     </div>
                     <p>Comentarios</p>
-                    <p>Positivos: 0 Negativos: 0</p>
+                    <div style="float:left">Positivos:
+                        <div>@membro.TotalComentariosPosivo</div>
+                    </div>  
+
+                    <div>Negativos:
+                    <div>@membro.TotalComentarioNegativo</div>
+                    </div>
+
                     @using (Html.BeginForm("FichaMembro", "Membro", FormMethod.Post, null))
                     {   <input type="hidden" name="id" value="@membro.Id">
                         <input type="submit" name="enviar" value="Ficha Completa" /> }

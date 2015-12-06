@@ -15,6 +15,7 @@ namespace FichaTecnica.Controllers
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
         private IMembroRepositorio dataBaseMembro = new MembroRepositorio();
         private IUsuarioRepositorio dataBaseUsuario = new UsuarioRepositorio();
+        private IComentarioRepositorio dataBaseComentario = new ComentarioRepositorio();
 
         public ActionResult TelaDetalhes(int Id)
         {
@@ -25,7 +26,7 @@ namespace FichaTecnica.Controllers
             projeto.Membros = membrosDoProjeto;
 
             Usuario usuario = dataBaseUsuario.BuscarPorId(projeto.IdUsuario);
-
+            
             List<MembroDetalheProjetoModel> detalhesMembros = new List<MembroDetalheProjetoModel>();
             foreach (var membro in membrosDoProjeto)
             {
@@ -33,6 +34,18 @@ namespace FichaTecnica.Controllers
                 List<LinkFork> link = dataBaseMembro.BuscarLinkMembroDoProjeto(projeto.Id,membro.Id);
                 membroDetalheProjetoModel.LinksGithub = new GraficoAtividadesModel(link);
                 detalhesMembros.Add(membroDetalheProjetoModel);
+
+                //TODO: refatorar
+                List<Comentario>comentarios = dataBaseComentario.BuscarComentariosPorMembro(membroDetalheProjetoModel.Id);             
+                foreach(var comentario in comentarios)
+                {
+                    if (comentario.Tipo == Tipo.POSITIVO)
+                    {
+                        membroDetalheProjetoModel.TotalComentariosPosivo++;
+                    }
+                    else
+                        membroDetalheProjetoModel.TotalComentarioNegativo++;
+                }
             }
             
 
