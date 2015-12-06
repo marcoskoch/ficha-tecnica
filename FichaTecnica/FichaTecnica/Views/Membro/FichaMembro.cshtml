@@ -96,6 +96,7 @@ ViewBag.Title = "FichaMembro";
 @section Scripts {
     <script type="text/javascript">
 
+        var user = @Html.Raw(Json.Encode(Session["USUARIO_LOGADO"]));
         var id = @Html.Raw(Json.Encode(Model.Id)).ToString();
         var comments = @Html.Raw(Json.Encode(Model.Comentarios));
         var gitInfo = @Html.Raw(Json.Encode(Model.LinksGithub));
@@ -176,38 +177,45 @@ ViewBag.Title = "FichaMembro";
         var positiveTotal = 0;
         var negativeTotal = 0;
 
+        function extractDate(date) { 
+            return date.match(/\d+/)[0];
+        }
+
+        comments.sort(function(left, right) { 
+            return extractDate(left.DataCriacao) < extractDate(right.DataCriacao) 
+        })
+
         comments.forEach(function(comment) {
 
             if(comment.Estado != 0) {
                 return;
             }
             var typeTag;
+            var deleteOption = user.Id == comment.IdUsuario? '<a href="../ExcluirComentario/' + comment.Id + '" class="Excluir-comentario">&times;</a>' : '';
 
             if(comment.Tipo == 0) { 
                 typeTag = '<div class="tag-comentario positivo">';
                 positiveTotal = positiveTotal + 1;
-                console.log(positiveTotal)
                 $('#total-positivo').text(positiveTotal);
             }
             else {
                 typeTag = '<div class="tag-comentario negativo">';
                 negativeTotal = negativeTotal + 1;
-                console.log(negativeTotal)
                 $('#total-negativo').text(negativeTotal);
             }
 
             $('#comentarios')
                   .append($('<div class="bloco-comentario">')
-                    .append($(typeTag))
-                    .append($('<a href="../ExcluirComentario/' + comment.Id + '" class="Excluir-comentario">&times;</a>'))
+                    .append($(typeTag))                  
                     .append($('<h4>').text(comment.Assunto + ' - ' + comment.Projeto.Nome))
                     .append($(converter.makeHtml(comment.Texto)))
+                    .append($(deleteOption))
                     )
         })
 
         setTimeout(function() {
             localStorage.clear();
-        }, 1000 * 60 * 10) // * 10
+        }, 1000 * 60 * 10) 
 
     </script>
 }
