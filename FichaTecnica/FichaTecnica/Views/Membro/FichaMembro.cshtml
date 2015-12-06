@@ -7,10 +7,12 @@ ViewBag.Title = "FichaMembro";
 <style>
 
     .excluir-comentario {
+        text-decoration: none !important;
+        font-size: 30px;
         display: block;
         position: absolute;
-        right: 50px;
-        top: 5px;
+        right: 0%;
+        top: 2%;
         width: 32px;
         height: 32px;
     }
@@ -41,8 +43,14 @@ ViewBag.Title = "FichaMembro";
 	</div>
 	<div class="col-md-3 dados-membro">
 		<h2>@Model.Nome</h2>
-        <h3 style="color:green;" id="total-positivo">0</h3>
-        <h3 style="color:red;" id="total-negativo">0</h3>
+        <div>
+            <h3 style="width: 100px; display: inline-block; color:green;" id="total-positivo">0</h3>
+            <div class="tag-comentario positivo"></div>
+        </div>
+        <div>
+            <h3 style="width: 100px; display: inline-block; color:red;" id="total-negativo">0</h3>
+            <div class="tag-comentario negativo"></div>
+        </div>
 		<p>@Model.Email</p>
 		<p>
 			Fone - @if (Model.Telefone != null) { @Model.Telefone; }
@@ -205,23 +213,20 @@ ViewBag.Title = "FichaMembro";
             var deleteOption = '';
 
             if(user != null) {
-                deleteOption = user.Id == comment.IdUsuario? '<a href="../ExcluirComentario/' + comment.Id + '" class="Excluir-comentario">&times;</a>' : '';
+                deleteOption = user.Id == comment.IdUsuario? '<a href="../ExcluirComentario/' + comment.Id + '" class="excluir-comentario">&times;</a>' : '';
             }
 
             if(comment.Tipo == 0) { 
-                typeTag = '<div class="tag-comentario positivo">';
                 positiveTotal = positiveTotal + 1;
                 $('#total-positivo').text(positiveTotal);
             }
             else {
-                typeTag = '<div class="tag-comentario negativo">';
                 negativeTotal = negativeTotal + 1;
                 $('#total-negativo').text(negativeTotal);
             }
 
             $('#comentarios')
-                  .append($('<div class="bloco-comentario">')
-                    .append($(typeTag))                  
+                  .append($('<div class="bloco-comentario ' + (comment.Tipo == 0 ? 'comentario-positivo' : 'comentario-negativo' ) + '">')                 
                     .append($('<h4>').text(comment.Assunto + ' - ' + comment.Projeto.Nome))
                     .append($(converter.makeHtml(comment.Texto)))
                     .append($(deleteOption))
