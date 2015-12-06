@@ -33,7 +33,7 @@ ViewBag.Title = "FichaMembro";
             
         </div>
 		
-		<h5>Média de 5 commits diários</h5>
+		<h5>Média de <span id="media-commits"></span> commit(s) diários</h5>
 		<div class="form-comentario">
 			<h3>Adicionar Comentário</h3>
 
@@ -89,15 +89,29 @@ ViewBag.Title = "FichaMembro";
         gitInfo.Links.forEach(function(link) { repos.push(link.URL)})
 
         if(localStorageCommits == null) {
-           
+
+            var totalCommits = 0;
+            var days = [];
+
             $.get('https://api.github.com/users/' + username + '/events?page=1')
                     .done(function (response) {
                         response.forEach(function(r) {
                             if(repos.includes('/' + r.repo.name + '/') && r.type == 'PushEvent') {
-                                r.payload.commits.forEach(function(commit) { commitList.push(commit)})
+
+                                if(!days.includes(r.created_at.slice(0, 10))) {
+                                    days.push(r.created_at.slice(0, 10));
+                                }
+
+                                totalCommits += r.payload.commits.length;
+
+                                r.payload.commits.forEach(function(commit) { commitList.push(commit)})                      
                             }
                         })
-                    })  
+                    }).always(function() {                  
+                        localStorage.setItem('avgCommits'.concat(id), totalCommits / days.length);
+                    })
+
+          
         }
         else {
             commitList = JSON.parse(localStorageCommits);
@@ -117,6 +131,7 @@ ViewBag.Title = "FichaMembro";
             commitList = commitList.slice(0, 3);
             localStorage.setItem('latestCommits'.concat(id), JSON.stringify(commitList));
 
+            $('#media-commits').html(localStorage.getItem('avgCommits'.concat(id)));
 
             commitList.forEach(function(commit) {
                 $('#commits')
@@ -135,19 +150,19 @@ ViewBag.Title = "FichaMembro";
 
         }, 1000);
 
-        comments.forEach(function(comment) { 
+        comments.forEach(function(comment) {
             var typeTag = comment.Tipo == 0 ? '<div class="tag-comentario positivo">' : '<div class="tag-comentario negativo">';
 
             $('#comentarios')
                   .append($('<div class="bloco-comentario">')
                     .append($(typeTag))
-                    .append($('<h4>').text(comment.Assunto))
+                    .append($('<h4>').text(comment.Assunto + ' - ' + comment.Projeto.Nome))
                     .append($(converter.makeHtml(comment.Texto)))
                     )
         })
 
-        setTimeout(function() { 
-            localStorage.clear(); 
+        setTimeout(function() {
+            localStorage.clear();
         }, 1000 * 60 * 10) // * 10
 
     </script>

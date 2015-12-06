@@ -14,7 +14,7 @@ namespace FichaTecnica.Repositorio.EF
 
         public List<Comentario> BuscarComentariosPorMembro(int id)
         {
-            return db.Comentario.Where(c => c.IdMembro.Equals(id)).ToList();
+            return db.Comentario.Include("Projeto").Where(c => c.IdMembro.Equals(id)).ToList();
         }
 
         public int Criar(Comentario comentario)
