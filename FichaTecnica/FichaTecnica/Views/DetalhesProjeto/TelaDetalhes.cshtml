@@ -62,8 +62,9 @@
                     <p>Nome: @membro.Nome</p>
                     <p>Email: @membro.Email</p>
                     <div id="@membro.Nome">
-                        commit
+                        Último commit:
                     </div>
+                    Data último commit:<div id="@("DataUltimoCommit"+membro.Nome)"></div>
                     <p>Comentarios</p>
                     <div style="float:left">Positivos:
                         <div>@membro.TotalComentariosPosivo</div>
@@ -126,6 +127,18 @@
                                 $('#'+caminhoParaFichaMembro)
                                 .addClass('mudarCorFicha');
                             }
+
+                            var dia = diaUltimoCommit.getUTCDay();
+                            var mes = diaUltimoCommit.getUTCMonth() + 1;
+                            var ano = diaUltimoCommit.getUTCFullYear();
+                            var hora = diaUltimoCommit.getUTCHours();
+                            var minutos = diaUltimoCommit.getUTCMinutes();
+
+                            var dataEHoraUltimoCommit = dia + '/' + mes + '/' + ano + ' - ' + hora + ':' + minutos;
+
+                            var caminhoDataUltimoCommit = "DataUltimoCommit" + @Html.Raw(Json.Encode(membro.Nome));
+                            $('#'+caminhoDataUltimoCommit)
+                            .append('<p>').html(dataEHoraUltimoCommit);
                         })
                     });
                 })
