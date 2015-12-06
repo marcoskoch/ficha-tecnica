@@ -32,6 +32,16 @@ namespace FichaTecnica.Repositorio.EF
             }
         }
 
+        public Membro BuscarUmMembroPorNome(string nome)
+        {
+            using (dataBase)
+            {
+                var membros = dataBase.Membro;
+
+                return membros.FirstOrDefault(m => m.Nome == nome);
+            }
+        }
+
         public IList<Membro> BuscarMembroPorProjeto(Projeto projeto)
         {
             int idProjeto = projeto.Id;

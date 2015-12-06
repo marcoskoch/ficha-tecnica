@@ -33,6 +33,11 @@ namespace FichaTecnica.Models
 
         public GraficoAtividadesModel LinksGithub { get; set; }
 
+        public DetalheMembroModel()
+        {
+
+        }
+
         public DetalheMembroModel(Membro membro)
         {
             Id = membro.Id;
