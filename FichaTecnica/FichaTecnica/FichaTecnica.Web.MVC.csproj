@@ -145,6 +145,9 @@
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\showdown.min.js" />
+    <Content Include="Upload\img\Adao.png" />
+    <Content Include="Upload\img\Pedro.png" />
+    <Content Include="Upload\img\Tea.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -196,7 +199,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\js\" />
-    <Folder Include="Upload\img\" />
     <Folder Include="Views\GraficoAtividades\" />
   </ItemGroup>
   <ItemGroup>
