@@ -52,5 +52,10 @@ namespace FichaTecnica.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+        public int CadastrarNovoProjeto(Projeto Projeto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
