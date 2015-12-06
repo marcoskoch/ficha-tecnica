@@ -80,18 +80,23 @@ ViewBag.Title = "FichaMembro";
         var gitInfo = @Html.Raw(Json.Encode(Model.LinksGithub));
         var converter = new showdown.Converter();
         var localStorageCommits = localStorage.getItem('lastestCommits');
+        var username = gitInfo.Links[0].URL.split('/')[1];
         var commitList = [];
         var projetos = [];
+        var repos = [];
 
-        if(localStorageCommits == null) {
-            gitInfo.Links.forEach(function(l) {
-                $.get(gitInfo.URLBaseAPI + l.URL + 'commits')
+        gitInfo.Links.forEach(function(link) { repos.push(link.URL)})
+
+        if(localStorageCommits == '[]') {
+           
+            $.get('https://api.github.com/users/' + username + '/events?page=1')
                     .done(function (response) {
-                        response.forEach(function (i) {
-                            commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+                        response.forEach(function(r) {
+                            if(repos.includes('/' + r.repo.name + '/') && r.type == 'PushEvent') {
+                                r.payload.commits.forEach(function(commit) { commitList.push(commit)})
+                            }
                         })
-                    })
-            })
+                    })  
         }
         else {
             commitList = JSON.parse(localStorageCommits);
@@ -116,7 +121,7 @@ ViewBag.Title = "FichaMembro";
                 $('#commits')
                     .append($('<div class="bloco-commit">')
                         .append($('<p>')
-                            .append($('<a>').html(commit.sha).attr('href', commit.link))
+                            .append($('<a>').html(commit.sha.slice(0, 8)).attr('href', commit.url))
                             .append($('<p>').html(commit.message)))
                 )
             })
@@ -142,7 +147,7 @@ ViewBag.Title = "FichaMembro";
 
         setTimeout(function() { 
             localStorage.clear(); 
-        }, 1000 * 60) // * 10
+        }, 1000 * 60 * 10) // * 10
 
     </script>
 }
