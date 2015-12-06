@@ -41,7 +41,7 @@
     
     @foreach (var membro in Model.MembrosDoProjeto)
     {
-        <div id="cartao" class="Cartao">
+        <div id="@("Cartao"+membro.Nome)" class="Cartao">
             <div id="content" class="content">
                 <div id="imagem" class="imagem">
                     <img src="~/Upload/img/@membro.Foto" alt="..." class="img-circle">
@@ -80,6 +80,8 @@
                         .done(function (response) {
                             response.forEach(function (i) {
                                 commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+
+
                             })
                         })
                     .always(function() {
@@ -93,12 +95,24 @@
                                     .append($('<p>')
                                         .append($('<a>').html(commit.sha).attr('href', commit.link))
                                         .append($('<p>').html(commit.message)))
+
+
                             )
+                            var oneDay = 24*60*60*1000;
+                            var diaAtual = new Date();
+                            var diaUltimoCommit = new Date(commit.date);
+                            var diasDiferenca = Math.round(Math.abs((diaAtual.getTime() - diaUltimoCommit.getTime())/(oneDay)));
+
+                            if(diasDiferenca > 1){
+                                var caminhoParaFichaMembro = "Cartao" + @Html.Raw(Json.Encode(membro.Nome));
+                                $('#'+caminhoParaFichaMembro)
+                                .addClass('mudarCorFicha');
+                            }
                         })
                     });
                 })
-            
-               
+
+
 
             </Text>
         }
