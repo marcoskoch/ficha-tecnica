@@ -57,7 +57,9 @@
                     </div>
                     <p>Comentarios</p>
                     <p>Positivos: 0 Negativos: 0</p>
-                    <a href="#">Visualizar ficha completa</a>
+                    @using (Html.BeginForm("FichaMembro", "Membro", FormMethod.Post, null))
+                    {   <input type="hidden" name="id" value="@membro.Id">
+                        <input type="submit" name="enviar" value="Ficha Completa" /> }
                 </div>
             </div>
         </div>

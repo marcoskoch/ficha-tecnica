@@ -8,6 +8,7 @@ namespace FichaTecnica.Models
 {
     public class MembroDetalheProjetoModel
     {
+        public int Id { get; set; }
         public string Foto { get; set; }
         public Cargo cargo { get; set; }
         public string Nome { get; set; }
@@ -17,6 +18,7 @@ namespace FichaTecnica.Models
 
         public MembroDetalheProjetoModel(Membro entity)
         {
+            this.Id = entity.Id;
             this.Foto = entity.Foto;
             this.cargo = entity.Cargo;
             this.Nome = entity.Nome;
