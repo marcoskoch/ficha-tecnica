@@ -2,17 +2,18 @@
 }
 
 .Cartao{ 
-  float:left;
+    float:left;
     position: relative;
-    width: 30%;
-    padding-bottom: 30%;
+    width: 45%;
+    padding-bottom: 40%;
     margin:1.66%;
+    border-radius: 15px 55px;
     overflow:hidden;
     background-color: #ff8533;
 }
 
 .mudarCorFicha{
-    background-color: #F50F0F;
+    background-color: #ff9999;
 }
 
 .content{
@@ -28,20 +29,22 @@
 
 .campos{
     position: relative;
-    padding-top: 35%;
+    padding-top: 40%;
     padding-right: 0%;
-    padding-left: 0%;
+    padding-left: 5%;
     padding-bottom: 0%;
+    font-size: 15px;
 }
 
-.cargo{
+.resumoMembro{
     position:absolute;
     height:80%;
     width:90%; 
-    padding-top: 0%;
+    padding-top: 10%;
     padding-right: 0%;
-    padding-left: 65%;
+    padding-left: 30%;
     padding-bottom: 0%;
+    font-size: 20px;
 }
 
 .imagem-projeto {
@@ -57,4 +60,34 @@
     padding: 9%;
     font-size: 70px;
     color: #FFF;
+}
+
+.buttonFichaCompleta {
+    position: relative;
+    padding: 5px 5px;
+    margin: 0px 2px 2px 0px;
+    float: right;
+    border-radius: 10px;
+    font-family: 'Helvetica', cursive;
+    font-size: 20px;
+    color: #FFF;
+    text-decoration: none;  
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+    /* Animation */
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.buttonFichaCompleta:hover, 
+.buttonFichaCompleta:focus {
+    text-decoration: none;
+    color: #fff;
+}
+
+.buttonFichaCompleta:active {
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
 }

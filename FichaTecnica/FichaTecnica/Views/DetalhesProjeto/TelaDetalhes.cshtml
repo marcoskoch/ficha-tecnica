@@ -55,16 +55,17 @@
                 <div id="imagem" class="imagem">
                         <img src="~/Upload/img/@membro.Foto" alt="..." class="img-circle">
                 </div>
-                <div id="cargo" class="cargo">
-                    Cargo: @membro.cargo.Descricao
-                </div>
-                <div id="campos" class="campos">
+                <div id="cargo" class="resumoMembro">
                     <p>Nome: @membro.Nome</p>
                     <p>Email: @membro.Email</p>
+                    <p>Cargo: @membro.cargo.Descricao</p>
+                </div>
+                <div id="campos" class="campos">
                     <div id="@membro.Nome">
                         Último commit:
                     </div>
                     Data último commit:<div id="@("DataUltimoCommit"+membro.Nome)"></div>
+                    <br>
                     <p>Comentarios</p>
                     <div style="float:left">Positivos:
                         <div>@membro.TotalComentariosPosivo</div>
@@ -76,7 +77,7 @@
 
                     @using (Html.BeginForm("FichaMembro", "Membro", FormMethod.Post, null))
                     {   <input type="hidden" name="id" value="@membro.Id">
-                        <input type="submit" name="enviar" value="Ficha Completa" /> }
+                        <input type="submit" class="buttonFichaCompleta" name="enviar" value="Ficha Completa" /> }
                 </div>
             </div>
         </div>
@@ -85,7 +86,6 @@
 
     @section Scripts {
         <script type="text/javascript">
-
 
             @foreach (var membro in Model.MembrosDoProjeto)
         {
@@ -100,7 +100,6 @@
                             response.forEach(function (i) {
                                 commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
 
-
                             })
                         })
                     .always(function() {
@@ -114,7 +113,6 @@
                                     .append($('<p>')
                                         .append($('<a>').html(commit.sha).attr('href', commit.link))
                                         .append($('<p>').html(commit.message)))
-
 
                             )
                             var oneDay = 24*60*60*1000;
@@ -141,12 +139,10 @@
                             .append('<p>').html(dataEHoraUltimoCommit);
                         })
                     });
-                })
-
-
+                });
 
             </Text>
-        }
+        };
         </script>
     }
 </body>
