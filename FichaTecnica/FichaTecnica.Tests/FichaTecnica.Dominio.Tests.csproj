@@ -48,6 +48,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MembroRepositorioTest.cs" />
+    <Compile Include="Mocks\MembroRepositorioMock.cs" />
     <Compile Include="Mocks\TelaInicialMock.cs" />
     <Compile Include="TelaInicialTeste.cs" />
     <Compile Include="Mocks\ServicoCriptografiaMock.cs" />
