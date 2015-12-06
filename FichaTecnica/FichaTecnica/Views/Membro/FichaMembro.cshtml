@@ -20,6 +20,8 @@ ViewBag.Title = "FichaMembro";
 	</div>
 	<div class="col-md-3 dados-membro">
 		<h2>@Model.Nome</h2>
+        <h3 style="color:green;" id="total-positivo">0</h3>
+        <h3 style="color:red;" id="total-negativo">0</h3>
 		<p>@Model.Email</p>
 		<p>
 			Fone - @if (Model.Telefone != null) { @Model.Telefone; }
@@ -158,8 +160,24 @@ ViewBag.Title = "FichaMembro";
 
         }, 1000);
 
+        var positiveTotal = 0;
+        var negativeTotal = 0;
+
         comments.forEach(function(comment) {
-            var typeTag = comment.Tipo == 0 ? '<div class="tag-comentario positivo">' : '<div class="tag-comentario negativo">';
+            var typeTag;
+            
+            if(comment.Tipo == 0) { 
+                typeTag = '<div class="tag-comentario positivo">';
+                positiveTotal = positiveTotal + 1;
+                console.log(positiveTotal)
+                $('#total-positivo').text(positiveTotal);
+            }
+            else {
+                typeTag = '<div class="tag-comentario negativo">';
+                negativeTotal = negativeTotal + 1;
+                console.log(negativeTotal)
+                $('#total-negativo').text(negativeTotal);
+            }
 
             $('#comentarios')
                   .append($('<div class="bloco-comentario">')
