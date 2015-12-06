@@ -3,6 +3,7 @@ using FichaTecnica.Dominio.Repositorio;
 using FichaTecnica.Dominio.Servicos;
 using FichaTecnica.Helpers;
 using FichaTecnica.Models;
+using FichaTecnica.Repositorio.EF;
 using FichaTecnica.Seguranca;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace FichaTecnica.Controllers
 {
     public class LoginController : Controller
     {
-        private IUsuarioRepositorio dataBase = new FichaTecnica.Repositorio.EF.UsuarioRepositorio();
+        private IUsuarioRepositorio dataBase = new UsuarioRepositorio();
 
         // GET: Login
         public ActionResult Index()

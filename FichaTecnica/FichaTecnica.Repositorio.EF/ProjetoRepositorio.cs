@@ -41,5 +41,14 @@ namespace FichaTecnica.Repositorio.EF
         {
             return db.Projeto.Where(p => p.Nome.Contains(term)).ToList();
         }
+
+        public int CadastrarNovoProjeto(Projeto Projeto)
+        {
+            using (db)
+            {
+                db.Entry(Projeto).State = System.Data.Entity.EntityState.Added;
+                return db.SaveChanges();
+            }
+        }
     }
 }

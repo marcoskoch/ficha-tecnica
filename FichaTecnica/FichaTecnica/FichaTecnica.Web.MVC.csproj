@@ -153,6 +153,7 @@
     <Compile Include="Controllers\DetalhesProjetoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MembroController.cs" />
+    <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\TelaInicialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -163,6 +164,7 @@
     <Compile Include="Models\GraficoAtividadesModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MembroDetalheProjetoModel.cs" />
+    <Compile Include="Models\ProjetoModel.cs" />
     <Compile Include="Models\TelaDetalhesModel.cs" />
     <Compile Include="Models\TelaInicialModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,6 +185,7 @@
     <Content Include="Views\DetalhesProjeto\TelaDetalhes.cshtml" />
     <Content Include="Scripts\showdown.min.js.map" />
     <Content Include="Views\Shared\_Comentario.cshtml" />
+    <Content Include="Views\Projeto\CadastroProjeto.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

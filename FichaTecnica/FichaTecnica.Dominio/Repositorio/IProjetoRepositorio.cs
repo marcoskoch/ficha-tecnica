@@ -12,5 +12,6 @@ namespace FichaTecnica.Dominio.Repositorio
         Projeto BuscarProjetoPorId(int IDProjeto);
         IList<Projeto> BuscarTodosProjetos();
         IList<Projeto> BuscarPorNome(string term);
+        int CadastrarNovoProjeto(Projeto Projeto);
     }
 }
