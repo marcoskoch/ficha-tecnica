@@ -30,11 +30,19 @@ namespace FichaTecnica.Dominio
         public int IdMembro { get; set; }
 
         public Membro Membro { get; set; }
+
+        public Estado Estado { get; set; }
     }
 
     public enum Tipo
     {
         POSITIVO = 0,
         NEGATIVO = 1
+    }
+
+    public enum Estado
+    {
+        ATIVO = 0,
+        INATIVO = 1
     }
 }
