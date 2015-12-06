@@ -79,3 +79,11 @@
 	border: none;
 	margin-top: -20px;
 }
+.imagem
+{
+    width: 120px;
+}
+.imagem img
+{
+    max-width: 100%;
+}
