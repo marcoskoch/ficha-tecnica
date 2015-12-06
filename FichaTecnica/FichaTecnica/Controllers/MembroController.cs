@@ -89,6 +89,20 @@ namespace FichaTecnica.Controllers
             return RedirectToAction("FichaMembro", "Membro", new { id = comentario.IdMembro });
         }
 
+        public ActionResult ExcluirComentario(int id)
+        {
+            UsuarioLogado usuario = (UsuarioLogado)Session["USUARIO_LOGADO"];
+            var comentario = comentarioRepositorio.BuscarPorId(id);
+
+           if(usuario.Id == comentario.IdUsuario)
+            {
+                comentario.Estado = Estado.INATIVO;
+                comentarioRepositorio.AtualizarComentario(comentario);
+            }
+
+            return RedirectToAction("FichaMembro", "Membro", new { id = comentario.IdMembro });
+        }
+
         public ActionResult GraficoDeAtividades(int id)
         {
             List<LinkFork> links = membroRepositorio.BuscarLinkPorIdMembro(id);

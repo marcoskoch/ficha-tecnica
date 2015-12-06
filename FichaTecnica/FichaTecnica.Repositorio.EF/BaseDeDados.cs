@@ -85,6 +85,7 @@ namespace FichaTecnica.Repositorio.EF
             Property(p => p.Assunto).IsRequired().HasMaxLength(500);
             Property(p => p.Texto).IsRequired().HasMaxLength(1000);
             Property(p => p.Tipo).IsRequired();
+            Property(p => p.Estado).IsRequired();
             Property(p => p.DataCriacao).IsRequired();
             HasRequired(p => p.Usuario).WithMany().HasForeignKey(x => x.IdUsuario);
             HasRequired(p => p.Projeto).WithMany().HasForeignKey(x => x.IdProjeto);

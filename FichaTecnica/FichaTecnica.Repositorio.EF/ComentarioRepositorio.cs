@@ -12,6 +12,12 @@ namespace FichaTecnica.Repositorio.EF
     {
         private readonly BaseDeDados db = new BaseDeDados();
 
+
+        public Comentario BuscarPorId(int id)
+        {
+            return db.Comentario.Find(id);
+        }
+
         public List<Comentario> BuscarComentariosPorMembro(int id)
         {
             return db.Comentario.Include("Projeto").Where(c => c.IdMembro.Equals(id)).ToList();
@@ -22,6 +28,16 @@ namespace FichaTecnica.Repositorio.EF
             using (db)
             {
                 db.Entry(comentario).State = System.Data.Entity.EntityState.Added;
+
+                return db.SaveChanges();
+            }
+        }
+
+        public int AtualizarComentario(Comentario comentario)
+        {
+            using (db)
+            {
+                db.Entry(comentario).State = System.Data.Entity.EntityState.Modified;
 
                 return db.SaveChanges();
             }
