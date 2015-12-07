@@ -47,42 +47,11 @@
                 }
             </tr>
     </table>
+
+   <div id="membrosProjeto">
+
+   </div>
     
-    @foreach (var membro in Model.MembrosDoProjeto)
-    {
-        <div id="@("Cartao"+membro.Nome)" class="Cartao hvr-push hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active">
-            <div id="content" class="content">
-                <div id="imagem" class="imagem">
-                        <img src="~/Upload/img/@membro.Foto" alt="..." class="img-circle">
-                </div>
-                <div id="cargo" class="resumoMembro">
-                    <p>Nome: @membro.Nome</p>
-                    <p>Email: @membro.Email</p>
-                    <p>Cargo: @membro.cargo.Descricao</p>
-                </div>
-                <div id="campos" class="campos">
-                    <div id="@membro.Nome">
-                        Último commit:
-                    </div>
-                    Data último commit:<div id="@("DataUltimoCommit"+membro.Nome)"></div>
-                    <br>
-                    <p>Comentarios</p>
-                    <div style="float:left">Positivos:
-                        <div>@membro.TotalComentariosPosivo</div>
-                    </div>  
-
-                    <div>Negativos:
-                    <div>@membro.TotalComentarioNegativo</div>
-                    </div>
-
-                    @using (Html.BeginForm("FichaMembro", "Membro", FormMethod.Post, null))
-                    {   <input type="hidden" name="id" value="@membro.Id">
-                        <input type="submit" class="buttonFichaCompleta" name="enviar" value="Ficha Completa" /> }
-                </div>
-            </div>
-        </div>
-    }
-
 
     @section Scripts {
         <script type="text/javascript">
@@ -90,6 +59,91 @@
             @foreach (var membro in Model.MembrosDoProjeto)
         {
         <Text>
+
+            $('<div><div/>').attr('id', "@("Cartao"+membro.Nome)")
+            .addClass('Cartao hvr-push hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active')
+            .appendTo('#membrosProjeto');
+
+            var caminhodivCartao = "Cartao" + @Html.Raw(Json.Encode(membro.Nome));
+
+            $('<div></div>').attr('id',"@("content"+membro.Nome)")
+            .addClass('content')
+            .appendTo('#'+caminhodivCartao);
+
+            var caminhodivContent = "content" + @Html.Raw(Json.Encode(membro.Nome));
+
+            $('<div></div>').attr('id', "@("imagem"+membro.Nome)")
+            .addClass('imagem')
+            .appendTo('#'+caminhodivContent);
+
+            var caminhodivImagem = "imagem" + @Html.Raw(Json.Encode(membro.Nome));
+
+            var fotoMembro  = $('<img id="loading" src="~/Upload/img/@membro.Foto" alt="..." class="img-circle" />');
+            $('#'+caminhodivImagem).append(fotoMembro);
+
+            $('<div></div>').attr('id', "@("Cargo"+membro.Nome)")
+            .addClass('resumoMembro')
+            .appendTo('#'+caminhodivContent);
+
+            var caminhodivCargo = "Cargo" +  @Html.Raw(Json.Encode(membro.Nome));
+
+            $('<p></p>')
+            .html('Nome: @membro.Nome')
+            .appendTo('#'+caminhodivCargo);
+
+            $('<p></p>')
+           .html('Email: @membro.Email')
+           .appendTo('#'+caminhodivCargo);
+
+            $('<p></p>')
+           .html('Cargo: @membro.cargo.Descricao')
+           .appendTo('#'+caminhodivCargo);
+
+            $('<div></div>').attr('id', "@("campos"+membro.Nome)")
+            .addClass('campos')
+            .appendTo('#'+caminhodivContent);
+
+            var caminhodivCampos = "campos" +  @Html.Raw(Json.Encode(membro.Nome));
+
+            $('<div></div>').attr('id', @Html.Raw(Json.Encode(membro.Nome)))
+            .html('Último commit:')
+            .appendTo('#'+caminhodivCampos);
+
+            $('<div></div>').attr('id', "@("dataUltimoCommit"+membro.Nome)")
+            .html('Data Último commit:')
+            .appendTo('#'+caminhodivCampos);
+
+            var caminhoDataUltimocommit = "dataUltimoCommi" + @Html.Raw(Json.Encode(membro.Nome));
+
+            $('<div></div>').attr('id', "@("DataUltimoCommit"+membro.Nome)")
+            .appendTo('#'+caminhodivCampos);
+
+            $('<p></p>').html('Comentarios')
+            .appendTo('#'+caminhodivCampos);
+
+            $('<div></div>').attr('id', "@("comentariosPositivos"+membro.Nome)")
+            .attr('style', 'float:left')
+            .html('Positivos / ')
+            .appendTo('#'+caminhodivCampos);
+
+            var caminhoComentariosPositivos =  "comentariosPositivos" + @Html.Raw(Json.Encode(membro.Nome));
+
+            $('<div></div>').html(@membro.TotalComentariosPosivo)
+            .appendTo('#'+caminhoComentariosPositivos);
+
+            $('<div></div>').attr('id', "@("comentariosNegativos"+membro.Nome)")
+            .html(' Negativos:')
+            .appendTo('#'+caminhodivCampos);
+
+            var caminhoComentariosNegativos = "comentariosNegativos" + @Html.Raw(Json.Encode(membro.Nome));
+
+            $('<div></div>').html(@membro.TotalComentarioNegativo)
+            .appendTo('#'+caminhoComentariosNegativos);
+
+            var form = $("<form/>", {action:'/Membro/FichaMembro' });
+            form.append( $("<input>",{ type:'hidden', name:'id', value:'@membro.Id'}));
+            form.append(  $("<input>",  { type:'submit',  value:'Ficha Completa', name:'enviar'}));
+            $(form).appendTo('#'+caminhodivCampos);
 
                 var model = @Html.Raw(Json.Encode(membro.LinksGithub));
                 var commitList = [];
