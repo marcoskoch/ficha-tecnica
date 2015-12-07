@@ -47,51 +47,21 @@
                 }
             </tr>
     </table>
+
+   <div id="membrosProjeto">
+
+   </div>
     
-    @foreach (var membro in Model.MembrosDoProjeto)
-    {
-        <div id="@("Cartao"+membro.Nome)" class="Cartao hvr-push hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active">
-            <div id="content" class="content">
-                <div id="imagem" class="imagem">
-                        <img src="~/Upload/img/@membro.Foto" alt="..." class="img-circle">
-                </div>
-                <div id="cargo" class="resumoMembro">
-                    <p>Nome: @membro.Nome</p>
-                    <p>Email: @membro.Email</p>
-                    <p>Cargo: @membro.cargo.Descricao</p>
-                </div>
-                <div id="campos" class="campos">
-                    <div id="@membro.Nome">
-                        Último commit:
-                    </div>
-                    Data último commit:<div id="@("DataUltimoCommit"+membro.Nome)"></div>
-                    <br>
-                    <p>Comentarios</p>
-                    <div style="float:left">Positivos:
-                        <div>@membro.TotalComentariosPosivo</div>
-                    </div>  
-
-                    <div>Negativos:
-                    <div>@membro.TotalComentarioNegativo</div>
-                    </div>
-
-                    @using (Html.BeginForm("FichaMembro", "Membro", FormMethod.Post, null))
-                    {   <input type="hidden" name="id" value="@membro.Id">
-                        <input type="submit" class="buttonFichaCompleta" name="enviar" value="Ficha Completa" /> }
-                </div>
-            </div>
-        </div>
-    }
-
-
+    
     @section Scripts {
+        
         <script type="text/javascript">
+            //TODO: Otimizar scripts
 
-            @foreach (var membro in Model.MembrosDoProjeto)
-        {
-        <Text>
-
-                var model = @Html.Raw(Json.Encode(membro.LinksGithub));
+            var membros = @Html.Raw(Json.Encode(Model.MembrosDoProjeto));
+            
+            membros.forEach(function (membro) { 
+                var model = (membro.LinksGithub);
                 var commitList = [];
 
                 model.Links.forEach(function(l) {
@@ -107,42 +77,170 @@
                         commitList = commitList.slice(0, 1);
 
                         commitList.forEach(function(commit) {
-                            var caminhoComiits = @Html.Raw(Json.Encode(membro.Nome));
-                            $('#'+caminhoComiits)
-                                .append($('<div>')
-                                    .append($('<p>')
-                                        .append($('<a>').html(commit.sha).attr('href', commit.link))
-                                        .append($('<p>').html(commit.message)))
-
-                            )
-                            var oneDay = 24*60*60*1000;
-                            var diaAtual = new Date();
-                            var diaUltimoCommit = new Date(commit.date);
-                            var diasDiferenca = Math.round(Math.abs((diaAtual.getTime() - diaUltimoCommit.getTime())/(oneDay)));
-
-                            if(diasDiferenca > 1){
-                                var caminhoParaFichaMembro = "Cartao" + @Html.Raw(Json.Encode(membro.Nome));
-                                $('#'+caminhoParaFichaMembro)
-                                .addClass('mudarCorFicha');
-                            }
-
-                            var dia = diaUltimoCommit.getUTCDay();
-                            var mes = diaUltimoCommit.getUTCMonth() + 1;
-                            var ano = diaUltimoCommit.getUTCFullYear();
-                            var hora = diaUltimoCommit.getUTCHours();
-                            var minutos = diaUltimoCommit.getUTCMinutes();
-
-                            var dataEHoraUltimoCommit = dia + '/' + mes + '/' + ano + ' - ' + hora + ':' + minutos;
-
-                            var caminhoDataUltimoCommit = "DataUltimoCommit" + @Html.Raw(Json.Encode(membro.Nome));
-                            $('#'+caminhoDataUltimoCommit)
-                            .append('<p>').html(dataEHoraUltimoCommit);
-                        })
+                            var timeStamp  = new Date(commit.date);
+                            membro.DataUltimoCommit = Date.parse(timeStamp);
+                        });
                     });
                 });
+            })
+                
+            setTimeout(function(){
+                membros.sort(compare);
+            },1000);
 
-            </Text>
-        };
+
+                function compare(a,b) {
+                    if (a.DataUltimoCommit > b.DataUltimoCommit){
+                        return -1;
+                    }
+                    if (a.DataUltimoCommit < b.DataUltimoCommit){
+                        return 1;
+                    }
+                    return 0;
+                };
+
+
+                setTimeout(function() {
+                    membros.forEach(function (membro) {
+
+                        $('<div><div/>').attr('id', ("Cartao"+ membro.Nome))
+                        .addClass('Cartao hvr-push hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active')
+                        .appendTo('#membrosProjeto');
+
+                        var caminhodivCartao = "Cartao" + (membro.Nome);
+
+                        $('<div></div>').attr('id',"content"+membro.Nome)
+                        .addClass('content')
+                        .appendTo('#'+caminhodivCartao);
+
+                        var caminhodivContent = "content" + (membro.Nome);
+
+                        $('<div></div>').attr('id', "imagem"+membro.Nome)
+                        .addClass('imagem')
+                        .appendTo('#'+caminhodivContent);
+
+                        var caminhodivImagem = "imagem" + (membro.Nome);
+
+                        var fotoMembro  = $('<img id="loading" src="/Upload/img/'+membro.Foto+'" alt="..." class="img-circle" />');
+
+                        $('#'+caminhodivImagem).append(fotoMembro);
+
+                        $('<div></div>').attr('id',"Cargo"+membro.Nome)
+                        .addClass('resumoMembro')
+                        .appendTo('#'+caminhodivContent);
+
+                        var caminhodivCargo = "Cargo" +  (membro.Nome);
+
+                        $('<p></p>')
+                        .html('Nome: ' + membro.Nome)
+                        .appendTo('#'+caminhodivCargo);
+
+                        $('<p></p>')
+                       .html('Email: '+ membro.Email)
+                       .appendTo('#'+caminhodivCargo);
+
+                        $('<p></p>')
+                       .html('Cargo: '+membro.cargo.Descricao)
+                       .appendTo('#'+caminhodivCargo);
+
+                        $('<div></div>').attr('id', "campos"+membro.Nome)
+                        .addClass('campos')
+                        .appendTo('#'+caminhodivContent);
+
+                        var caminhodivCampos = "campos" + (membro.Nome);
+
+                        $('<div></div>').attr('id', (membro.Nome))
+                        .html('Último commit:')
+                        .appendTo('#'+caminhodivCampos);
+
+                        $('<div></div>').attr('id', "dataUltimoCommit"+membro.Nome)
+                        .html('Data Último commit:')
+                        .appendTo('#'+caminhodivCampos);
+
+                        var caminhoDataUltimocommit = "dataUltimoCommi" +(membro.Nome);
+
+                        $('<div></div>').attr('id', "DataUltimoCommit"+membro.Nome)
+                        .appendTo('#'+caminhodivCampos);
+
+                        $('<p></p>').html('Comentarios')
+                        .appendTo('#'+caminhodivCampos);
+
+                        $('<div></div>').attr('id', "comentariosPositivos"+membro.Nome)
+                        .attr('style', 'float:left')
+                        .html('Positivos / ')
+                        .appendTo('#'+caminhodivCampos);
+
+                        var caminhoComentariosPositivos =  "comentariosPositivos" + (membro.Nome);
+
+                        $('<div></div>').html(membro.TotalComentariosPosivo)
+                        .appendTo('#'+caminhoComentariosPositivos);
+
+                        $('<div></div>').attr('id', "comentariosNegativos"+membro.Nome)
+                        .html(' Negativos:')
+                        .appendTo('#'+caminhodivCampos);
+
+                        var caminhoComentariosNegativos = "comentariosNegativos" + (membro.Nome);
+
+                        $('<div></div>').html(membro.TotalComentarioNegativo)
+                        .appendTo('#'+caminhoComentariosNegativos);
+
+                        var form = $("<form/>", {action:'/Membro/FichaMembro' });
+                        form.append( $("<input>",{ type:'hidden', name:'id', value:membro.Id}));
+                        form.append(  $("<input>",  { type:'submit',  value:'Ficha Completa', name:'enviar'}));
+                        $(form).appendTo('#'+caminhodivCampos);
+
+                        var model = (membro.LinksGithub);
+                        var commitList = [];
+
+                        model.Links.forEach(function(l) {
+                            $.get(model.URLBaseAPI + l.URL + 'commits')
+                                .done(function (response) {
+                                    response.forEach(function (i) {
+                                        commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+
+                                    })
+                                })
+                            .always(function() {
+                                commitList.sort(function (left, right) { return left.date < right.date })
+                                commitList = commitList.slice(0, 1);
+
+                                commitList.forEach(function(commit) {
+                                    var caminhoComiits = (membro.Nome);
+                                    $('#'+caminhoComiits)
+                                        .append($('<div>')
+                                            .append($('<p>')
+                                                .append($('<a>').html(commit.sha).attr('href', commit.link))
+                                                .append($('<p>').html(commit.message)))
+
+                                    )
+                                    var oneDay = 24*60*60*1000;
+                                    var diaAtual = new Date();
+                                    var diaUltimoCommit = new Date(commit.date);
+                                    var diasDiferenca = Math.round(Math.abs((diaAtual.getTime() - diaUltimoCommit.getTime())/(oneDay)));
+
+                                    if(diasDiferenca > 1){
+                                        var caminhoParaFichaMembro = "Cartao" + (membro.Nome);
+                                        $('#'+caminhoParaFichaMembro)
+                                        .addClass('mudarCorFicha');
+                                    }
+
+                                    var dia = diaUltimoCommit.getUTCDay();
+                                    var mes = diaUltimoCommit.getUTCMonth() + 1;
+                                    var ano = diaUltimoCommit.getUTCFullYear();
+                                    var hora = diaUltimoCommit.getUTCHours();
+                                    var minutos = diaUltimoCommit.getUTCMinutes();
+
+                                    var dataEHoraUltimoCommit = dia + '/' + mes + '/' + ano + ' - ' + hora + ':' + minutos;
+
+                                    var caminhoDataUltimoCommit = "DataUltimoCommit" + (membro.Nome);
+                                    $('#'+caminhoDataUltimoCommit)
+                                    .append('<p>').html(dataEHoraUltimoCommit);
+                                })
+                            });
+                        });
+
+                    });
+                }, 2000);
         </script>
     }
 </body>
