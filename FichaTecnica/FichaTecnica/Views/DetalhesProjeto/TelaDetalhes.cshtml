@@ -79,7 +79,6 @@
                         commitList.forEach(function(commit) {
                             var timeStamp  = new Date(commit.date);
                             membro.DataUltimoCommit = Date.parse(timeStamp);
-                            console.log(membro.DataUltimoCommit);
                         });
                     });
                 });
@@ -102,7 +101,6 @@
 
 
                 setTimeout(function() {
-                    console.log('montou estrutura');
                     membros.forEach(function (membro) {
 
                         $('<div><div/>').attr('id', ("Cartao"+ membro.Nome))
