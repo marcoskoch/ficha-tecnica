@@ -1,4 +1,5 @@
-﻿using FichaTecnica.Seguranca.Model;
+﻿using FichaTecnica.Repositorio.EF;
+using FichaTecnica.Seguranca.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,11 @@ namespace FichaTecnica.Seguranca
             }
         }
 
-        public static void CriarSessaoDeUsuario(string email, int id)
+        public static void CriarSessaoDeUsuario(int id)
         {
-            var usuarioLogado = new UsuarioLogado(email, id);
-            FormsAuthentication.SetAuthCookie(usuarioLogado.Email, true);
-            HttpContext.Current.Session[USUARIO_LOGADO] = usuarioLogado;
+            var usuario = new UsuarioRepositorio().BuscarPorId(id);
+            FormsAuthentication.SetAuthCookie(usuario.Email, true);
+            HttpContext.Current.Session[USUARIO_LOGADO] = new UsuarioLogado(usuario);
         }
 
         public static void Encerrar()

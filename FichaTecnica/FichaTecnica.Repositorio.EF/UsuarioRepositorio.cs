@@ -19,11 +19,11 @@ namespace FichaTecnica.Repositorio.EF
 
         }
 
-        public Usuario BuscarPorId(int Id)
+        public Usuario BuscarPorId(int id)
         {
             using (var db = new BaseDeDados())
             {
-                return db.Usuario.Find(Id);
+                return db.Usuario.Include("Permissao").First(u => u.Id == id);
             }
         }
     }
