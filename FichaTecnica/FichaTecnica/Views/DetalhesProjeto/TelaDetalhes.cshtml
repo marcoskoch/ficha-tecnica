@@ -88,7 +88,7 @@
             
             function atribuiValoresGitHubAoMembro(commitList, membro){
                 commitList.sort(function (left, right) { return left.date < right.date })
-                commitList = commitList.slice(0, 1);
+                commitList = commitList.slice(0, 3);
                 localStorage.setItem('latestCommits'.concat(membro.Id), JSON.stringify(commitList));
                 commitList.forEach(function(commit) {
                     var timeStamp  = new Date(commit.date);
