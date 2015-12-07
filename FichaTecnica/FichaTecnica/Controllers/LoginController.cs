@@ -33,7 +33,7 @@ namespace FichaTecnica.Controllers
 
                 if (usuarioAutenticado != null)
                 {
-                    ControleDeSessao.CriarSessaoDeUsuario(usuarioAutenticado.Id);
+                    ControleDeSessao.CriarSessaoDeUsuario(usuarioAutenticado);
                     return RedirectToAction("TelaInicial", "TelaInicial");
                 }
             }

@@ -129,12 +129,12 @@ ViewBag.Title = "FichaMembro";
 
         gitInfo.Links.forEach(function(link) { repos.push(link.URL)})
 
-        if(localStorageCommits == null) {
+        if(localStorageCommits == null || localStorageCommits == '[]') {
 
             var totalCommits = 0;
             var days = [];
 
-            $.get('https://api.github.com/users/' + username + '/events?page=1')
+            $.get('https://api.github.com/users/' + username + '/events')
                     .done(function (response) {
                         response.forEach(function(r) {
 
