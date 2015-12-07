@@ -53,17 +53,17 @@ namespace FichaTecnica.Controllers
             return Json(json, JsonRequestBehavior.AllowGet); 
         }
 
-        public JsonResult ProjetoAutoComplete(string term)
+        public JsonResult ProjetoAutoComplete(int idMembro = 0)
         {
             IList<Projeto> projetosEncontrados = null;
 
-            if (string.IsNullOrEmpty(term))
+            if (idMembro != 0)
             {
-                projetosEncontrados = projetoRepositorio.BuscarTodosProjetos();
+                projetosEncontrados = projetoRepositorio.BuscarPorMembro(idMembro);
             }
             else
             {
-                projetosEncontrados = projetoRepositorio.BuscarPorNome(term);
+                projetosEncontrados = projetoRepositorio.BuscarTodosProjetos();
             }
 
             var json = projetosEncontrados.Select(x => new { label = x.Nome, value = x.Id});

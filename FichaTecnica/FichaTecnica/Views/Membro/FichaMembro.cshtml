@@ -47,7 +47,7 @@ ViewBag.Title = "FichaMembro";
             <h3 style="width: 100px; display: inline-block; color:green;" id="total-positivo">0</h3>
             <div class="tag-comentario positivo"></div>
         </div>
-        <div>
+        <div style="padding-bottom: 4px;">
             <h3 style="width: 100px; display: inline-block; color:red;" id="total-negativo">0</h3>
             <div class="tag-comentario negativo"></div>
         </div>
@@ -115,10 +115,11 @@ ViewBag.Title = "FichaMembro";
 @section Scripts {
     <script type="text/javascript">
 
+        var model = @Html.Raw(Json.Encode(Model));
         var user = @Html.Raw(Json.Encode(Session["USUARIO_LOGADO"]));
-        var id = @Html.Raw(Json.Encode(Model.Id)).ToString();
-        var comments = @Html.Raw(Json.Encode(Model.Comentarios));
-        var gitInfo = @Html.Raw(Json.Encode(Model.LinksGithub));
+        var id = model.Id.toString();
+        var comments = model.Comentarios;
+        var gitInfo = model.LinksGithub;
         var converter = new showdown.Converter();
         var localStorageCommits = localStorage.getItem('latestCommits'.concat(id));
         var username = gitInfo.Links[0].URL.split('/')[1];
@@ -142,30 +143,33 @@ ViewBag.Title = "FichaMembro";
                                 if(!days.includes(r.created_at.slice(0, 10))) {
                                     days.push(r.created_at.slice(0, 10));
                                 }
-                            
+
                                 totalCommits += r.payload.commits.length;
 
                                 if(repos.includes('/' + r.repo.name + '/')) {
-                                    r.payload.commits.forEach(function(commit) { commitList.push(commit)})                      
+                                    r.payload.commits.forEach(function(commit) { commitList.push(commit)})
                                 }
                             }
                         })
-                    }).always(function() {                  
+                    }).always(function() {
                         localStorage.setItem('avgCommits'.concat(id), totalCommits / days.length);
                     })
 
-          
+
         }
         else {
             commitList = JSON.parse(localStorageCommits);
         }
 
-        $.get('http://localhost:54173/Membro/ProjetoAutocomplete')
-            .done(function(response) {
-                response.forEach(function(i) {
-                    projetos.push(i)
-                })
+        $.ajax({ url: '/Membro/ProjetoAutocomplete/',
+            type: 'POST',         
+            dataType: 'json',
+            data: { idMembro: model.Id},
+        }).done(function(response) {
+            response.forEach(function(i) {
+                projetos.push(i)
             })
+        });
 
         //TODO: refactor meio alternativo sem setTimeout
 
@@ -196,12 +200,12 @@ ViewBag.Title = "FichaMembro";
         var positiveTotal = 0;
         var negativeTotal = 0;
 
-        function extractDate(date) { 
+        function extractDate(date) {
             return date.match(/\d+/)[0];
         }
 
-        comments.sort(function(left, right) { 
-            return extractDate(left.DataCriacao) < extractDate(right.DataCriacao) 
+        comments.sort(function(left, right) {
+            return extractDate(left.DataCriacao) < extractDate(right.DataCriacao)
         })
 
         comments.forEach(function(comment) {
@@ -216,7 +220,7 @@ ViewBag.Title = "FichaMembro";
                 deleteOption = user.Id == comment.IdUsuario? '<a href="../ExcluirComentario/' + comment.Id + '" class="excluir-comentario">&times;</a>' : '';
             }
 
-            if(comment.Tipo == 0) { 
+            if(comment.Tipo == 0) {
                 positiveTotal = positiveTotal + 1;
                 $('#total-positivo').text(positiveTotal);
             }
@@ -226,7 +230,7 @@ ViewBag.Title = "FichaMembro";
             }
 
             $('#comentarios')
-                  .append($('<div class="bloco-comentario ' + (comment.Tipo == 0 ? 'comentario-positivo' : 'comentario-negativo' ) + '">')                 
+                  .append($('<div class="bloco-comentario ' + (comment.Tipo == 0 ? 'comentario-positivo' : 'comentario-negativo' ) + '">')
                     .append($('<h4>').text(comment.Assunto + ' - ' + comment.Projeto.Nome))
                     .append($(converter.makeHtml(comment.Texto)))
                     .append($(deleteOption))
@@ -235,7 +239,7 @@ ViewBag.Title = "FichaMembro";
 
         setTimeout(function() {
             localStorage.clear();
-        }, 1000 * 60 * 10) 
+        }, 1000 * 60 * 10)
 
     </script>
 }

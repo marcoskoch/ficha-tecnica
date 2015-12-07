@@ -12,23 +12,31 @@ namespace FichaTecnica.Repositorio.EF
     {
         private readonly BaseDeDados db = new BaseDeDados();
 
-        public IList<Projeto> BuscarProjetosDoUsuario(int IDUsuario)
+        public IList<Projeto> BuscarProjetosDoUsuario(int idUsuario)
         {
             using (db)
             {
                 var projetos = from projeto in db.Projeto
-                               where projeto.IdUsuario == IDUsuario
+                               where projeto.IdUsuario == idUsuario
                                select projeto;
                         
                 return projetos.ToList();
             }
         }
 
-        public Projeto BuscarProjetoPorId(int IDProjeto)
+        public IList<Projeto> BuscarPorMembro(int idMembro)
         {
             using (db)
             {
-                return db.Projeto.Find(IDProjeto);
+                return db.Projeto.Include("Membros").Where(p => p.Membros.FirstOrDefault(m => m.Id == idMembro) != null).ToList();
+            }
+        }
+
+        public Projeto BuscarProjetoPorId(int idProjeto)
+        {
+            using (db)
+            {
+                return db.Projeto.Find(idProjeto);
             }
         }
 
