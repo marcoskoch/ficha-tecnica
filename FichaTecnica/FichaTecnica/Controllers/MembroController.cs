@@ -53,17 +53,17 @@ namespace FichaTecnica.Controllers
             return Json(json, JsonRequestBehavior.AllowGet); 
         }
 
-        public JsonResult ProjetoAutoComplete(string term)
+        public JsonResult ProjetoAutoComplete(int idMembro = 0)
         {
             IList<Projeto> projetosEncontrados = null;
 
-            if (string.IsNullOrEmpty(term))
+            if (idMembro != 0)
             {
-                projetosEncontrados = projetoRepositorio.BuscarTodosProjetos();
+                projetosEncontrados = projetoRepositorio.BuscarPorMembro(idMembro);
             }
             else
             {
-                projetosEncontrados = projetoRepositorio.BuscarPorNome(term);
+                projetosEncontrados = projetoRepositorio.BuscarTodosProjetos();
             }
 
             var json = projetosEncontrados.Select(x => new { label = x.Nome, value = x.Id});
@@ -83,19 +83,18 @@ namespace FichaTecnica.Controllers
             comentario.IdProjeto = model.IdProjeto;
             comentario.DataCriacao = DateTime.Now;
 
-            if (!ModelState.IsValid)
-            {
-                if (usuario == null)
-                {
-                    TempData["Mensagem"] = "Você precisa estar autenticado!";
-                }
-                else
-                {
-                    TempData["Mensagem"] = "Todos os campos são obrigatórios!";
-                }
 
+            if (usuario == null)
+            {
+                TempData["Mensagem"] = "Você precisa estar autenticado!";
                 return RedirectToAction("FichaMembro", "Membro", new { id = comentario.IdMembro });
             }
+            else if (!ModelState.IsValid)
+            {
+                TempData["Mensagem"] = "Todos os campos são obrigatórios!";
+                return RedirectToAction("FichaMembro", "Membro", new { id = comentario.IdMembro });
+            }
+
             comentario.IdUsuario = usuario.Id;
 
             comentarioRepositorio.Criar(comentario);
@@ -112,6 +111,10 @@ namespace FichaTecnica.Controllers
             {
                 comentario.Estado = Estado.INATIVO;
                 comentarioRepositorio.AtualizarComentario(comentario);
+            }
+           else
+            {
+                TempData["Mensagem"] = "Você não possui permissão para excluir este comentário";
             }
 
             return RedirectToAction("FichaMembro", "Membro", new { id = comentario.IdMembro });

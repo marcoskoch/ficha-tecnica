@@ -57,5 +57,10 @@ namespace FichaTecnica.Tests.Mocks
         {
             throw new NotImplementedException();
         }
+
+        public IList<Projeto> BuscarPorMembro(int idMembro)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
