@@ -18,6 +18,10 @@ namespace FichaTecnica.Models
         public int TotalComentarioNegativo { get; set; }
         public GraficoAtividadesModel LinksGithub { get; set; }
         public DateTime DataUltimoCommit { get; set; }
+        public string CommitSHA { get; set; }
+        public string CommitLink { get; set; }
+        public string Commitmenssage { get; set; }
+
 
         public MembroDetalheProjetoModel(Membro entity)
         {
