@@ -35,7 +35,6 @@ namespace FichaTecnica.Controllers
                 membroDetalheProjetoModel.LinksGithub = new GraficoAtividadesModel(link);
                 detalhesMembros.Add(membroDetalheProjetoModel);
 
-                //TODO: refatorar
                 List<Comentario>comentarios = dataBaseComentario.BuscarComentariosPorMembro(membroDetalheProjetoModel.Id);             
                 foreach(var comentario in comentarios)
                 {

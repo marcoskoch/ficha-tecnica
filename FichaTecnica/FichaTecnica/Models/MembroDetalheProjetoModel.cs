@@ -17,6 +17,7 @@ namespace FichaTecnica.Models
         public int TotalComentariosPosivo { get; set; }
         public int TotalComentarioNegativo { get; set; }
         public GraficoAtividadesModel LinksGithub { get; set; }
+        public DateTime DataUltimoCommit { get; set; }
 
         public MembroDetalheProjetoModel(Membro entity)
         {
