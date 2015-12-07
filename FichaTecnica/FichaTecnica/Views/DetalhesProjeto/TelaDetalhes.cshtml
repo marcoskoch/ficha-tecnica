@@ -65,7 +65,6 @@
                 var commitList = [];
 
                 model.Links.forEach(function(l) {
-
                     var localStorageCommits = localStorage.getItem('latestCommits'.concat(membro.Id.toString()));
 
                     if(localStorageCommits == null || localStorageCommits == '[]') {
@@ -116,14 +115,21 @@
                     return 0;
                 };
 
+                function removeEspacos(membro){
+                    
+                    membro.Nome = membro.Nome.replace(/\s/g, "XXXXXX") ;
+                }
+
+                function atribuiEspacos(membro){
+                    membro.Nome = membro.Nome.replace(/XXXXXX/g, ' ');
+                }
 
                 setTimeout(function() {
                     membros.forEach(function (membro) {
-
+                        removeEspacos(membro);
                         $('<div><div/>').attr('id', ("Cartao"+ membro.Nome))
                         .addClass('Cartao hvr-push hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active')
                         .appendTo('#membrosProjeto');
-
                         var caminhodivCartao = "Cartao" + (membro.Nome);
 
                         $('<div></div>').attr('id',"content"+membro.Nome)
@@ -147,10 +153,12 @@
                         .appendTo('#'+caminhodivContent);
 
                         var caminhodivCargo = "Cargo" +  (membro.Nome);
-
+                        
+                        atribuiEspacos(membro);
                         $('<p></p>')
                         .html('Nome: ' + membro.Nome)
                         .appendTo('#'+caminhodivCargo);
+                        removeEspacos(membro);
 
                         $('<p></p>')
                        .html('Email: '+ membro.Email)
