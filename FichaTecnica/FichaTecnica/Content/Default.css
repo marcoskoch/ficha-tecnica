@@ -1,7 +1,13 @@
-﻿.top30
+﻿body
 {
-	margin-top: 30px;
+	background: #FFFCF9;
 }
+
+.top10 { margin-top: 10px; }
+.top20 { margin-top: 20px; }
+.top30 { margin-top: 30px; }
+.top40 { margin-top: 40px; }
+.top50 { margin-top: 50px; }
 
 .img-membro
 {
@@ -91,11 +97,62 @@
 	border: none;
 	margin-top: -20px;
 }
+
 .imagem
 {
     width: 120px;
 }
+
 .imagem img
 {
     max-width: 100%;
+}
+
+.login-content
+{
+	margin-top: 200px;
+}
+
+.logo
+{
+	display: block;
+	margin: 0 auto;
+	width: 300px;
+	height: 100px;
+	background: url('Image/logo.png');
+}
+
+.navbar-custom
+{
+	background: #6D435A;
+}
+
+footer
+{
+	background: #352D39;
+	color: #6969B3;
+}
+
+.fundo-login
+{
+	background-image: url('Image/equipe.jpg');
+   	background-repeat:no-repeat;
+   	-o-background-size:100% auto;
+	-webkit-background-size:100% auto;
+	-moz-background-size:100% auto;
+	background-size:100% auto;
+   	position: relative;
+   	overflow: hidden;
+}
+
+.destaque-login
+{
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 45%;
+	height: 900px;
+	background: #000;
+	opacity: 0.5;
 }
