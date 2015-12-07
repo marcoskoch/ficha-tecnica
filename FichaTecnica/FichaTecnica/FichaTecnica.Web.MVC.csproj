@@ -193,6 +193,7 @@
     <Content Include="Scripts\showdown.min.js.map" />
     <Content Include="Views\Shared\_Comentario.cshtml" />
     <Content Include="Views\Projeto\CadastroProjeto.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
