@@ -59,34 +59,47 @@
 
             var membros = @Html.Raw(Json.Encode(Model.MembrosDoProjeto));
             
+
             membros.forEach(function (membro) { 
                 var model = (membro.LinksGithub);
                 var commitList = [];
 
                 model.Links.forEach(function(l) {
-                    $.get(model.URLBaseAPI + l.URL + 'commits')
-                        .done(function (response) {
-                            response.forEach(function (i) {
-                                commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
 
+                    var localStorageCommits = localStorage.getItem('latestCommits'.concat(membro.Id.toString()));
+
+                    if(localStorageCommits == null || localStorageCommits == '[]') {
+                        $.get(model.URLBaseAPI + l.URL + 'commits')
+                            .done(function (response) {
+                                response.forEach(function (i) {
+                                    commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
+
+                                })
                             })
-                        })
-                    .always(function() {
-                        commitList.sort(function (left, right) { return left.date < right.date })
-                        commitList = commitList.slice(0, 1);
-
-                        commitList.forEach(function(commit) {
-                            var timeStamp  = new Date(commit.date);
-                            membro.DataUltimoCommit = Date.parse(timeStamp);
-
-                            membro.CommitSHA = commit.sha;
-                            membro.CommitLink = commit.link;
-                            membro.Commitmenssage = commit.message;
-
+                        .always(function() {
+                            atribuiValoresGitHubAoMembro(commitList,membro);
                         });
-                    });
+                    }
+                    else{
+                        commitList = JSON.parse(localStorageCommits);
+                        atribuiValoresGitHubAoMembro(commitList,membro);
+                    }
                 });
-            })
+            });
+            
+            function atribuiValoresGitHubAoMembro(commitList, membro){
+                commitList.sort(function (left, right) { return left.date < right.date })
+                commitList = commitList.slice(0, 1);
+                localStorage.setItem('latestCommits'.concat(membro.Id), JSON.stringify(commitList));
+                commitList.forEach(function(commit) {
+                    var timeStamp  = new Date(commit.date);
+                    membro.DataUltimoCommit = Date.parse(timeStamp);
+
+                    membro.CommitSHA = commit.sha;
+                    membro.CommitLink = commit.link;
+                    membro.Commitmenssage = commit.message;
+                    })
+                };
                 
             setTimeout(function(){
                 membros.sort(compare);
@@ -226,6 +239,12 @@
                                 })
    
                 }, 2000);
+
+            
+                setInterval(function() {
+                    localStorage.clear();
+                }, 1000 * 60 * 10)
+
         </script>
     }
 </body>
