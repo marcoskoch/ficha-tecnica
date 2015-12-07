@@ -1,6 +1,22 @@
 ﻿body
 {
 	background: #FFFCF9;
+	color: #352D39;
+}
+
+a
+{
+	color: #6D435A;
+}
+
+a:hover
+{
+	color: #352D39;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, p 
+{
+	color: #352D39;
 }
 
 .top10 { margin-top: 10px; }
@@ -124,13 +140,24 @@
 
 .navbar-custom
 {
-	background: #6D435A;
+	background: #FF6978;
+	color: #FFFCF9;
+}
+
+.navbar-custom a 
+{
+	color: #FFFCF9;
 }
 
 footer
 {
 	background: #352D39;
-	color: #6969B3;
+	color: #FFFCF9;
+}
+
+footer p 
+{
+	color: #FFFCF9;
 }
 
 .fundo-login
