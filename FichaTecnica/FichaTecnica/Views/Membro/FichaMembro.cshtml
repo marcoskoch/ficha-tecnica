@@ -27,18 +27,64 @@ ViewBag.Title = "FichaMembro";
     </div>
 }
 
-<h2>Ficha Técnica do @Model.Nome</h2>
+
 
 <div class="row">
-	<div class="col-md-2 col-md-offset-5 img-membro">
-		<img src="~/Upload/img/@Model.Foto" alt="..." class="img-circle">
+	<div class="col-md-2 img-membro">
+		<img src="~/Upload/img/@Model.Foto" alt="..." class="img-thumbnail">
 	</div>
+    <h4>Ficha Técnica de</h4>
+    <h2>@Model.Nome</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-4 membro-dados">
+        <h3>Dados Pessoais</h3>
+        <p>@Model.Email</p>
+        <p>
+            Fone - @if (Model.Telefone != null) { @Model.Telefone; }
+        </p>
+        <p>@Model.Cargo</p>
+        <p>@Model.DataDeNascimento.Date.ToString("dd/MM/yyyy") - @Model.Idade anos</p>
+        <p>Projeto Renner</p>
+        <p>Criação @Model.DataCriacao.Date.ToString("dd/MM/yyyy")</p>
+    </div>
+    <div class="col-md-4 membro-projetos">
+        <h3>Projetos</h3>
+    </div>
+    <div class="col-md-4 membro-qualificacao">
+        <h3>Qualificação</h3>
+        <h5>Média: <span id="media-commits"></span> commits / dia</h5>
+        <p>Comentários</p>
+        <div class="tag-comentario positivo"></div>
+        <div class="total-positivo" id="total-positivo">0</div>
+        <div class="tag-comentario negativo"></div>
+        <div class="total-negativo" id="total-negativo">0</div>
+    </div>
+</div>
+
+<div class="row">
+    <h2>Últimos Commits</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>07/12/2015</td>
+                <td><a href="https://api.github.com/repos/bernardobrezende/turborango/commits/9a8f0c5aa9dd9c6f984385955d0c3b17e3a2f224">9a8f0c5a</a> chore(gitignore): adicionar arquivos DS_Store.</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div class="row top30" >
 	<div class="col-md-9 comentarios">
 		<div id="comentarios" class="row">
-
+        
 		</div>
 	</div>
 	<div class="col-md-3 dados-membro">
