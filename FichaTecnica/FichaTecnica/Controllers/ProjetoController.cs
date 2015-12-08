@@ -22,10 +22,9 @@ namespace FichaTecnica.Controllers
         public ActionResult CadastroProjeto()
         {
             UsuarioLogado usuarioLogado = (UsuarioLogado)Session["USUARIO_LOGADO"];
-            Usuario usuario = usuarioRepositorio.BuscarPorId(usuarioLogado.Id);
             ProjetoModel model = new ProjetoModel();
 
-            model.Usuarios.Add(usuario);
+            model.IdUsuario = usuarioLogado.Id;
 
             return View(model);
         }
@@ -39,9 +38,11 @@ namespace FichaTecnica.Controllers
                 {
                     Nome = model.Nome,
                     Descricao = model.Descricao,
-                    DataInicio = DateTime.Now,
-                    Usuarios = model.Usuarios
+                    DataInicio = DateTime.Now
                 };
+
+                Usuario usuario = usuarioRepositorio.BuscarPorId(model.IdUsuario);
+                projeto.Usuarios.Add(usuario);
 
                 var id = dataBase.CadastrarNovoProjeto(projeto);
 

@@ -48,11 +48,18 @@ namespace FichaTecnica.Repositorio.EF
             return db.Projeto.Where(p => p.Nome.Contains(term)).ToList();
         }
 
-        public int CadastrarNovoProjeto(Projeto Projeto)
+        public int CadastrarNovoProjeto(Projeto projeto)
         {
             using (db)
             {
-                db.Entry(Projeto).State = System.Data.Entity.EntityState.Added;
+                db.Entry(projeto).State = System.Data.Entity.EntityState.Added;
+                
+                foreach(Usuario user in projeto.Usuarios)
+                {
+                    db.Entry(user).State = System.Data.Entity.EntityState.Unchanged;
+                    db.Entry(user.Permissao).State = System.Data.Entity.EntityState.Unchanged;
+                }
+
                 return db.SaveChanges();
             }
         }

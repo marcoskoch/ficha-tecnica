@@ -22,6 +22,8 @@ namespace FichaTecnica.Models
         [StringLength(200)]
         public string Descricao { get; set; }
 
+        public int IdUsuario { get; set; }
+
         public List<Usuario> Usuarios { get; set; }
 
     }
