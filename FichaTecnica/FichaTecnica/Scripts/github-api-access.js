@@ -33,16 +33,21 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
             }).always(function() {
                 localStorage.setItem('avgCommits'.concat(id), totalCommits / days.length);
                 localStorage.setItem('latestCommits'.concat(id), JSON.stringify(commitList));
-
-                $('#media-commits').html(localStorage.getItem('avgCommits'.concat(id)));
+                appendAvgCommits();
                 appendComments();
             })
 }
 else {
     console.log(localStorageCommits);
     commitList = JSON.parse(localStorageCommits);
+    appendAvgCommits();
     appendComments();
 }
+
+function appendAvgCommits() {
+    $('#media-commits').html(localStorage.getItem('avgCommits'.concat(id)));
+}
+
 
 function appendComments() {
     commitList.sort(function (left, right) { return left.date < right.date })
