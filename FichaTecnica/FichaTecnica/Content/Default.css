@@ -275,3 +275,8 @@ footer p
 	float: left;
 	width: 65%;
 }
+
+.imagem-projeto ul li
+{
+    color: #FFFCF9 !important;
+}
