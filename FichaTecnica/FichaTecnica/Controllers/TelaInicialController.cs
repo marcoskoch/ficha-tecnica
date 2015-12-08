@@ -12,12 +12,12 @@ using System.Web.Mvc;
 
 namespace FichaTecnica.Controllers
 {
+    [Autorizador]
     public class TelaInicialController : Controller
     {
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
         private IMembroRepositorio dataBaseMember = new MembroRepositorio();
 
-        [Autorizador]
         public ActionResult TelaInicial()
         {
             UsuarioLogado usuarioLogado = HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;

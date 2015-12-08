@@ -2,6 +2,7 @@
 using FichaTecnica.Dominio.Repositorio;
 using FichaTecnica.Models;
 using FichaTecnica.Repositorio.EF;
+using FichaTecnica.Seguranca.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FichaTecnica.Controllers
 {
+    [Autorizador]
     public class DetalhesProjetoController : Controller
     {
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
