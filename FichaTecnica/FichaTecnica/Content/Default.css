@@ -14,6 +14,19 @@ a:hover
 	color: #352D39;
 }
 
+.btn-custom
+{
+	background-color: #FF6978;
+    border-color: #a94442;
+    color: #FFFCF9;
+}
+
+.btn-custom:hover
+{
+	background-color: #a94442;
+	color: #FFFCF9;
+}
+
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, p 
 {
 	color: #352D39;
@@ -80,12 +93,11 @@ a:hover
 
 .tag-comentario
 {
-	top: 9.5%;
     display: block;
-    position: absolute;
+    float: left;
     width: 32px;
     height: 32px;
-    right: 12%;
+    margin-top: 5px;
 }
 
 .positivo
@@ -95,7 +107,7 @@ a:hover
 
 .negativo
 {
-    top: 14.5%;
+	margin-left: 10px;
 	background: url('data:image/jpeg;base64, iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADKUlEQVRYR7VXW27aQBQ915RKFUalKyhdQYkU+K0D/S9ZQZIVhKwgZAUlKyhZQch/AecXIsVZQekOqCCqFGqfagwmPMyMoal/fefec899zBnBFt9jpVQl+QWCPIAcIIXpcXoAhiAGQrYy3bubpG7FZPjbKeR9K31OoCoiOZN9CIccCtDKBJMzcb2h7owWwKhcqgM8TRp4NZACYkEamU7vYhOIWAB0CrnHVLr7THGSvHU29DL+5CCOjTUAY6dYoIXurllvghGWJcCB7fZVv8y/JQAq87GV/vHSwaNoCoQdTD4sMjEH8PK0b+TCs9v9vejvHIBqOBGc/2u1k5wncZHt9OrKNgSgRu2Plb7/X9THTUdUihDAuFJsAnKUBP3L2fDKbvePQwCjSnEokLcbnRMPBIci8ikJAJK3AslB8FE3FdlO/52E6xW43hycJ3an3wyZcooFpOReC8LnXjRq43LxGCLfNEvoULT0Ez/tTk/t/fk3KhfdTUwQuMm2e9VF+3G5NIDgfSwI8lK0DsmhoikxAPI22+k7S/aa8oalGpdLnq5WQtSjXW4s13SsDjPtXivsLeNo05NxpURjYxEDCIfJ7wZ6YNiES+WLi5MMgBHh7gbGEuzuOsFJ4kHbhPEueCWQFn0O5uPmFAuSkjzB6jYLbdqESbcgeZkJJnWTwgkvNStdh8ipkQM1hqbOJvgLwmr2+5276nD0ed955QvfdPu3q/+U3wBs6jasmhjjKqYEB4vBp9sNR4AszTtAF5Cm3e5dRWAUQKHVjWNCJZZt93P6y4jBmd25aygHM71wvR542T2Blu0/nUSlGpf3axDr6zqIhcsoVEKp9GCVrij77cXKswaMY0Flb/uTvAJpECT0JGCdltRMmcdk6ErABi2pry6wNUESHTatZWNXJzEgHuxOb/agmSmi6NymUiTxm8RmkfrIPl6Wp+BqBUqSaCs2Krj4cLSyfJGJR+u1q7slt8JAPGSCJyfRw2T57i/VIaztyka4xCiNSAHH3oamTGYj2AgfpzrduOAopFs9Tv1JzbS6ja/jRYDTtc0qifyS6IxEK+CJiBsJElNy6v9f1U+yRROk8gkAAAAASUVORK5CYII=');
 }
 
@@ -133,9 +145,9 @@ a:hover
 {
 	display: block;
 	margin: 0 auto;
-	width: 300px;
-	height: 100px;
-	background: url('Image/logo.png');
+	width: 450px;
+	height: 250px;
+	background: url('Image/logo-login.png');
 }
 
 .navbar-custom
@@ -172,6 +184,11 @@ footer p
    	overflow: hidden;
 }
 
+.fundo-login label 
+{
+	color: #FFFCF9;
+}
+
 .destaque-login
 {
 	display: block;
@@ -182,4 +199,44 @@ footer p
 	height: 900px;
 	background: #000;
 	opacity: 0.5;
+}
+
+.membro-dados, .membro-projetos{
+  border-right: 1px solid;
+  border-color: #352D39;
+  min-height: 250px;
+}
+
+
+
+.total-positivo, .total-negativo
+{
+	display: block; 
+	float: left;
+	font-size: 28px;
+	color:green;
+	text-indent: 5px;
+}
+
+.total-negativo
+{
+	color: red;
+}
+
+.hr-membro
+{
+	display: block;
+	float: left;
+	width: 100%;
+	height: 2px;
+	background: #352D39;
+}
+
+.navbar-logo
+{
+	float: left;
+    height: 50px;
+    margin-right: 10px;
+    font-size: 18px;
+    line-height: 20px;
 }
