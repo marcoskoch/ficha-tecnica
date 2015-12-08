@@ -231,11 +231,18 @@
                             .addClass('mudarCorFicha');
                         }
 
-                        var dia = diaUltimoCommit.getUTCDay();
-                        var mes = diaUltimoCommit.getUTCMonth() + 1;
+                        function addZero(i) {
+                            if (i < 10) {
+                                i = "0" + i;
+                            }
+                            return i;
+                        }
+
+                        var mes = addZero(diaUltimoCommit.getUTCMonth() + 1);
+                        var dia = addZero(diaUltimoCommit.getUTCDate());
                         var ano = diaUltimoCommit.getUTCFullYear();
-                        var hora = diaUltimoCommit.getUTCHours();
-                        var minutos = diaUltimoCommit.getUTCMinutes();
+                        var hora = addZero(diaUltimoCommit.getUTCHours());
+                        var minutos = addZero(diaUltimoCommit.getMinutes());
 
                         var dataEHoraUltimoCommit = dia + '/' + mes + '/' + ano + ' - ' + hora + ':' + minutos;
 
