@@ -37,7 +37,7 @@
 
 .mudarCorFicha{
     background-color: #6D435A;
-    color: #FFF;
+    color: #B1EDE8;
 }
 
 .content{
@@ -133,6 +133,10 @@
 .resumoMembro-nomeMembro{
     font-size: 25px;
     color: #FFF;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: ltr;
 }
 
 .imagem-projeto {
@@ -148,4 +152,19 @@
     padding: 9%;
     font-size: 70px;
     color: #FFF;
+}
+
+.Cartao p
+{
+    color: #6D435A;
+}
+
+.mudarCorFicha p 
+{
+    color: #FFFCF9;
+}
+
+.col-centered{
+    display: block;
+    margin: 0 auto;
 }
