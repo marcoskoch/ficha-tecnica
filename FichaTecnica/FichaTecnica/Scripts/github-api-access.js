@@ -10,26 +10,25 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
 
     $.get('https://api.github.com/users/' + username + '/events')
             .done(function (response) {
-                response.forEach(function(r) {
+                response.forEach(function (r) {
+                    var lastDay = r.created_at.slice(0, 10);
 
                     if (r.type == 'PushEvent') {
 
-                        if (!days.includes(r.created_at.slice(0, 10))) {
-                            days.push(r.created_at.slice(0, 10));
+                        if (!days.includes(lastDay)) {
+                            days.push(lastDay);
                         }
 
                         totalCommits += r.payload.commits.length;
 
                         if (repos.includes('/' + r.repo.name + '/')) {
-                            r.payload.commits.forEach(function (commit) { commitList.push(commit) })
+                            r.payload.commits.forEach(function(commit) { commit.date = lastDay; commitList.push(commit) })
                         }
                     }
                 })
             }).always(function() {
                 localStorage.setItem('avgCommits'.concat(id), totalCommits / days.length);
                 localStorage.setItem('latestCommits'.concat(id), JSON.stringify(commitList));
-
-                console.log(commitList);
 
                 $('#media-commits').html(localStorage.getItem('avgCommits'.concat(id)));
                 appendComments();
@@ -48,11 +47,12 @@ function appendComments() {
     $('#commits').html('');
 
     commitList.forEach(function (commit) {
-        $('#commits')
-            .append($('<div class="bloco-commit">')
-                .append($('<p>')
+        $('#commit-list')
+            .append($('<tr>')
+                .append($('<td>').html(commit.date))
+                .append($('<td>')
                     .append($('<a>').html(commit.sha.slice(0, 8)).attr('href', commit.url))
-                    .append($('<p>').html(commit.message)))
+                    .append($('<p>').text(commit.message)))
         )
     })
 }
