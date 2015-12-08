@@ -99,6 +99,23 @@
                     membro.Nome = membro.Nome.replace(/XZYXZY/g, ' ');
                 }
 
+                function addZero(i) {
+                    if (i < 10) {
+                        i = "0" + i;
+                    }
+                    return i;
+                }
+
+                function montaData(diaUltimoCommit){
+                    var mes = addZero(diaUltimoCommit.getUTCMonth() + 1);
+                    var dia = addZero(diaUltimoCommit.getUTCDate());
+                    var ano = diaUltimoCommit.getUTCFullYear();
+                    var hora = addZero(diaUltimoCommit.getUTCHours());
+                    var minutos = addZero(diaUltimoCommit.getMinutes());
+
+                    return dataEHoraUltimoCommit = dia + '/' + mes + '/' + ano + ' - ' + hora + ':' + minutos;   
+                }
+
                 setTimeout(function() {
                     membros.forEach(function (membro) {
                         removeEspacos(membro);
@@ -236,27 +253,14 @@
                             .append(warningIcon);
                         }
 
-                        function addZero(i) {
-                            if (i < 10) {
-                                i = "0" + i;
-                            }
-                            return i;
-                        }
-
-                        var mes = addZero(diaUltimoCommit.getUTCMonth() + 1);
-                        var dia = addZero(diaUltimoCommit.getUTCDate());
-                        var ano = diaUltimoCommit.getUTCFullYear();
-                        var hora = addZero(diaUltimoCommit.getUTCHours());
-                        var minutos = addZero(diaUltimoCommit.getMinutes());
-
-                        var dataEHoraUltimoCommit = dia + '/' + mes + '/' + ano + ' - ' + hora + ':' + minutos;
+                        dataEHoraUltimoCommit = montaData(diaUltimoCommit);   
 
                         var caminhoDataUltimoCommit = "DataUltimoCommit" + (membro.Nome);
                         $('<p></p>')
                             .attr('style', 'float:left')
                         .html(dataEHoraUltimoCommit)
                         .appendTo('#'+caminhoDataUltimoCommit);
-
+        
 
                         $(document).ready(function(){
                             $('#Cargo'+ membro.Nome).click(function (){
