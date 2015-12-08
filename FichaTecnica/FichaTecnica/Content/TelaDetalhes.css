@@ -154,12 +154,12 @@
     color: #FFF;
 }
 
-.Cartao p
+.Cartao p, .divMenssagemUltimoCommit
 {
     color: #6D435A;
 }
 
-.mudarCorFicha p 
+.mudarCorFicha p, .mudarCorFicha .divMenssagemUltimoCommit
 {
     color: #FFFCF9;
 }
