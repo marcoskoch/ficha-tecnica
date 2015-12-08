@@ -16,11 +16,8 @@ namespace FichaTecnica.Repositorio.EF
         {
             using (db)
             {
-                var projetos = from projeto in db.Projeto
-                               where projeto.IdUsuario == idUsuario
-                               select projeto;
-                        
-                return projetos.ToList();
+                return db.Projeto.Include("Usuarios")
+                    .Where(p => p.Usuarios.FirstOrDefault(u => u.Id == idUsuario) != null).ToList();
             }
         }
 
@@ -28,7 +25,8 @@ namespace FichaTecnica.Repositorio.EF
         {
             using (db)
             {
-                return db.Projeto.Include("Membros").Where(p => p.Membros.FirstOrDefault(m => m.Id == idMembro) != null).ToList();
+                return db.Projeto.Include("Membros")
+                    .Where(p => p.Membros.FirstOrDefault(m => m.Id == idMembro) != null).ToList();
             }
         }
 

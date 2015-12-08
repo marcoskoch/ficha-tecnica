@@ -10,12 +10,10 @@ namespace FichaTecnica.Tests.Mocks
 {
     public class TelaInicialMock : IProjetoRepositorio
     {
-        public IList<Projeto> BuscarProjetosDoUsuario(int IDUsuario)
+        public IList<Projeto> BuscarProjetosDoUsuario(int idUsuario)
         {
-            var Queryable = from projeto in DataBase()
-                            where projeto.IdUsuario == IDUsuario
-                            select projeto;
-            return Queryable.ToList();
+            return DataBase()
+                    .Where(p => p.Usuarios.FirstOrDefault(u => u.Id == idUsuario) != null).ToList();
 
         }
 
@@ -29,9 +27,7 @@ namespace FichaTecnica.Tests.Mocks
                 Nome = "Projeto de Mock",
                 DataInicio = new DateTime(12 / 12 / 2015),
                 Descricao = "Projeto De Mock Para Teste",
-                Usuario = new Usuario(),
-                IdUsuario = 1
-
+                Usuarios = new List<Usuario>() { new Usuario() { Id = 1} },
             };
 
             projetos.Add(projeto1);

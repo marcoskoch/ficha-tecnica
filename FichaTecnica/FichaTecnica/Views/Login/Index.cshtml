@@ -7,13 +7,7 @@ ViewBag.Title = "Login";
 <div class="destaque-login"></div>
 
 
-    @if (TempData["MensagemErro"] != null)
-    {
-    <div style="margin-top: 10px;" class="alert alert-danger">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>Falha!</strong> @TempData["MensagemErro"]
-    </div>
-}
+    
 
 @if (ViewBag.UsuarioLogado != null)
 {
@@ -34,6 +28,8 @@ else
 
         <div class="col-sm-4 pull-right"> 
 
+           
+
             <div class="form-group">
                 @Html.LabelFor(m => m.Email)
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
@@ -50,6 +46,14 @@ else
                     <button type="submit" class="btn btn-custom">Entrar</button>
                 </div>
             </div>
+
+            @if (TempData["MensagemErro"] != null)
+            {
+                <div style="margin-top: 10px;" class="alert alert-danger mensagem-erro">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Falha!</strong> @TempData["MensagemErro"]
+                </div>
+            }
 
         </div>
 

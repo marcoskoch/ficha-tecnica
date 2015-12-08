@@ -16,14 +16,16 @@ namespace FichaTecnica.Controllers
     public class ProjetoController : Controller
     {
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
+        private IUsuarioRepositorio usuarioRepositorio = new UsuarioRepositorio();
 
         // GET: Projeto
         public ActionResult CadastroProjeto()
         {
-            UsuarioLogado usuario = (UsuarioLogado)Session["USUARIO_LOGADO"];
+            UsuarioLogado usuarioLogado = (UsuarioLogado)Session["USUARIO_LOGADO"];
+            Usuario usuario = usuarioRepositorio.BuscarPorId(usuarioLogado.Id);
             ProjetoModel model = new ProjetoModel();
 
-            model.IdUsuario = usuario.Id;
+            model.Usuarios.Add(usuario);
 
             return View(model);
         }
@@ -38,7 +40,7 @@ namespace FichaTecnica.Controllers
                     Nome = model.Nome,
                     Descricao = model.Descricao,
                     DataInicio = DateTime.Now,
-                    IdUsuario = model.IdUsuario
+                    Usuarios = model.Usuarios
                 };
 
                 var id = dataBase.CadastrarNovoProjeto(projeto);

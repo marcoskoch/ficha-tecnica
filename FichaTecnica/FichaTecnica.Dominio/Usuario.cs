@@ -19,6 +19,8 @@ namespace FichaTecnica.Dominio
 
         public Permissao Permissao { get; set; }
 
+        public ICollection<Projeto> Projetos { get; set; }
+
         public int IdPermissao { get; set; }
 
     }

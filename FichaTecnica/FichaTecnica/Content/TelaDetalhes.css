@@ -159,7 +159,7 @@
     color: #6D435A;
 }
 
-.mudarCorFicha p, .mudarCorFicha .divMenssagemUltimoCommit
+.mudarCorFicha p, .mudarCorFicha .divMenssagemUltimoCommit, .mudarCorFicha .campos-Negativo, .mudarCorFicha .campos-Positivo
 {
     color: #FFFCF9;
 }

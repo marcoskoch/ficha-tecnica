@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201512061957443_AddEstadoAoComentario.Designer.cs">
       <DependentUpon>201512061957443_AddEstadoAoComentario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512081610282_AddProjeto_Usuario.cs" />
+    <Compile Include="Migrations\201512081610282_AddProjeto_Usuario.Designer.cs">
+      <DependentUpon>201512081610282_AddProjeto_Usuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjetoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512061957443_AddEstadoAoComentario.resx">
       <DependentUpon>201512061957443_AddEstadoAoComentario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512081610282_AddProjeto_Usuario.resx">
+      <DependentUpon>201512081610282_AddProjeto_Usuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
