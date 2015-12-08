@@ -11,7 +11,7 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
     $.get('https://api.github.com/users/' + username + '/events')
             .done(function (response) {
                 response.forEach(function (r) {
-                    var lastDay = r.created_at.slice(0, 10);
+                    var lastDay = montaData(new Date(r.created_at));
 
                     if (r.type == 'PushEvent') {
 
