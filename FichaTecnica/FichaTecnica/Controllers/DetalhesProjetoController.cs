@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace FichaTecnica.Controllers
 {
-    [Autorizador]
+
     public class DetalhesProjetoController : Controller
     {
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
@@ -19,6 +19,7 @@ namespace FichaTecnica.Controllers
         private IUsuarioRepositorio dataBaseUsuario = new UsuarioRepositorio();
         private IComentarioRepositorio dataBaseComentario = new ComentarioRepositorio();
 
+        [Autorizador]
         public ActionResult TelaDetalhes(int Id)
         {
             Projeto projeto = dataBase.BuscarProjetoPorId(Id);

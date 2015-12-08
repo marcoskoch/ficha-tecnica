@@ -12,12 +12,13 @@ using System.Web.Mvc;
 
 namespace FichaTecnica.Controllers
 {
-    [Autorizador]
+    
     public class TelaInicialController : Controller
     {
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
         private IMembroRepositorio dataBaseMember = new MembroRepositorio();
 
+        [Autorizador]
         public ActionResult TelaInicial()
         {
             UsuarioLogado usuarioLogado = HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
@@ -40,6 +41,7 @@ namespace FichaTecnica.Controllers
             return View(model);
         }
 
+        [Autorizador]
         public ActionResult ProjetoDetalhe(int idProjeto)
         {
             return null;

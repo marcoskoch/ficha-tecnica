@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace FichaTecnica.Controllers
 {
-    [Autorizador]
+    
     public class MembroController : Controller
     {
 
@@ -20,7 +20,7 @@ namespace FichaTecnica.Controllers
         private IProjetoRepositorio projetoRepositorio = new ProjetoRepositorio();
         private IComentarioRepositorio comentarioRepositorio = new ComentarioRepositorio();
 
-
+        [Autorizador]
         public ActionResult FichaMembro(int id)
         {
             var membroModel = new DetalheMembroModel(membroRepositorio.BuscarPorId(id));
@@ -37,6 +37,7 @@ namespace FichaTecnica.Controllers
             return View(membroModel);
         }
 
+        [Autorizador]
         public JsonResult MembroAutoComplete(string term)
         {
             IList<Membro> MembrosEncontrados = null;
@@ -55,6 +56,7 @@ namespace FichaTecnica.Controllers
             return Json(json, JsonRequestBehavior.AllowGet); 
         }
 
+        [Autorizador]
         public JsonResult ProjetoAutoComplete(int idMembro = 0)
         {
             IList<Projeto> projetosEncontrados = null;
@@ -73,6 +75,7 @@ namespace FichaTecnica.Controllers
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
+        [Autorizador]
         public ActionResult AdicionarComentario(ComentarioModel model)
         {
             Comentario comentario = new Comentario();

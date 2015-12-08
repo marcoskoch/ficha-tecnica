@@ -28,6 +28,7 @@ namespace FichaTecnica.Controllers
             return View(model);
         }
 
+        [Autorizador(Roles = "Gerente")]
         public ActionResult Salvar(ProjetoModel model)
         {
             if (ModelState.IsValid)
