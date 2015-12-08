@@ -33,9 +33,15 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <form class="navbar-brand fontColor-Black" method="get" action="@Url.Action("MembroBusca", "Membro")">
-                            <input type="text" id="NomeMembro" placeholder="Nome do Membro" name="Nome">
-                            <input type="submit" id="btnProcurar" name="Membros" value="Procurar">
+                        <form class="navbar-form" role="search" method="get" action="@Url.Action("MembroBusca", "Membro")">
+                            <div class="input-group">
+                                <input type="text" class="form-control autocomplete" id="NomeMembro" placeholder="Nome do Membro" name="Nome">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit" id="btnProcurar" name="Membros" value="Procurar">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </form>
                     </li>
                 </ul>
@@ -49,7 +55,7 @@
             <p>&copy; @DateTime.Now.Year - O Ficha Técnica</p>
         </footer>
     </div>
-    
+
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
@@ -58,7 +64,7 @@
 
     @section Scripts {
         <script>
-            $("document").ready(function() {
+            $("document").ready(function () {
                 $("#NomeMembro").autocomplete({
                     minLength: 3,
                     source: '@Url.Action("MembroAutoComplete", "Membro")',
