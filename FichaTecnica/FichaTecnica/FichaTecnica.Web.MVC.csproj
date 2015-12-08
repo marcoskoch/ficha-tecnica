@@ -120,8 +120,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Default.css" />
     <Content Include="Content\EfeitosHover.css" />
+    <Content Include="Content\Image\Loading.gif" />
     <Content Include="Content\Image\negativo.png" />
     <Content Include="Content\Image\positivo.png" />
+    <Content Include="Content\octicons.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\TelaDetalhes.css" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
@@ -134,6 +136,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\octicons-local.ttf" />
+    <Content Include="Content\octicons.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\comment-access.js" />
     <Content Include="Scripts\github-api-access.js" />

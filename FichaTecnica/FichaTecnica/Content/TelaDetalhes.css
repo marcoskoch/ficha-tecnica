@@ -1,26 +1,51 @@
 ﻿body {
 }
 
+.nomeProjeto{
+    font-family:fantasy;
+    font-size: 45px;
+    color: #6D435A;
+}
+
+.infosProjeto{
+    font-family:fantasy;
+    font-size: 20px;
+}
+
+.labelMembros{
+     font-family:fantasy;
+     font-size: 30px;
+}
+
+.imagemHeader{
+    float:right;
+    padding-left:50px;
+}
+
 .Cartao{ 
     float:left;
     position: relative;
-    width: 45%;
-    padding-bottom: 40%;
+    width: 100%;
+    padding-bottom: 15%;
     margin:1.66%;
     border-radius: 15px 55px;
     overflow:hidden;
-    background-color: #ff8533;
+    background-color: #B1EDE8;
+    color: #FFF;
 }
 
 .mudarCorFicha{
-    background-color: #ff9999;
+    background-color: #6D435A;
+    color: #FFF;
 }
 
 .content{
     position:absolute;
     height:80%;
     width:90%; 
-    padding: 0% 0%;
+    padding-top: 0%;
+    padding-left: 0%;
+    color: #FFF;
 }
 
 .imagem{
@@ -29,22 +54,84 @@
 
 .campos{
     position: relative;
-    padding-top: 40%;
+    padding-top: 20%;
+    padding-right: 0%;
+    padding-left: 0%;
+    padding-bottom: 0%;
+    font-size: 15px;
+    color: #FFF;
+}
+
+.campos-Positivo{
+    display:inline-block;
+    padding-top: 0.55%;
     padding-right: 0%;
     padding-left: 5%;
     padding-bottom: 0%;
-    font-size: 15px;
+    margin-top: 2.88%;
+    margin-left: 42%;
+    font-size: 20px;
+    color: #FFF;
+}
+
+.campos-Negativo{
+    display:inline-block;
+    padding-top: 0.40%;
+    padding-right: 0%;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    margin-top: 0%;
+    margin-left: 2%;
+    margin-bottom: 0%;
+    font-size: 20px;
+    color: #FFF;
+    
+}
+
+.linhaVertical{
+    display:inline-block;
+    width: 1px; 
+    background-color: black; 
+    height: 150%; 
+    padding-left: 0.20%;
+    margin-left: 0%;
+    margin-right: 40%;
+
+}
+
+.divLateral{
+    display:inline-block;
+    position: absolute;
+    padding-top: 3%;
+    padding-left:0%;
+    padding-right:40%;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.divMenssagemUltimoCommit{
+    display:inline-block;
+    position: absolute;
+    padding-top: 3%;
+    margin-left: 0%;
+    padding-left: 10%;
+    color: #FFF;
 }
 
 .resumoMembro{
     position:absolute;
-    height:80%;
-    width:90%; 
-    padding-top: 10%;
-    padding-right: 0%;
-    padding-left: 30%;
+    padding-top: 2%;
+    padding-right: 58%;
+    padding-left: 12%;
     padding-bottom: 0%;
     font-size: 20px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.resumoMembro-nomeMembro{
+    font-size: 25px;
+    color: #FFF;
 }
 
 .imagem-projeto {
@@ -60,34 +147,4 @@
     padding: 9%;
     font-size: 70px;
     color: #FFF;
-}
-
-.buttonFichaCompleta {
-    position: relative;
-    padding: 5px 5px;
-    margin: 0px 2px 2px 0px;
-    float: right;
-    border-radius: 10px;
-    font-family: 'Helvetica', cursive;
-    font-size: 20px;
-    color: #FFF;
-    text-decoration: none;  
-    background-color: #3498DB;
-    border-bottom: 5px solid #2980B9;
-    text-shadow: 0px -2px #2980B9;
-    /* Animation */
-    transition: all 0.1s;
-    -webkit-transition: all 0.1s;
-}
-
-.buttonFichaCompleta:hover, 
-.buttonFichaCompleta:focus {
-    text-decoration: none;
-    color: #fff;
-}
-
-.buttonFichaCompleta:active {
-    transform: translate(0px,5px);
-    -webkit-transform: translate(0px,5px);
-    border-bottom: 1px solid;
 }
