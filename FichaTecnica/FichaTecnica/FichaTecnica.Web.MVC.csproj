@@ -150,6 +150,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\members-access.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\projects-access.js" />
     <Content Include="Scripts\showdown.min.js" />
