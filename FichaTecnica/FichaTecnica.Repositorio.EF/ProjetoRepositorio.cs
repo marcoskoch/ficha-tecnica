@@ -34,7 +34,7 @@ namespace FichaTecnica.Repositorio.EF
         {
             using (db)
             {
-                return db.Projeto.Find(idProjeto);
+                return db.Projeto.Include("Usuarios").FirstOrDefault(p => p.Id == idProjeto);
             }
         }
 

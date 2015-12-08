@@ -38,7 +38,6 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
             })
 }
 else {
-    console.log(localStorageCommits);
     commitList = JSON.parse(localStorageCommits);
     appendAvgCommits();
     appendComments();
