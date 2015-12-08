@@ -2,6 +2,7 @@
 using FichaTecnica.Dominio.Repositorio;
 using FichaTecnica.Models;
 using FichaTecnica.Repositorio.EF;
+using FichaTecnica.Seguranca.Filters;
 using FichaTecnica.Seguranca.Model;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Web.Mvc;
 
 namespace FichaTecnica.Controllers
 {
+    [Autorizador(Roles = "Gerente")]
     public class ProjetoController : Controller
     {
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
@@ -28,6 +30,7 @@ namespace FichaTecnica.Controllers
             return View(model);
         }
 
+        [Autorizador(Roles = "Gerente")]
         public ActionResult Salvar(ProjetoModel model)
         {
             if (ModelState.IsValid)

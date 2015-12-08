@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace FichaTecnica.Controllers
 {
+    
     public class TelaInicialController : Controller
     {
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
@@ -40,6 +41,7 @@ namespace FichaTecnica.Controllers
             return View(model);
         }
 
+        [Autorizador]
         public ActionResult ProjetoDetalhe(int idProjeto)
         {
             return null;

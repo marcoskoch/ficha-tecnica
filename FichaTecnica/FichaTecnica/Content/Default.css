@@ -268,3 +268,10 @@ footer p
 }
 
 .ui-autocomplete { position: absolute; cursor: default; top: 50px !important}  
+
+.mensagem-erro
+{
+	display: block;
+	float: left;
+	width: 65%;
+}

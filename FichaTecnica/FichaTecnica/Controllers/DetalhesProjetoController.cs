@@ -2,6 +2,7 @@
 using FichaTecnica.Dominio.Repositorio;
 using FichaTecnica.Models;
 using FichaTecnica.Repositorio.EF;
+using FichaTecnica.Seguranca.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FichaTecnica.Controllers
 {
+
     public class DetalhesProjetoController : Controller
     {
         private IProjetoRepositorio dataBase = new ProjetoRepositorio();
@@ -17,19 +19,16 @@ namespace FichaTecnica.Controllers
         private IUsuarioRepositorio dataBaseUsuario = new UsuarioRepositorio();
         private IComentarioRepositorio dataBaseComentario = new ComentarioRepositorio();
 
-        public ActionResult TelaDetalhes(int id)
+        [Autorizador]
+        public ActionResult TelaDetalhes(int Id)
         {
-            Projeto projeto = dataBase.BuscarProjetoPorId(id);
-            List<Usuario> usuarios = new List<Usuario>();
+            Projeto projeto = dataBase.BuscarProjetoPorId(Id);
 
             IList<Membro> membrosDoProjeto = dataBaseMembro.BuscarMembroPorProjeto(projeto);
             membrosDoProjeto = dataBaseMembro.BuscarCargoMembros(membrosDoProjeto);
             projeto.Membros = membrosDoProjeto;
 
-            foreach(var usuario in projeto.Usuarios)
-            {
-                usuarios.Add(dataBaseUsuario.BuscarPorId(usuario.Id));
-            }
+            Usuario usuario = dataBaseUsuario.BuscarPorId(projeto.IdUsuario);
             
             List<MembroDetalheProjetoModel> detalhesMembros = new List<MembroDetalheProjetoModel>();
             foreach (var membro in membrosDoProjeto)
@@ -54,7 +53,7 @@ namespace FichaTecnica.Controllers
 
             TelaDetalhesModel model = new TelaDetalhesModel();
             model.Projeto = projeto;
-            model.Usuarios = usuarios;
+            model.Usuario = usuario;
             model.LiderTecnico = dataBaseMembro.BuscarLiderTecnicoDoProjeto(membrosDoProjeto);
             model.MembrosDoProjeto = detalhesMembros;
 
