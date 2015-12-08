@@ -222,3 +222,12 @@ footer p
 {
 	color: red;
 }
+
+.hr-membro
+{
+	display: block;
+	float: left;
+	width: 100%;
+	height: 2px;
+	background: #352D39;
+}
