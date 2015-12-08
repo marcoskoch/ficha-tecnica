@@ -22,7 +22,11 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
                         totalCommits += r.payload.commits.length;
 
                         if (repos.includes('/' + r.repo.name + '/')) {
-                            r.payload.commits.forEach(function(commit) { commit.date = lastDay; commitList.push(commit) })
+                            r.payload.commits.forEach(function (commit) {
+                                commit.url = r.repo.url.replace('https://api.github.com/repos/', gitInfo.URLBase + '/') + '/commit/' + commit.sha;
+                                commit.date = lastDay;
+                                commitList.push(commit);
+                            })
                         }
                     }
                 })
