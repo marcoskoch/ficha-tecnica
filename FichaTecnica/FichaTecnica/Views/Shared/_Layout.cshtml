@@ -47,9 +47,9 @@
                     @if(Session["USUARIO_LOGADO"] != null)
                     {
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="sair-dropdown" aria-haspopup="true" aria-expanded="false">Renan <span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="sair-dropdown" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index", "Login")">Sair</a></li>                             
+                                <li><a href="@Url.Action("Sair", "Login")">Sair</a></li>                             
                             </ul>
                         </li>
                     }
@@ -69,14 +69,15 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
     <script src="~/Scripts/showdown.min.js"></script>
+    <script>
+        var user = @Html.Raw(Json.Encode(Session["USUARIO_LOGADO"]));
+        $('#sair-dropdown').text(user.Nome);
+    </script>
     @RenderSection("Scripts", false)
 
     @section Scripts {
         <script>
-            var user = @Html.Raw(Json.Encode(Session["USUARIO_LOGADO"]));
-
             $("document").ready(function () {
-                $('#sair-dropdown').text(user.Nome);
 
                 $("#NomeMembro").autocomplete({
                     minLength: 3,

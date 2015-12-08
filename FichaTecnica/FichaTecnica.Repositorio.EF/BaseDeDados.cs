@@ -103,7 +103,12 @@ namespace FichaTecnica.Repositorio.EF
             Property(p => p.Nome).IsRequired().HasMaxLength(500);
             Property(p => p.DataInicio).IsRequired();
             Property(p => p.Descricao).IsRequired().HasMaxLength(8000);
-            HasRequired(p => p.Usuario).WithMany().HasForeignKey(x => x.IdUsuario);
+            HasMany(p => p.Usuarios).WithMany(u => u.Projetos)
+                .Map(m => {
+                    m.ToTable("Projeto_Usuario");
+                    m.MapLeftKey("IdProjeto");
+                    m.MapRightKey("IdUsuario");
+                });
         }
     }
 

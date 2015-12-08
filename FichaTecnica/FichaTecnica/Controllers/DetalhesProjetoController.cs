@@ -17,15 +17,19 @@ namespace FichaTecnica.Controllers
         private IUsuarioRepositorio dataBaseUsuario = new UsuarioRepositorio();
         private IComentarioRepositorio dataBaseComentario = new ComentarioRepositorio();
 
-        public ActionResult TelaDetalhes(int Id)
+        public ActionResult TelaDetalhes(int id)
         {
-            Projeto projeto = dataBase.BuscarProjetoPorId(Id);
+            Projeto projeto = dataBase.BuscarProjetoPorId(id);
+            List<Usuario> usuarios = new List<Usuario>();
 
             IList<Membro> membrosDoProjeto = dataBaseMembro.BuscarMembroPorProjeto(projeto);
             membrosDoProjeto = dataBaseMembro.BuscarCargoMembros(membrosDoProjeto);
             projeto.Membros = membrosDoProjeto;
 
-            Usuario usuario = dataBaseUsuario.BuscarPorId(projeto.IdUsuario);
+            foreach(var usuario in projeto.Usuarios)
+            {
+                usuarios.Add(dataBaseUsuario.BuscarPorId(usuario.Id));
+            }
             
             List<MembroDetalheProjetoModel> detalhesMembros = new List<MembroDetalheProjetoModel>();
             foreach (var membro in membrosDoProjeto)
@@ -50,7 +54,7 @@ namespace FichaTecnica.Controllers
 
             TelaDetalhesModel model = new TelaDetalhesModel();
             model.Projeto = projeto;
-            model.Usuario = usuario;
+            model.Usuarios = usuarios;
             model.LiderTecnico = dataBaseMembro.BuscarLiderTecnicoDoProjeto(membrosDoProjeto);
             model.MembrosDoProjeto = detalhesMembros;
 
