@@ -191,7 +191,7 @@
                         var caminhoParaDivLateral = "divLateral" + membro.Nome;
 
                         $('<div></div>')
-                        .addClass('mega-octicon octicon-mark-github')
+                        .addClass('mega-octicon octicon-mark-github corIconGitHub')
                         .appendTo('#'+caminhoParaDivLateral)
 
                         $('<div></div>').attr('id', "campos"+membro.Nome)
@@ -233,6 +233,9 @@
                             var caminhoParaFichaMembro = "Cartao" + (membro.Nome);
                             $('#'+caminhoParaFichaMembro)
                             .addClass('mudarCorFicha');
+
+                            $('#'+caminhoParaLinhaLateral)
+                            .addClass('mudarCorLinhaVertical');
                         }
 
                         function addZero(i) {

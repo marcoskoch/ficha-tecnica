@@ -29,14 +29,17 @@
     width: 100%;
     padding-bottom: 15%;
     margin:1.66%;
+    border:5px solid;
     border-radius: 15px 55px;
+    border-color: #729ea5;
     overflow:hidden;
-    background-color: #B1EDE8;
+    background-color: #d4e3e5;
     color: #FFF;
 }
 
 .mudarCorFicha{
-    background-color: #6D435A;
+    background-color: #ceb0c0;
+    border-color: #8e5875;
     color: #B1EDE8;
 }
 
@@ -91,13 +94,17 @@
 
 .linhaVertical{
     display:inline-block;
-    width: 1px; 
-    background-color: black; 
+    width: 5px; 
+    background-color: #729ea5; 
     height: 150%; 
     padding-left: 0.20%;
     margin-left: 0%;
     margin-right: 40%;
 
+}
+
+.mudarCorLinhaVertical{
+    background-color: #8e5875;
 }
 
 .divLateral{
@@ -167,4 +174,8 @@
 .col-centered{
     display: block;
     margin: 0 auto;
+}
+
+.corIconGitHub{
+    color:#FF6978;
 }
