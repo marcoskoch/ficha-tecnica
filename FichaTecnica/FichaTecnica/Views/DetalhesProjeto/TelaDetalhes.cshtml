@@ -103,7 +103,7 @@
                     membros.forEach(function (membro) {
                         removeEspacos(membro);
                         $('<div><div/>').attr('id', ("Cartao"+ membro.Nome))
-                        .addClass('Cartao hvr-push hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active')
+                        .addClass('Cartao')
                         .appendTo('#membrosProjeto');
                         var caminhodivCartao = "Cartao" + (membro.Nome);
 
@@ -230,12 +230,10 @@
                         var diasDiferenca = Math.round(Math.abs((diaAtual.getTime() - diaUltimoCommit.getTime())/(oneDay)));
 
                         if(diasDiferenca > 1){
-                            var caminhoParaFichaMembro = "Cartao" + (membro.Nome);
-                            $('#'+caminhoParaFichaMembro)
-                            .addClass('mudarCorFicha');
+                            var warningIcon  = $('<img id="loadingIcon" src="/Content/Image/caution8.png" alt="..." class="warningIcon" title="Membro há mais de 1 dia sem commitar" />');
 
-                            $('#'+caminhoParaLinhaLateral)
-                            .addClass('mudarCorLinhaVertical');
+                            $('#'+caminhoParaDivLateral)
+                            .append(warningIcon);
                         }
 
                         function addZero(i) {
@@ -255,6 +253,7 @@
 
                         var caminhoDataUltimoCommit = "DataUltimoCommit" + (membro.Nome);
                         $('<p></p>')
+                            .attr('style', 'float:left')
                         .html(dataEHoraUltimoCommit)
                         .appendTo('#'+caminhoDataUltimoCommit);
 
