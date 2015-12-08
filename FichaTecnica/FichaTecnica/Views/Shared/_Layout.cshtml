@@ -31,6 +31,14 @@
                         <a href="~/Projeto/CadastroProjeto">Cadastro de Projeto</a>
                     </li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="navbar-brand fontColor-Black" method="get" action="@Url.Action("MembroBusca", "Membro")">
+                            <input type="text" id="NomeMembro" placeholder="Nome do Membro" name="Nome">
+                            <input type="submit" id="btnProcurar" name="Membros" value="Procurar">
+                        </form>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -47,5 +55,18 @@
     <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
     <script src="~/Scripts/showdown.min.js"></script>
     @RenderSection("Scripts", false)
+
+    @section Scripts {
+        <script>
+            $("document").ready(function() {
+                $("#NomeMembro").autocomplete({
+                    minLength: 3,
+                    source: '@Url.Action("MembroAutoComplete", "Membro")',
+                    select: function () { $("#btnProcurar").click(); }
+                });
+                $(".ui-helper-hidden-accessible").remove();
+            });
+        </script>
+    }
 </body>
 </html>
