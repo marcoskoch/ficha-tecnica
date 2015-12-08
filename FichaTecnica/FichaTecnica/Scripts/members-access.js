@@ -10,7 +10,6 @@
                 .done(function (response) {
                     response.forEach(function (i) {
                         commitList.push({ sha: i.sha.slice(0, 7), date: new Date(i.commit.author.date).getTime(), message: i.commit.message, link: i.html_url })
-
                     })
                 })
             .always(function () {

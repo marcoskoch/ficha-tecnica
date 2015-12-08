@@ -44,7 +44,8 @@ else {
 }
 
 function appendAvgCommits() {
-    $('#media-commits').html(localStorage.getItem('avgCommits'.concat(id)));
+    var avgCommits = localStorage.getItem('avgCommits'.concat(id)).slice(0, 4);
+    $('#media-commits').html(avgCommits);
 }
 
 

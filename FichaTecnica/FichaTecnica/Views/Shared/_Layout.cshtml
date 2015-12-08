@@ -76,6 +76,23 @@
     <script>
         var user = @Html.Raw(Json.Encode(Session["USUARIO_LOGADO"]));
         $('#sair-dropdown').text(user.Nome);
+
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function montaData(diaUltimoCommit){
+            var mes = addZero(diaUltimoCommit.getUTCMonth() + 1);
+            var dia = addZero(diaUltimoCommit.getUTCDate());
+            var ano = diaUltimoCommit.getUTCFullYear();
+            var hora = addZero(diaUltimoCommit.getUTCHours());
+            var minutos = addZero(diaUltimoCommit.getMinutes());
+
+            return dataEHoraUltimoCommit = dia + '/' + mes + '/' + ano + ' - ' + hora + ':' + minutos;   
+        }
     </script>
     @RenderSection("Scripts", false)
 

@@ -2,25 +2,29 @@
 }
 
 .nomeProjeto{
-    font-family:fantasy;
-    font-size: 45px;
+    font-weight: 700;
+    font-size: 70px;
     color: #FFFCF9;
 }
 
 .infosProjeto{
-    font-family:fantasy;
+    font-weight: 700;
     font-size: 20px;
     color: #FFFCF9;
 }
 
+.lista-usuarios {
+    font-size: 20px;
+}
+
 .labelMembros{
-     font-family:fantasy;
-     font-size: 30px;
+    font-weight: 700;
+    font-size: 40px;
 }
 
 .imagemHeader{
-    float:right;
-    padding-left:50px;
+    padding: 0px;
+    float: right;
 }
 
 .Cartao{ 
@@ -147,18 +151,20 @@
 }
 
 .imagem-projeto {
-    padding: 6%;
+    padding: 7%;
     background-color: #6D435A;
     background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
     height: 100%;
     background-size: 50px 50px;
+    padding-bottom: 10%;
+    width: 1349px;
+    margin-left: -105px;
 }
 
 .titulo-projeto {
-    font-weight: bolder;
-    padding: 9%;
-    font-size: 70px;
-    color: #FFF;
+    font-weight: 700;
+    font-size: 60px;
+    color: #FFFCF9;
 }
 
 .Cartao p, .divMenssagemUltimoCommit

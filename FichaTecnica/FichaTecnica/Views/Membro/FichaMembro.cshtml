@@ -27,8 +27,6 @@ ViewBag.Title = "FichaMembro";
     </div>
 }
 
-
-
 <div class="row">
 	<div class="col-md-2 img-membro">
 		<img src="~/Upload/img/@Model.Foto" alt="..." class="img-thumbnail">
@@ -104,10 +102,10 @@ ViewBag.Title = "FichaMembro";
             </select>
         </div>
 
-        <span class="octicon octicon-markdown"></span>
         <div class="form-group col-md-12">
             <label>Comentário:</label>
-            <textarea class="form-control" style="min-width: 100%" name="texto"></textarea>
+            <span class="octicon octicon-markdown"></span>
+            <textarea class="form-control" style="min-width: 100%; height: 100px" name="texto"></textarea>
         </div>
 
         <input hidden="hidden" type="text" name="idMembro" value=@Model.Id>
