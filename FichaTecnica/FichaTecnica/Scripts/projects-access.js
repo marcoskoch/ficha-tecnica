@@ -11,7 +11,11 @@
     projetos.forEach(function (projeto) {
         $('#projetos')
             .append($('<option>').html(projeto.label).attr('value', projeto.value))
-            .attr('name', 'idProjeto')
+            .attr('name', 'idProjeto');
+
+        $('#lista-projetos')
+            .append($('<li>')
+                .text(projeto.label))
     })
 });
 

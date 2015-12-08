@@ -36,7 +36,7 @@ namespace FichaTecnica.Controllers
             }
                
             List<MembroDetalheProjetoModel> detalhesMembros = new List<MembroDetalheProjetoModel>();
-            foreach (var membro in membrosDoProjeto)
+            foreach (var membro in projeto.Membros)
             {
                 MembroDetalheProjetoModel membroDetalheProjetoModel = new MembroDetalheProjetoModel(membro);
                 List<LinkFork> link = dataBaseMembro.BuscarLinkMembroDoProjeto(projeto.Id,membro.Id);
@@ -58,7 +58,6 @@ namespace FichaTecnica.Controllers
             TelaDetalhesModel model = new TelaDetalhesModel();
             model.Projeto = projeto;
             model.Usuarios = usuarios;
-            model.LiderTecnico = dataBaseMembro.BuscarLiderTecnicoDoProjeto(membrosDoProjeto);
             model.MembrosDoProjeto = detalhesMembros;
 
             return View(model);
