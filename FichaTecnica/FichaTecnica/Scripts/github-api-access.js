@@ -59,7 +59,7 @@ function appendComments() {
             .append($('<tr>')
                 .append($('<td>').html(commit.date))
                 .append($('<td>')
-                    .append($('<a>').html(commit.sha.slice(0, 8)).attr('href', commit.url))
+                    .append($('<a>').html(commit.sha.slice(0, 8)).attr('href', commit.url).attr('target', '_blank'))
                     .append($('<p>').text(commit.message)))
         )
     })
