@@ -23,6 +23,13 @@ namespace FichaTecnica.Controllers
             return View();
         }
 
+        public ActionResult Sair()
+        {
+            ControleDeSessao.Encerrar();
+
+            return RedirectToAction("Index", "Login");
+        }
+
         public ActionResult Login(LoginModel loginModel)
         {
             if (ModelState.IsValid)

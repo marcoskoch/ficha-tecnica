@@ -12,6 +12,8 @@ namespace FichaTecnica.Seguranca.Model
 
         public string Email { get; set; }
 
+        public string Nome { get; set; }
+
         public string Perfil { get; set; }
 
         public UsuarioLogado(string email, int id)
@@ -22,6 +24,7 @@ namespace FichaTecnica.Seguranca.Model
 
         public UsuarioLogado(Usuario usuario)
         {
+            this.Nome = usuario.Nome;
             this.Id = usuario.Id;
             this.Email = usuario.Email;
             this.Perfil = usuario.Permissao.Descricao;

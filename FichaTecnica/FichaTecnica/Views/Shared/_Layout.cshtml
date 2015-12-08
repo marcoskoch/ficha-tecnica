@@ -44,6 +44,15 @@
                             </div>
                         </form>
                     </li>
+                    @if(Session["USUARIO_LOGADO"] != null)
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="sair-dropdown" aria-haspopup="true" aria-expanded="false">Renan <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index", "Login")">Sair</a></li>                             
+                            </ul>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -64,7 +73,11 @@
 
     @section Scripts {
         <script>
+            var user = @Html.Raw(Json.Encode(Session["USUARIO_LOGADO"]));
+
             $("document").ready(function () {
+                $('#sair-dropdown').text(user.Nome);
+
                 $("#NomeMembro").autocomplete({
                     minLength: 3,
                     source: '@Url.Action("MembroAutoComplete", "Membro")',
