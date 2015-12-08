@@ -179,3 +179,10 @@
 .corIconGitHub{
     color:#FF6978;
 }
+
+.warningIcon{
+    height: 50px;
+    position:absolute;
+    display:inline-block;
+    padding-left: 400px;
+}
