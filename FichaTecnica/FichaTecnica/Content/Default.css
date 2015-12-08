@@ -6,12 +6,12 @@
 
 a
 {
-	color: #6D435A;
+	color: #FF6978;
 }
 
 a:hover
 {
-	color: #352D39;
+	color: #FF69A1;
 }
 
 .btn-custom
@@ -279,4 +279,9 @@ footer p
 .imagem-projeto ul li
 {
     color: #FFFCF9 !important;
+}
+
+#commit-list a 
+{
+	font-size: 18px;
 }
