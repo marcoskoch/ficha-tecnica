@@ -28,8 +28,13 @@ namespace FichaTecnica.Controllers
             membrosDoProjeto = dataBaseMembro.BuscarCargoMembros(membrosDoProjeto);
             projeto.Membros = membrosDoProjeto;
 
-            Usuario usuario = dataBaseUsuario.BuscarPorId(projeto.IdUsuario);
-            
+            List<Usuario> usuarios = new List<Usuario>();
+
+            foreach(var usuario in  projeto.Usuarios)
+            {
+                usuarios.Add(dataBaseUsuario.BuscarPorId(usuario.Id));
+            }
+               
             List<MembroDetalheProjetoModel> detalhesMembros = new List<MembroDetalheProjetoModel>();
             foreach (var membro in membrosDoProjeto)
             {
@@ -49,11 +54,10 @@ namespace FichaTecnica.Controllers
                         membroDetalheProjetoModel.TotalComentarioNegativo++;
                 }
             }
-            
 
             TelaDetalhesModel model = new TelaDetalhesModel();
             model.Projeto = projeto;
-            model.Usuario = usuario;
+            model.Usuarios = usuarios;
             model.LiderTecnico = dataBaseMembro.BuscarLiderTecnicoDoProjeto(membrosDoProjeto);
             model.MembrosDoProjeto = detalhesMembros;
 
