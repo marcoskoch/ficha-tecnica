@@ -3,7 +3,7 @@
     var commitList = [];
 
     model.Links.forEach(function(l) {
-        var localStorageCommits = localStorage.getItem('latestCommits'.concat(membro.Id.toString()));
+        var localStorageCommits = localStorage.getItem('latestCommits_'.concat(membro.Id.toString()));
 
         if(localStorageCommits == null || localStorageCommits == '[]') {
             $.get(model.URLBaseAPI + l.URL + 'commits')
@@ -27,7 +27,7 @@
 function atribuiValoresGitHubAoMembro(commitList, membro){
     commitList.sort(function (left, right) { return left.date < right.date })
     commitList = commitList.slice(0, 3);
-    localStorage.setItem('latestCommits'.concat(membro.Id), JSON.stringify(commitList));
+    localStorage.setItem('latestCommits_'.concat(membro.Id), JSON.stringify(commitList));
     commitList.forEach(function(commit) {
         var timeStamp  = new Date(commit.date);
         membro.DataUltimoCommit = Date.parse(timeStamp);

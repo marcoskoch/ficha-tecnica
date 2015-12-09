@@ -33,6 +33,7 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
             }).always(function() {
                 localStorage.setItem('avgCommits'.concat(id), totalCommits / days.length);
                 localStorage.setItem('latestCommits'.concat(id), JSON.stringify(commitList));
+            }).always(function () {
                 appendAvgCommits();
                 appendComments();
             })
