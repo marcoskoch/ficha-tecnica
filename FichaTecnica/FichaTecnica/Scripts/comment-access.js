@@ -10,7 +10,7 @@ comments.sort(function(left, right) {
     return extractDate(left.DataCriacao) < extractDate(right.DataCriacao)
 })
 
-if (user.Pefil === 'Lider Tecnico' && model.Cargo === 'Gerente' || model.Cargo === 'Lider Tecnico') {
+if (!user.Pefil === 'Lider Tecnico' && model.Cargo != 'Gerente' || model.Cargo != 'Lider Tecnico') {
 
     comments.forEach(function (comment) {
 
