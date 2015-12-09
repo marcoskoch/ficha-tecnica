@@ -1,4 +1,4 @@
-﻿var localStorageCommits = localStorage.getItem('latestCommits_'.concat(id));
+﻿var localStorageCommits = localStorage.getItem('latestCommits'.concat(id));
 
 gitInfo.Links.forEach(function (link) {
     repos.push(link.URL)
@@ -14,14 +14,13 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
                     var lastDay = montaData(new Date(r.created_at));
 
                     if (r.type == 'PushEvent') {
-
-                        if (!days.includes(lastDay)) {
+                        if ($.inArray(lastDay, days)) {
                             days.push(lastDay);
                         }
 
                         totalCommits += r.payload.commits.length;
 
-                        if (repos.includes('/' + r.repo.name + '/')) {
+                        if($.inArray('/' + r.repo.name + '/',repos)){
                             r.payload.commits.forEach(function (commit) {
                                 commit.url = r.repo.url.replace('https://api.github.com/repos/', gitInfo.URLBase + '/') + '/commit/' + commit.sha;
                                 commit.date = lastDay;
