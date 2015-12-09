@@ -10,31 +10,34 @@ comments.sort(function(left, right) {
     return extractDate(left.DataCriacao) < extractDate(right.DataCriacao)
 })
 
-comments.forEach(function(comment) {
+if (model.Cargo != "Gerente") {
 
-    if (comment.Estado != 0) {
-        return;
-    }
-    var typeTag;
-    var deleteOption = '';
+    comments.forEach(function (comment) {
 
-    if (user != null) {
-        deleteOption = user.Id == comment.IdUsuario || user.Perfil === 'Gerente' ? '<a href="../ExcluirComentario/' + comment.Id + '" class="excluir-comentario">&times;</a>' : '';
-    }
+        if (comment.Estado != 0) {
+            return;
+        }
+        var typeTag;
+        var deleteOption = '';
 
-    if (comment.Tipo == 0) {
-        positiveTotal = positiveTotal + 1;
-        $('#total-positivo').text(positiveTotal);
-    }
-    else {
-        negativeTotal = negativeTotal + 1;
-        $('#total-negativo').text(negativeTotal);
-    }
+        if (user != null) {
+            deleteOption = user.Id == comment.IdUsuario || user.Perfil === 'Gerente' ? '<a href="../ExcluirComentario/' + comment.Id + '" class="excluir-comentario">&times;</a>' : '';
+        }
 
-    $('#comentarios')
-          .append($('<div class="bloco-comentario ' + (comment.Tipo == 0 ? 'comentario-positivo' : 'comentario-negativo') + '">')
-            .append($('<h4>').text(comment.Assunto + ' - ' + comment.Projeto.Nome))
-            .append($(converter.makeHtml(comment.Texto)))
-            .append($(deleteOption))
-            )
-})
+        if (comment.Tipo == 0) {
+            positiveTotal = positiveTotal + 1;
+            $('#total-positivo').text(positiveTotal);
+        }
+        else {
+            negativeTotal = negativeTotal + 1;
+            $('#total-negativo').text(negativeTotal);
+        }
+
+        $('#comentarios')
+              .append($('<div class="bloco-comentario ' + (comment.Tipo == 0 ? 'comentario-positivo' : 'comentario-negativo') + '">')
+                .append($('<h4>').text(comment.Assunto + ' - ' + comment.Projeto.Nome))
+                .append($(converter.makeHtml(comment.Texto)))
+                .append($(deleteOption))
+                )
+    })
+}

@@ -19,7 +19,7 @@ namespace FichaTecnica.Controllers
         private IMembroRepositorio dataBaseMember = new MembroRepositorio();
 
         [Autorizador]
-        public ActionResult TelaInicial()
+        public ActionResult Index()
         {
             UsuarioLogado usuarioLogado = HttpContext.Session["USUARIO_LOGADO"] as UsuarioLogado;
             IList<Projeto> projetos = dataBase.BuscarProjetosDoUsuario(usuarioLogado.Id);        
@@ -38,7 +38,7 @@ namespace FichaTecnica.Controllers
             model.projetos = new List<Projeto>();
             model.projetos = projetos;
 
-            return View(model);
+            return View("TelaInicial", (model));
         }
 
         [Autorizador]

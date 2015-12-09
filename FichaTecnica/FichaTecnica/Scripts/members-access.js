@@ -173,7 +173,7 @@ setTimeout(function() {
         .attr('id', 'LinkUltimoCommit'+ membro.Nome)
         .append($('<div>')
         .append($('<p>')
-        .append($('<a>').attr('style', 'color: #ff3333').html(membro.CommitSHA).attr('href', membro.CommitLink))
+        .append($('<a>').attr('style', 'color: #ff3333').html(membro.CommitSHA).attr('href', membro.CommitLink).attr('target', 'blank'))
         .append($('<p>').html(membro.Commitmenssage))))
 
         var caminhoLinkUltimoCommit = "LinkUltimoCommit" + membro.Nome;

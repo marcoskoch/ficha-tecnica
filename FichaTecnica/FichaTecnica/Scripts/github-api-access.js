@@ -34,13 +34,13 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
                 localStorage.setItem('latestCommits'.concat(id), JSON.stringify(commitList));
             }).always(function () {
                 appendAvgCommits();
-                appendComments();
+                appendCommits();
             })
 }
 else {
     commitList = JSON.parse(localStorageCommits);
     appendAvgCommits();
-    appendComments();
+    appendCommits();
 }
 
 function appendAvgCommits() {
@@ -49,7 +49,7 @@ function appendAvgCommits() {
 }
 
 
-function appendComments() {
+function appendCommits() {
     commitList.sort(function (left, right) { return left.date < right.date })
     commitList = commitList.slice(0, 3);
 
