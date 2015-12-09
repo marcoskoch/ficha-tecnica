@@ -1,4 +1,4 @@
-﻿var localStorageCommits = localStorage.getItem('latestCommits'.concat(id));
+﻿var localStorageCommits = localStorage.getItem('latestCommits_'.concat(id));
 
 gitInfo.Links.forEach(function (link) {
     repos.push(link.URL)
@@ -30,7 +30,7 @@ if (localStorageCommits == null || localStorageCommits == '[]') {
                         }
                     }
                 })
-            }).always(function() {
+            }).always(function () {
                 localStorage.setItem('avgCommits'.concat(id), totalCommits / days.length);
                 localStorage.setItem('latestCommits'.concat(id), JSON.stringify(commitList));
             }).always(function () {
@@ -63,8 +63,8 @@ function appendComments() {
                 .append($('<td>')
                     .append($('<a>').html(commit.sha.slice(0, 8)).attr('href', commit.url).attr('target', '_blank'))
                     .append($('<p>').text(commit.message)))
-        )
-    })
+        );
+    });
 }
 
 setInterval(function () {
