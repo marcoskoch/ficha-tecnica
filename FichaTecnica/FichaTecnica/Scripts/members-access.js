@@ -216,7 +216,7 @@ setTimeout(function() {
 
         $(document).ready(function(){
             $('#divLateral'+ membro.Nome).click(function (){
-                window.location = membro.CommitLink
+                window.open(membro.CommitLink, '_blank')
             });
         });
 
