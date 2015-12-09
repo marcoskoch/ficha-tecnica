@@ -24,7 +24,10 @@ namespace FichaTecnica.App_Start
                         "~/Content/bootstrap.css",
                         "~/Content/Site.css",
                         "~/Content/Default.css",
-                        "~/Content/TelaDetalhes.css"));
+                        "~/Content/TelaDetalhes.css",
+                        "~/Content/EfeitosHover.css",
+                        "~/Content/octicons.css",
+                        "~/Content/TelaInicial.css"));
         }
     }
 
